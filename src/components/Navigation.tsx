@@ -22,16 +22,45 @@ const navLinks = [
   { name: "Contacto", href: "#contacto", icon: Phone },
 ];
 
+// Función para desplazamiento suave con control de duración
+const handleSmoothScroll = (e, href) => {
+  e.preventDefault();
+  const target = document.querySelector(href);
+  if (target) {
+    const offsetTop = target.getBoundingClientRect().top + window.scrollY;
+    const start = window.scrollY;
+    const distance = offsetTop - start;
+    const duration = 1000; // 🕒 tiempo en ms (ajústalo a tu gusto)
+    let startTime = null;
+
+    const easeInOutCubic = (t) =>
+      t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+
+    const animation = (currentTime) => {
+      if (!startTime) startTime = currentTime;
+      const timeElapsed = currentTime - startTime;
+      const progress = Math.min(timeElapsed / duration, 1);
+      const ease = easeInOutCubic(progress);
+      window.scrollTo(0, start + distance * ease);
+      if (timeElapsed < duration) requestAnimationFrame(animation);
+    };
+
+    requestAnimationFrame(animation);
+  }
+};
+
 export const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
+  // Detecta scroll para aplicar sombra a la barra
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Bloquea scroll cuando el menú móvil está abierto
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "unset";
   }, [isOpen]);
@@ -64,6 +93,7 @@ export const Navigation = () => {
             <a
               key={name}
               href={href}
+              onClick={(e) => handleSmoothScroll(e, href)}
               className="relative text-sm font-semibold text-gray-700 hover:text-primario transition-colors duration-200 group"
             >
               {name}
@@ -104,13 +134,9 @@ export const Navigation = () => {
             >
               {/* HEADER SIDEBAR */}
               <div className="flex items-center justify-between px-5 py-4 border-b">
-                <div className="flex items-center gap-3">
-                  <div>
-                    <h2 className="text-lg font-semibold text-primario">
-                      Navegación
-                    </h2>
-                  </div>
-                </div>
+                <h2 className="text-lg font-semibold text-primario">
+                  Navegación
+                </h2>
                 <button
                   onClick={() => setIsOpen(false)}
                   className="p-2 text-gray-600 hover:text-primario transition-colors"
@@ -125,7 +151,10 @@ export const Navigation = () => {
                   <a
                     key={name}
                     href={href}
-                    onClick={() => setIsOpen(false)}
+                    onClick={(e) => {
+                      handleSmoothScroll(e, href);
+                      setIsOpen(false);
+                    }}
                     className="flex items-center gap-3 px-4 py-3 rounded-xl bg-gray-50 hover:bg-primario/10 text-gray-800 font-medium transition-all duration-200"
                   >
                     <Icon size={20} className="text-primario" />
