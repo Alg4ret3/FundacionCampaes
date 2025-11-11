@@ -1,16 +1,16 @@
-import { activities } from '../constants/data';
-import { useScrollAnimation } from '../hooks/useScrollAnimation';
-import { Calendar, ArrowRight } from 'lucide-react';
+import { activities } from "../constants/data";
+import { useScrollAnimation } from "../hooks/useScrollAnimation";
+import { Calendar, ArrowRight } from "lucide-react";
 
 export const ActivitiesSection = () => {
   const { ref, isVisible } = useScrollAnimation();
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
-    return date.toLocaleDateString('es-ES', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
+    return date.toLocaleDateString("es-ES", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
     });
   };
 
@@ -19,21 +19,21 @@ export const ActivitiesSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2
           className={`text-3xl md:text-4xl font-bold text-center text-[#138A7E] mb-4 transition-all duration-1000 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
-          
-  Actividades e Ideas Futuras
+          Actividades e Ideas Futuras
         </h2>
 
         <p
           className={`text-center text-gray-600 mb-12 max-w-2xl mx-auto transition-all duration-1000 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
-          style={{ transitionDelay: '0.1s' }}
+          style={{ transitionDelay: "0.1s" }}
         >
-           Conoce las acciones que estamos realizando hoy y los proyectos que soñamos para mañana. 
-  Cada iniciativa refleja nuestro compromiso con la paz, la sostenibilidad y el desarrollo comunitario.
+          Conoce las acciones que estamos realizando hoy y los proyectos que
+          soñamos para mañana. Cada iniciativa refleja nuestro compromiso con la
+          paz, la sostenibilidad y el desarrollo comunitario.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
@@ -41,7 +41,9 @@ export const ActivitiesSection = () => {
             <div
               key={activity.id}
               className={`group bg-[#F5F9F8] rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-500 hover:scale-105 ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-10"
               }`}
               style={{ transitionDelay: `${0.2 + index * 0.1}s` }}
             >
@@ -66,7 +68,9 @@ export const ActivitiesSection = () => {
                 <h3 className="text-xl font-bold text-[#138A7E] mb-3 group-hover:text-[#1ABC9C] transition-colors duration-300">
                   {activity.title}
                 </h3>
-                <p className="text-gray-600 leading-relaxed">{activity.description}</p>
+                <p className="text-gray-600 leading-relaxed">
+                  {activity.description}
+                </p>
               </div>
             </div>
           ))}
@@ -74,9 +78,9 @@ export const ActivitiesSection = () => {
 
         <div
           className={`text-center transition-all duration-1000 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
-          style={{ transitionDelay: '0.6s' }}
+          style={{ transitionDelay: "0.6s" }}
         >
           <button className="group inline-flex items-center space-x-2 bg-[#1ABC9C] text-white px-8 py-4 rounded-full font-semibold hover:bg-[#138A7E] transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl">
             <span>Ver todas las actividades</span>
