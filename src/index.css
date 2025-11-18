@@ -1,17 +1,36 @@
+/* globals.css */
+
+/* Tailwind base, components, utilities */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Reset básico */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* Previene scroll horizontal globalmente */
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Fuente global */
 body {
   font-family: 'Poppins', sans-serif;
 }
 
+/* Smooth scroll para enlaces internos */
 html {
   scroll-behavior: smooth;
+}
+
+/* Opcional: imágenes y SVG no deben desbordar */
+img, svg, video, iframe {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }

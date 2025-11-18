@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { programs } from '../constants/data';
-import { useScrollAnimation } from '../hooks/useScrollAnimation';
+import { programs } from '../../../../constants/data';
+import { useScrollAnimation } from '../../../../hooks/useScrollAnimation';
 import { ArrowRight } from 'lucide-react';
 
 type Category = 'todos' | 'social' | 'ambiental' | 'educativo';

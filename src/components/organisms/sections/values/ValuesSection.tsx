@@ -1,6 +1,6 @@
 import { ShieldCheck, Users, Heart, Leaf } from 'lucide-react';
-import { values } from '../constants/data';
-import { useScrollAnimation } from '../hooks/useScrollAnimation';
+import { values } from '../../../../constants/data';
+import { useScrollAnimation } from '../../../../hooks/useScrollAnimation';
 
 const iconMap = {
   'shield-check': ShieldCheck,

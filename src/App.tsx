@@ -1,30 +1,12 @@
-import { Navigation } from './components/Navigation';
-import { HeroSection } from './components/HeroSection';
-import { ImpactStatsSection } from './components/ImpactStatsSection';
-import { ValuesSection } from './components/ValuesSection';
-import { AboutSection } from './components/AboutSection';
-import { ActionLinesSection } from './components/ActionLinesSection';
-//import { ProgramsSection } from './components/ProgramsSection';
-import { ActivitiesSection } from './components/ActivitiesSection';
-import { TestimonialsSection } from './components/TestimonialsSection';
-import { GallerySection } from './components/GallerySection';
-import { ContactSection } from './components/ContactSection';
-import { Footer } from './components/Footer';
+
+import HomePage from './pages/HomePage';
 
 function App() {
+  // En aplicaciones más grandes, aquí irían los Routers (ej. React Router)
+  // Pero por ahora, simplemente montamos la página principal.
   return (
-    <div className="min-h-screen">
-      <Navigation />
-      <HeroSection />
-      <GallerySection />
-      <ActivitiesSection />
-      <ImpactStatsSection />
-      <AboutSection />
-      <ValuesSection />
-      <ActionLinesSection />
-      <TestimonialsSection />
-      <ContactSection />
-      <Footer />
+    <div className="AppRoot">
+      <HomePage />
     </div>
   );
 }

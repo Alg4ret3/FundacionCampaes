@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useScrollAnimation } from '../hooks/useScrollAnimation';
+import { useScrollAnimation } from '../../../../hooks/useScrollAnimation';
 import { Mail, Phone, MapPin, Send, Facebook, Instagram, Twitter } from 'lucide-react';
 
 export const ContactSection = () => {

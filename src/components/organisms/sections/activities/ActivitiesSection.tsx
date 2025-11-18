@@ -1,5 +1,5 @@
-import { activities } from "../constants/data";
-import { useScrollAnimation } from "../hooks/useScrollAnimation";
+import { activities } from "../../../../constants/data";
+import { useScrollAnimation } from "../../../../hooks/useScrollAnimation";
 import { Calendar, ArrowRight } from "lucide-react";
 
 export const ActivitiesSection = () => {

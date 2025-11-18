@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { galleryImages } from "../constants/data";
-import { useScrollAnimation } from "../hooks/useScrollAnimation";
+import { galleryImages } from "../../../../constants/data";
+import { useScrollAnimation } from "../../../../hooks/useScrollAnimation";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export const GallerySection = () => {

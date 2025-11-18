@@ -1,4 +1,4 @@
-import { useScrollAnimation } from '../hooks/useScrollAnimation';
+import { useScrollAnimation } from '../../../../hooks/useScrollAnimation';
 import { TrendingUp, Users, Leaf, Award } from 'lucide-react';
 
 const stats = [

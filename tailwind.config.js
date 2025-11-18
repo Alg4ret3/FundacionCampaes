@@ -12,6 +12,11 @@ export default {
         texto: '#1A1A1A',      // Gris oscuro para texto
         fondo: '#FFFFFF',      // Blanco limpio
       },
+      
+      fontFamily: {
+        elegant: ['"Great Vibes"', 'cursive'],  
+        sanscustom: ['Montserrat', 'sans-serif'], // Para el texto secundario
+      },
     },
   },
   plugins: [],

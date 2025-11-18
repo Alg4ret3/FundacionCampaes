@@ -1,6 +1,6 @@
 import { TrendingUp, Handshake, Sprout, Lightbulb } from 'lucide-react';
-import { actionLines } from '../constants/data';
-import { useScrollAnimation } from '../hooks/useScrollAnimation';
+import { actionLines } from '../../../../constants/data';
+import { useScrollAnimation } from '../../../../hooks/useScrollAnimation';
 
 const iconMap = {
   'trending-up': TrendingUp,

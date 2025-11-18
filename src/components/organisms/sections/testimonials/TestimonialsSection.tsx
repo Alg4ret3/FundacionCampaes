@@ -1,5 +1,5 @@
 import { Star, Quote } from 'lucide-react';
-import { useScrollAnimation } from '../hooks/useScrollAnimation';
+import { useScrollAnimation } from '../../../../hooks/useScrollAnimation';
 
 const testimonials = [
   {

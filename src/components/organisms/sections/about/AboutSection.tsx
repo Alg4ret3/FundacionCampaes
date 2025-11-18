@@ -1,5 +1,5 @@
 import { Target, Eye, Award, Calendar } from 'lucide-react';
-import { useScrollAnimation } from '../hooks/useScrollAnimation';
+import { useScrollAnimation } from '../../../../hooks/useScrollAnimation';
 
 const timeline = [
   { year: '2017', title: 'Fundación', description: 'Inicio de operaciones en el territorio' },

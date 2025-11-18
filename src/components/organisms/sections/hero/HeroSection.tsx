@@ -1,5 +1,5 @@
 import { ArrowRight, Leaf } from "lucide-react";
-import { useScrollAnimation } from "../hooks/useScrollAnimation";
+import { useScrollAnimation } from "../../../../hooks/useScrollAnimation";
 
 export const HeroSection = () => {
   const { ref, isVisible } = useScrollAnimation();
