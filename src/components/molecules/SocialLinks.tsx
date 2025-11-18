@@ -1,5 +1,5 @@
 import { IconLink } from "../atoms/SocialIconLink";
-import { FaFacebookF, FaInstagram, FaWhatsapp, FaTiktok } from "react-icons/fa";
+import { FaFacebookF, FaInstagram, FaWhatsapp, } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
 
 export const SocialLinks = () => {
@@ -24,14 +24,6 @@ export const SocialLinks = () => {
       icon: FaWhatsapp,
       label: "WhatsApp",
       href: "https://wa.me/573185094789",
-      color: "text-white",
-      fondo: "bg-oscuro",
-
-    },
-    {
-      icon: FaTiktok,
-      label: "TikTok",
-      href: "https://tiktok.com",
       color: "text-white",
       fondo: "bg-oscuro",
 
