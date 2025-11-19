@@ -8,25 +8,26 @@ import { Heading } from "../../../atoms/typography/Heading";
 const timeline = [
   {
     year: "2017",
-    title: "Fundación",
-    description: "Inicio de operaciones en el territorio",
+    title: "Fundación de la Organización",
+    description: "Se establecen las bases de nuestra organización, comenzando operaciones con un enfoque sólido en impacto social y desarrollo comunitario.",
   },
   {
     year: "2019",
-    title: "Expansión",
-    description: "Llegamos a 10 nuevas comunidades",
+    title: "Expansión Estratégica",
+    description: "Ampliamos nuestra presencia a 10 nuevas comunidades, fortaleciendo nuestra red y multiplicando el alcance de nuestros programas.",
   },
   {
     year: "2021",
-    title: "Reconocimiento",
-    description: "Premio nacional a la paz",
+    title: "Reconocimiento Nacional",
+    description: "Recibimos un premio nacional por nuestras iniciativas en promoción de la paz y el bienestar social, consolidando nuestra reputación institucional.",
   },
   {
     year: "2025",
-    title: "Presente",
-    description: "Más de 1000 beneficiarios activos",
+    title: "Impacto Actual",
+    description: "Actualmente contamos con más de 1000 beneficiarios activos, continuando con nuestro compromiso de generar cambios positivos y sostenibles en la sociedad.",
   },
 ];
+
 
 export const AboutSection = () => {
   const { ref, isVisible } = useScrollAnimation();
@@ -95,16 +96,15 @@ social y generando sostenibilidad en los diferentes proyectos. "
             delay={0.2}
             isVisible={isVisible}
           />
-         <InfoCard
-  icon={<Handshake className="w-7 h-7 text-fondo" />}
-  title="Compromiso"
-  description={`Nos comprometemos a trabajar con ética, transparencia y responsabilidad social, colocando a las comunidades en el centro de nuestras acciones. 
+          <InfoCard
+            icon={<Handshake className="w-7 h-7 text-fondo" />}
+            title="Compromiso"
+            description={`Nos comprometemos a trabajar con ética, transparencia y responsabilidad social, colocando a las comunidades en el centro de nuestras acciones. 
   Esto incluye fomentar la inclusión social, promover la cultura de paz y ciudadanía, impulsar la educación formal e informal, 
   y garantizar la sostenibilidad de los proyectos en concordancia con su contexto de vida. `}
-  delay={0.3}
-  isVisible={isVisible}
-/>
-
+            delay={0.3}
+            isVisible={isVisible}
+          />
         </div>
 
         {/* Timeline */}
