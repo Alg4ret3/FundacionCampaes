@@ -50,7 +50,7 @@ export const TimelineItem = ({ year, title, description, index, isVisible }: Tim
         <motion.div
           className={`bg-fondo rounded-xl p-6 shadow-xl w-full text-left cursor-pointer
             ${alignLeft ? "md:ml-4 ml-0" : "md:mr-4 mr-0"}
-            ${isOpen ? "shadow-primario/50" : "shadow-lg"} transition-shadow duration-300`}
+            ${isOpen ? "shadow-primario/20" : "shadow-lg"} transition-shadow duration-300`}
           onClick={() => setIsOpen(!isOpen)}
           whileHover={{ scale: 1.02, y: -2 }}
           whileTap={{ scale: 0.99 }}
