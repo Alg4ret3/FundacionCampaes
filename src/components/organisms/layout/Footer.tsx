@@ -1,7 +1,7 @@
-import { FooterLogo } from "../../molecules/FooterLogo";
-import { FooterLinks } from "../../molecules/FooterLinks";
-import { SocialLinks } from "../../molecules/SocialLinks";
-import { ContactItem } from "../../atoms/ContactItem";
+import { FooterLogo } from "../../molecules/footer/FooterLogo";
+import { FooterLinks } from "../../molecules/footer/FooterLinks";
+import { SocialLinks } from "../../molecules/footer/SocialLinks";
+import { ContactItem } from "../../atoms/misc/ContactItem";
 import { MapPin, Phone, Mail } from "lucide-react";
 
 export const Footer = () => {

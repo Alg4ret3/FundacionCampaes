@@ -34,3 +34,12 @@ img, svg, video, iframe {
   height: auto;
   display: block;
 }
+/* REVEAL VERTICAL PREMIUM */a
+
+.clip-reveal-closed {
+  clip-path: inset(0 0 100% 0);
+}
+
+.clip-reveal-open {
+  clip-path: inset(0 0 0 0);
+}

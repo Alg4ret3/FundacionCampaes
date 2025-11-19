@@ -1,4 +1,4 @@
-import { IconLink } from "../atoms/SocialIconLink";
+import { IconLink } from "../../atoms/icons/SocialIconLink";
 import { FaFacebookF, FaInstagram, FaWhatsapp, } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
 

@@ -13,11 +13,11 @@ import {
   LucideIcon,
 } from "lucide-react";
 
-// Importación de Átomos y Moléculas (las que necesitas)
-import { Logo } from "../../molecules/Logo";
-import { NavLink } from "../../atoms/NavLink";
-import { HamburgerButton } from "../../atoms/HamburgerButton";
-import { IconLink } from "../../atoms/IconLink";
+// Importación de Átomos y Moléculas 
+import { Logo } from "../../molecules/navegation/Logo";
+import { NavLink } from "../../atoms/navigation/NavLink";
+import { HamburgerButton } from "../../atoms/buttons/HamburgerButton";
+import { IconLink } from "../../atoms/icons/IconLink";
 
 // Definición de tipos para los enlaces
 interface NavItem {

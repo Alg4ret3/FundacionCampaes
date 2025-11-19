@@ -1,6 +1,6 @@
 // components/atoms/NavLink.tsx
 import React from "react";
-import { handleSmoothScroll } from "../../utils/SmoothScroll"; // Importar utilidad
+import { handleSmoothScroll } from "../../../utils/SmoothScroll"; // Importar utilidad
 
 interface NavLinkProps {
   name: string;

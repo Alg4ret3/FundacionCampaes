@@ -1,7 +1,7 @@
 // components/atoms/IconLink.tsx
 import React from "react";
 import { LucideIcon } from "lucide-react";
-import { handleSmoothScroll } from "../../utils/SmoothScroll";
+import { handleSmoothScroll } from "../../../utils/SmoothScroll";
 
 interface IconLinkProps {
   name: string;

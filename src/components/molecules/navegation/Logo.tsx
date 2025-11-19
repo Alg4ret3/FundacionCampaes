@@ -8,9 +8,8 @@ export const Logo: React.FC = () => (
    alt="Logo Caminos de Paz"
    className="w-14 h-14 object-contain"
   />
-  {/* 🎯 CORRECCIÓN 1: Eliminamos 'leading-tight' */}
   <div> 
-   {/* 🎯 CORRECCIÓN 2: Añadimos 'whitespace-nowrap' y ajustamos el responsive de texto para que quepa */}
+   {/*  Añadimos 'whitespace-nowrap' y ajustamos el responsive de texto para que quepa */}
    <h1 className="text-lg sm:text-xl md:text-2xl font-bold text-primario whitespace-nowrap">
     Fundación Caminos de Paz
    </h1>
