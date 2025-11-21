@@ -31,7 +31,7 @@ const timeline = [
     year: "2025",
     title: "Impacto Actual",
     description:
-      "Actualmente, la Fundación mantiene un impacto activo con más de 1000 beneficiarios, enfocándose en sus cuatro líneas de acción principales: Desarrollo Socio Económico y Cultural, Convivencia y Paz, Ambiente Sostenible y en Paz, y Proyecto de Vida Emprendimiento Sostenible999999999. Se están ejecutando proyectos clave, como el Bordado Guatemalteco en Santa Bárbara para la autonomía económica de las mujeres 10, y proyectos de Agricultura Urbana Sostenible11. Este trabajo continuo y su compromiso con la inclusión social y la sostenibilidad 12121212buscan lograr la Visión de ser líderes en el desarrollo de proyectos sociales para el año 2027.",
+      "Actualmente, la Fundación mantiene un impacto activo con más de 1000 beneficiarios, enfocándose en sus cuatro líneas de acción principales: Desarrollo Socio Económico y Cultural, Convivencia y Paz, Ambiente Sostenible y en Paz, y Proyecto de Vida Emprendimiento Sostenible. Se están ejecutando proyectos clave, como el Bordado Guatemalteco en Santa Bárbara para la autonomía económica de las mujeres, y proyectos de Agricultura Urbana Sostenible. Este trabajo continuo y su compromiso con la inclusión social y la sostenibilidad buscan lograr la Visión de ser líderes en el desarrollo de proyectos sociales para el año 2027.",
     image: "/Image/4.jpg",
   },
 ];
