@@ -9,25 +9,32 @@ const timeline = [
   {
     year: "2017",
     title: "Fundación de la Organización",
-    description: "Se establecen las bases de nuestra organización, comenzando operaciones con un enfoque sólido en impacto social y desarrollo comunitario.",
+    description:
+      "La FUNDACIÓN CAMINOS DE PAZ Y ESPERANZA fue registrada legalmente el 05 de abril de 2017 ante la Cámara de Comercio de Pasto, Nariño, como una entidad sin ánimo de lucro. Su objeto principal es cooperar en la labor social encaminada a la PROMOCIÓN HUMANA y contribuir al desarrollo social, económico y cultural de la región. Esto incluye la formulación de planes y proyectos de educación (Formal, Informal, para el trabajo y desarrollo humano), con un enfoque en la inclusión social y proyección ambiental. Desde sus inicios, la Fundación se ha dedicado a atender a poblaciones vulnerables, como víctimas del conflicto armado, personas con discapacidad, población en situación de desplazamiento, y grupos étnicos.",
+    image: "/Image/1.jpg",
   },
   {
     year: "2019",
     title: "Expansión Estratégica",
-    description: "Ampliamos nuestra presencia a 10 nuevas comunidades, fortaleciendo nuestra red y multiplicando el alcance de nuestros programas.",
+    description:
+      "Este período marcó una Expansión Estratégica significativa, ampliando nuestra presencia y el alcance de los programas a 10 nuevas comunidades en Nariño. Esta expansión fortaleció la red de trabajo y permitió aplicar las líneas de acción de la Fundación, como el Desarrollo Socio Económico y Cultural y la Convivencia y Paz , en zonas que requieren atención psicosocial, fomento del espíritu emprendedor, y proyectos de reconciliación y no estigmatización en áreas afectadas por el conflicto armado.",
+    image: "/Image/2.jpg",
   },
   {
     year: "2021",
-    title: "Reconocimiento Nacional",
-    description: "Recibimos un premio nacional por nuestras iniciativas en promoción de la paz y el bienestar social, consolidando nuestra reputación institucional.",
+    title: "Consolidación Institucional y Alianzas Educativas",
+    description:
+      "La Fundación recibió un Reconocimiento Nacional por sus iniciativas en promoción de la paz y el bienestar social, consolidando su reputación. Además, consolidó su capacidad formativa a través de convenios con instituciones como el POLITÉCNICO SUR ANDINO. Gracias a esta alianza, la Fundación ofrece capacitaciones, seminarios, cursos y diplomados con personal altamente calificado en áreas clave como Convivencia Escolar, Inclusión Educativa, Neuro psicopedagogía, y la apropiación crítica de las TIC'S en procesos formativos y productivos.",
+    image: "/Image/3.jpg",
   },
   {
     year: "2025",
     title: "Impacto Actual",
-    description: "Actualmente contamos con más de 1000 beneficiarios activos, continuando con nuestro compromiso de generar cambios positivos y sostenibles en la sociedad.",
+    description:
+      "Actualmente, la Fundación mantiene un impacto activo con más de 1000 beneficiarios, enfocándose en sus cuatro líneas de acción principales: Desarrollo Socio Económico y Cultural, Convivencia y Paz, Ambiente Sostenible y en Paz, y Proyecto de Vida Emprendimiento Sostenible999999999. Se están ejecutando proyectos clave, como el Bordado Guatemalteco en Santa Bárbara para la autonomía económica de las mujeres 10, y proyectos de Agricultura Urbana Sostenible11. Este trabajo continuo y su compromiso con la inclusión social y la sostenibilidad 12121212buscan lograr la Visión de ser líderes en el desarrollo de proyectos sociales para el año 2027.",
+    image: "/Image/4.jpg",
   },
 ];
-
 
 export const AboutSection = () => {
   const { ref, isVisible } = useScrollAnimation();
@@ -111,8 +118,24 @@ social y generando sostenibilidad en los diferentes proyectos. "
         <div className="bg-fondo rounded-2xl p-8 shadow-lg relative z-10">
           <div className="flex items-center justify-center mb-8">
             <CalendarCheck className="w-8 h-8 text-primario mr-3" />
-            <h3 className="text-2xl font-bold text-primario">
-              Nuestra Historia
+            <h3
+              className={`
+            text-xl md:text-2xl lg:text-3xl
+            font-extrabold text-center 
+            text-secundario
+            transition-all duration-[1100ms] ease-[cubic-bezier(.16,.84,.44,1)]
+            ${
+              isVisible
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-10"
+            }
+          `}
+              style={{ transitionDelay: "0.05s" }}
+            >
+              Conoce Nuestra{" "}
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-primario to-acento drop-shadow-md">
+                Historia
+              </span>
             </h3>
           </div>
 
@@ -124,6 +147,7 @@ social y generando sostenibilidad en los diferentes proyectos. "
                   key={item.year}
                   year={item.year}
                   title={item.title}
+                  image={item.image}
                   description={item.description}
                   index={index}
                   isVisible={isVisible}
