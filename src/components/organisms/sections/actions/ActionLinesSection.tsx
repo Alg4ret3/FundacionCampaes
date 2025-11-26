@@ -1,5 +1,5 @@
 import { TrendingUp, Handshake, Sprout, Lightbulb } from 'lucide-react';
-import { actionLines } from '../../../../constants/data';
+import { actionLines } from '../../../../constants/DataActionLine.ts';
 import { useScrollAnimation } from '../../../../hooks/useScrollAnimation';
 import { ActionLineCard } from "../../../molecules/actions/ActionLineCard";
 import { ActionTextBlock } from "../../../molecules/actions/ActionTextBlock.tsx";
@@ -18,7 +18,7 @@ export const ActionLinesSection = () => {
     <section
       id="lineas"
       ref={ref}
-      className="py-32 bg-gradient-to-b from-fondo to-[#F5F9F8] relative overflow-hidden"
+      className="pt-16 pb-20 bg-gradient-to-b from-fondo to-[#F5F9F8] relative overflow-hidden"
     >
       {/* Background */}
       <div className="absolute inset-0 opacity-20">

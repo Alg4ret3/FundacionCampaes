@@ -1,98 +1,104 @@
 import { useScrollAnimation } from "../../../../hooks/useScrollAnimation";
-import { TrendingUp, Users, Leaf, Award } from "lucide-react";
+import { stats } from "../../../../constants/DataStats";
 import { ImpactStatCard } from "../../../molecules/impact/ImpactStatCard";
 import { ImpactTextBlock } from "../../../molecules/impact/ImpactTextBlock";
-import { motion, useMotionValue, useTransform } from "framer-motion";
-
-const stats = [
-  { 
-    icon: Award, 
-    value: "8+", 
-    label: "Años de Impacto", 
-    description: "Trabajando sin cesar por la paz", 
-    extraText: "Durante estos años, hemos desarrollado programas educativos, comunitarios y de reconciliación, dejando huella en cientos de familias. Hemos trabajado con líderes locales para fortalecer la cohesión social y fomentar la cultura de paz en distintas regiones, adaptando nuestros proyectos a las necesidades de cada comunidad.", 
-    color: "from-primario via-acento to-secundario" 
-  },
-  { 
-    icon: Users, 
-    value: "1000+", 
-    label: "Beneficiarios Directos", 
-    description: "Vidas transformadas", 
-    extraText: "Incluye niños, jóvenes y adultos que han recibido apoyo integral en educación, salud y desarrollo social. Gracias a programas de capacitación y acompañamiento, muchas familias han logrado mejorar su calidad de vida, acceder a nuevas oportunidades y fortalecer sus habilidades para la vida y el trabajo.", 
-    color: "from-secundario via-acento to-oscuro" 
-  },
-  { 
-    icon: Leaf, 
-    value: "50+", 
-    label: "Proyectos Ejecutados", 
-    description: "En construcción de paz", 
-    extraText: "Proyectos enfocados en sostenibilidad ambiental, agricultura, cultura y fortalecimiento de comunidades locales. Cada proyecto se diseña con participación activa de los habitantes, fomentando la autogestión y la preservación de recursos naturales, promoviendo así un desarrollo integral y sostenible a largo plazo.", 
-    color: "from-primario via-acento to-secundario" 
-  },
-  { 
-    icon: TrendingUp, 
-    value: "20+", 
-    label: "Comunidades", 
-    description: "Alcance territorial", 
-    extraText: "Cobertura en múltiples regiones, promoviendo liderazgo comunitario y desarrollo económico local. Trabajamos de la mano con organizaciones locales para identificar necesidades prioritarias y generar soluciones que fomenten la resiliencia y el crecimiento social, económico y cultural de cada comunidad.", 
-    color: "from-secundario via-acento to-oscuro" 
-  },
-];
+import { motion, useAnimation } from "framer-motion";
+import { useEffect, useState, useRef } from "react";
+import { ExtraTextModal } from "../../../molecules/impact/ExtraTextModal"
 
 export const ImpactStatsSection = () => {
   const { ref, isVisible } = useScrollAnimation();
+  const controls = useAnimation();
+  const [activeStat, setActiveStat] = useState<number | null>(null);
+  
+  // 💡 UX: Referencia para detectar si el usuario está interactuando
+  const isDragging = useRef(false);
 
-  // Movimiento de fondo según mouse
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-  const x1 = useTransform(mouseX, [0, window.innerWidth], [-50, 50]);
-  const y1 = useTransform(mouseY, [0, window.innerHeight], [-50, 50]);
-  const x2 = useTransform(mouseX, [0, window.innerWidth], [50, -50]);
-  const y2 = useTransform(mouseY, [0, window.innerHeight], [50, -50]);
+  // Auto-scroll horizontal infinito
+  useEffect(() => {
+    // Si la sección no está visible o el usuario está arrastrando, no animamos
+    if (!isVisible || isDragging.current) return; 
 
-  const handleMouseMove = (e: React.MouseEvent) => {
-    mouseX.set(e.clientX);
-    mouseY.set(e.clientY);
+    // Reinicia y comienza la animación
+    controls.start({
+      x: ["0%", "-50%"],
+      transition: {
+        x: {
+          repeat: Infinity,
+          repeatType: "loop",
+          duration: stats.length * 4,
+          ease: "linear",
+        },
+      },
+    });
+
+  // 💡 Dependencia: Incluimos isDragging.current para reanudar si deja de arrastrar
+  }, [isVisible, controls, stats.length]); 
+
+  // --- Manejo del Arrastre (Drag UX) ---
+  const handleDragStart = () => {
+    isDragging.current = true;
+    // Detiene la animación automática inmediatamente al arrastrar
+    controls.stop(); 
+  };
+
+  const handleDragEnd = () => {
+    isDragging.current = false;
+    // 💡 UX: Opcional: Podrías reanudar la animación después de un breve retraso si deseas.
+    // Por simplicidad, la dejamos detenida hasta el próximo render o si se sale/vuelve a la vista.
   };
 
   return (
     <section
       id="impact"
       ref={ref}
-      className="py-32 bg-gradient-to-r from-secundario via-oscuro to-oscuro text-fondo relative overflow-hidden"
-      onMouseMove={handleMouseMove}
+      className="pt-20 pb-20 bg-gradient-to-r from-secundario via-oscuro to-oscuro text-fondo relative overflow-hidden"
     >
-      {/* 🌟 Elementos decorativos de fondo */}
-      <motion.div className="absolute inset-0 pointer-events-none">
-        <motion.div
-          style={{ x: x1, y: y1 }}
-          className="absolute top-20 right-0 w-96 h-96 bg-gradient-to-tr from-primario via-acento to-secundario opacity-10 rounded-full blur-3xl"
-        />
-        <motion.div
-          style={{ x: x2, y: y2 }}
-          className="absolute bottom-0 left-1/4 w-96 h-96 bg-gradient-to-tr from-secundario via-acento to-oscuro opacity-10 rounded-full blur-3xl"
-        />
-      </motion.div>
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Texto principal */}
-        <div className="mb-20 text-center">
+        <div className="mb-16 md:mb-20 text-center">
           <ImpactTextBlock isVisible={isVisible} />
         </div>
 
-        {/* Grid de estadísticas */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
-          {stats.map((stat, index) => (
-            <ImpactStatCard
-              key={index}
-              {...stat}
-              isVisible={isVisible}
-              delay={index * 0.15} // Delay escalonado más natural
-              className="rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-shadow duration-500"
-            />
-          ))}
+        {/* Carrusel horizontal con Drag */}
+        <div className="overflow-hidden cursor-grab active:cursor-grabbing"> {/* 💡 UX: Feedback visual */}
+          <motion.div 
+            className="flex gap-6 md:gap-8 w-max pb-4" 
+            animate={controls}
+            // 💡 UX: Habilitar arrastre
+            drag="x" 
+            dragConstraints={{ left: -1000, right: 0 }} // Limites de arrastre arbitrarios, ajusta según el contenido real
+            onDragStart={handleDragStart}
+            onDragEnd={handleDragEnd}
+          >
+            {stats.concat(stats).map((stat, index) => (
+              // 💡 UX: Usar una clave más robusta para evitar problemas de re-renderizado en la lista concatenada
+              <div 
+                key={`${stat.label}-${index}`} 
+                className="min-w-[280px] sm:min-w-[300px] flex-shrink-0" // 💡 UI: Tarjetas ligeramente más anchas
+              >
+                <ImpactStatCard
+                  {...stat}
+                  isVisible={isVisible}
+                  // Ajuste de delay basado en el index real (no en la lista concatenada)
+                  delay={0.1 + (index % stats.length) * 0.1} 
+                  onClick={() => setActiveStat(index % stats.length)}
+                  className="rounded-xl sm:rounded-2xl p-6 md:p-8 shadow-xl bg-oscuro/50 
+                             hover:shadow-primario/40 hover:scale-[1.03] 
+                             transition-all duration-300 cursor-pointer" // 💡 UI: Mejor estilo en hover
+                />
+              </div>
+            ))}
+          </motion.div>
         </div>
       </div>
+
+      {/* 💡 Modal Refactorizado */}
+      <ExtraTextModal 
+        activeStat={activeStat}
+        setActiveStat={setActiveStat}
+        stats={stats} isVisible={isVisible}
+      />
     </section>
   );
 };

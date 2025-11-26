@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { galleryImages } from "../../../../constants/data";
+import { galleryImages } from "../../../../constants/DataGalley";
 import { useScrollAnimation } from "../../../../hooks/useScrollAnimation";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 

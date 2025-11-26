@@ -1,4 +1,4 @@
-import { activities } from "../../../../constants/data";
+import { activities } from "../../../../constants/DataActivities";
 import { useScrollAnimation } from "../../../../hooks/useScrollAnimation";
 import { Calendar, ArrowRight } from "lucide-react";
 

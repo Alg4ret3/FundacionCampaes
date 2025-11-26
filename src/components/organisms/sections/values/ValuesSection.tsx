@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { values } from "../../../../constants/data";
+import { values } from "../../../../constants/DataValues";
 import { ValuesHeader } from "../../../molecules/values/Header";
 import { ValueCircle } from "../../../molecules/values/Circle";
 import { ValueDetailsCard } from "../../../molecules/values/DetailsCard";
@@ -15,7 +15,7 @@ export const ValuesSection = () => {
 
     const interval = setInterval(() => {
       setActiveIndex(prev => (prev + 1) % values.length); // Ciclo infinito
-    }, 1000); // Cambia cada 1s
+    }, 1000);
 
     return () => clearInterval(interval);
   }, [isVisible]);
@@ -27,25 +27,12 @@ export const ValuesSection = () => {
 
         {/* CONTENEDOR PRINCIPAL */}
         <div className="relative flex flex-col md:flex-row items-center justify-between gap-20 md:gap-0">
-
           {/* LINEA HORIZONTAL (solo escritorio) */}
-          <div
-            className="
-              hidden md:block
-              absolute top-1/2 left-0 w-full
-              -translate-y-1/2
-              h-1 bg-acento/40
-              pointer-events-none
-              -z-10
-            "
-          />
+          <div className="hidden md:block absolute top-1/2 left-0 w-full -translate-y-1/2 h-1 bg-acento/40 pointer-events-none -z-10" />
 
           {/* CIRCULOS + SEGMENTOS EN MOVIL */}
           {values.map((v, i) => (
-            <div
-              key={v.id}
-              className="relative flex flex-col items-center md:items-center"
-            >
+            <div key={v.id} className="relative flex flex-col items-center md:items-center">
               {/* CIRCULO */}
               <ValueCircle
                 icon={v.icon}
@@ -66,6 +53,11 @@ export const ValuesSection = () => {
       {selected && (
         <ValueDetailsCard value={selected} onClose={() => setSelected(null)} />
       )}
+{/* CIERRE DE SECCIÓN MODERNO */}
+<div className="mt-16 w-full h-16 relative">
+  <div className="absolute inset-0 bg-gradient-to-t from-transparent to-acento/10 pointer-events-none" />
+</div>
+
     </section>
   );
 };

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { programs } from '../../../../constants/data';
+import { programs } from '../../../../constants/DataActionLine';
 import { useScrollAnimation } from '../../../../hooks/useScrollAnimation';
 import { ArrowRight } from 'lucide-react';
 
