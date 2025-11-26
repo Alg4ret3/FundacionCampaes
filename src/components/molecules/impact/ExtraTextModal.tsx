@@ -1,99 +1,57 @@
-// src/components/molecules/impact/ExtraTextModal.tsx
+import { ModalBase } from "../../atoms/layout/ModalBase";
+import { IoClose } from "react-icons/io5"; // Importamos el icono de cerrar por si el ModalBase no lo incluye
 
-import { useCallback, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { X } from 'lucide-react'; 
-
-interface Stat { 
-  label: string; 
-  extraText: string; 
-  // otras props opcionales
+interface Stat {
+  label: string;
+  extraText: string;
 }
 
 interface ExtraTextModalProps {
   activeStat: number | null;
   setActiveStat: (index: number | null) => void;
-  stats: Stat[]; 
+  stats: Stat[];
 }
 
 export const ExtraTextModal = ({ activeStat, setActiveStat, stats }: ExtraTextModalProps) => {
-
-  const handleClose = useCallback(() => {
-    setActiveStat(null);
-  }, [setActiveStat]);
-
-  useEffect(() => {
-    const handleEscape = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') handleClose();
-    };
-    document.addEventListener('keydown', handleEscape);
-    return () => document.removeEventListener('keydown', handleEscape);
-  }, [handleClose]);
-
+  const handleClose = () => setActiveStat(null);
   const modalContent = activeStat !== null ? stats[activeStat] : null;
-  if (!modalContent) return null;
 
+  // Asumo que ModalBase maneja la lógica de backdrop y el div contenedor principal.
+  // Aquí ajustamos el contenido interno.
   return (
-    <AnimatePresence>
-      {activeStat !== null && (
-        <motion.div
-          className="fixed inset-0 bg-black/60 backdrop-blur-md flex items-center justify-center z-[1000] p-4 sm:p-6 overflow-y-auto"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          onClick={handleClose}
-          role="dialog"
-          aria-modal="true"
-          aria-labelledby="modal-title"
-        >
-          <motion.div
-            className="
-              relative bg-gradient-to-br from-fondo/90 to-fondo/95 rounded-3xl 
-              p-6 sm:p-8 md:p-10 max-w-lg w-full shadow-2xl shadow-primario/20 
-              border border-primario/20 overflow-y-auto max-h-[90vh] flex flex-col
-            "
-            initial={{ y: 50, opacity: 0, scale: 0.95 }}
-            animate={{ y: 0, opacity: 1, scale: 1 }}
-            exit={{ y: 50, opacity: 0, scale: 0.95 }}
-            transition={{ type: "spring", stiffness: 120, damping: 18 }}
-            onClick={(e) => e.stopPropagation()}
+    <ModalBase open={activeStat !== null} onClose={handleClose}>
+      {modalContent && (
+        // CONTENEDOR PRINCIPAL del contenido
+        // Le damos un padding más amplio (p-6 o p-8) y un ancho máximo
+        <div className="p-6 sm:p-8 w-full max-w-lg md:max-w-xl lg:max-w-2xl bg-white rounded-xl shadow-2xl"> 
+          
+          {/* Opcional: Si ModalBase no incluye el botón de cerrar, añádelo aquí */}
+          {/* <button
+            className="absolute top-4 right-4 text-gray-500 hover:text-primario transition"
+            onClick={handleClose}
+            aria-label="Cerrar modal"
           >
-            {/* Botón de cierre */}
-            <button
-              onClick={handleClose}
-              className="
-                absolute top-3 right-3 sm:top-5 sm:right-5 p-2 rounded-full 
-                bg-primario/10 hover:bg-primario/20 text-primario transition-all duration-300 
-                focus:outline-none focus:ring-2 focus:ring-primario/50
-              "
-              aria-label="Cerrar ventana"
-            >
-              <X className="w-5 h-5 sm:w-6 sm:h-6" />
-            </button>
+            <IoClose size={24} />
+          </button> */}
 
-            {/* Contenido principal */}
-            <div className="mt-4 sm:mt-0 text-center">
-              <h3 
-                id="modal-title"
-                className="text-primario text-2xl sm:text-3xl font-extrabold mb-4 border-b border-primario/30 pb-2 leading-tight"
-              >
-                {modalContent.label}
-              </h3>
+          {/* Título */}
+          {/* Ajusto el color a 'primario' (asumiendo que es el color del título en tu captura) */}
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-primario mb-4 sm:mb-6 leading-tight">
+            {modalContent.label}
+          </h2>
 
-              <p className="text-black text-base sm:text-lg leading-relaxed font-light mt-4">
-                {modalContent.extraText}
-              </p>
-            </div>
+          {/* Separador visual (Ayuda a romper el espacio vacío) */}
+          <div className="w-12 h-1 bg-primario/60 rounded-full mb-6 sm:mb-8" />
+          
 
-            {/* Indicador visual centrado */}
-            <div className="mt-6 pt-4 border-t border-white/10 flex justify-center">
-              <span className="bg-primario/60 px-6 py-2 rounded-full text-white/90 text-sm font-semibold tracking-wide shadow-inner">
-                Detalle
-              </span>
-            </div>
-          </motion.div>
-        </motion.div>
+          {/* Texto principal */}
+          {/* Aumento el tamaño de la fuente a 'lg' para que ocupe más espacio vertical */}
+          <p className="text-texto/90 text-lg leading-relaxed whitespace-pre-line">
+            {modalContent.extraText}
+          </p>
+
+        </div>
       )}
-    </AnimatePresence>
+    </ModalBase>
   );
 };
