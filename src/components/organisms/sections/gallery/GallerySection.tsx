@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { galleryImages } from "../../../../constants/DataGalley";
 import { useScrollAnimation } from "../../../../hooks/useScrollAnimation";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { GalleryCarousel } from "../../../molecules/gallery/GalleryCarousel";
+import { GalleyTextBlock } from "../../../molecules/gallery/GalleryTextBlock";
 
 export const GallerySection = () => {
   const { ref, isVisible } = useScrollAnimation();
@@ -25,30 +26,12 @@ export const GallerySection = () => {
   };
 
   return (
-    <section ref={ref} className="py-20 bg-fondo">
-      
+    <section
+      ref={ref}
+      className="relative py-15 bg-gradient-to-b from-fondo/90 to-fondo-dark"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2
-          className={`text-3xl md:text-4xl font-bold text-center text-primario mb-4 transition-all duration-1000 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-          }`}
-        >
-          Memoria Visual
-        </h2>
-
-        <p
-          className={`text-center text-texto mb-12 max-w-2xl mx-auto transition-all duration-1000 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-          }`}
-          style={{ transitionDelay: "0.1s" }}
-        >
-          En esta sección compartimos los momentos más significativos de
-          nuestras actividades, procesos comunitarios y proyectos sociales. Cada
-          fotografía refleja el compromiso de la Fundación Caminos de Paz y
-          Esperanza con la construcción de una sociedad más solidaria, inclusiva
-          y sostenible. Este espacio es una memoria visual del trabajo conjunto
-          entre comunidades, voluntarios y aliados.
-        </p>
+        <GalleyTextBlock isVisible={isVisible} />
 
         <div
           className={`relative max-w-5xl mx-auto transition-all duration-1000 ${
@@ -56,57 +39,23 @@ export const GallerySection = () => {
           }`}
           style={{ transitionDelay: "0.2s" }}
         >
-          <div className="relative h-[400px] md:h-[500px] rounded-3xl overflow-hidden shadow-2xl">
-            {galleryImages.map((image, index) => (
-              <div
-                key={index}
-                className={`absolute inset-0 transition-opacity duration-1000 ${
-                  index === currentIndex ? "opacity-100" : "opacity-0"
-                }`}
-              >
-                <img
-                  src={image}
-                  alt={`Gallery ${index + 1}`}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            ))}
-
-            <div className="absolute inset-0 bg-gradient-to-t from-secundario/50 to-transparent"></div>
-
-            <button
-              onClick={goToPrevious}
-              className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-fondo/90 hover:bg-fondo rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-lg"
-              aria-label="Previous image"
-            >
-              <ChevronLeft className="w-6 h-6 text-primario" />
-            </button>
-
-            <button
-              onClick={goToNext}
-              className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-fondo/90 hover:bg-fondo rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-lg"
-              aria-label="Next image"
-            >
-              <ChevronRight className="w-6 h-6 text-primario" />
-            </button>
-          </div>
-
-          <div className="flex justify-center mt-6 space-x-2">
-            {galleryImages.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentIndex(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  index === currentIndex
-                    ? "bg-acento w-8"
-                    : "bg-gray-300 hover:bg-acento/50"
-                }`}
-                aria-label={`Go to image ${index + 1}`}
-              />
-            ))}
-          </div>
+          <GalleryCarousel
+            images={galleryImages}
+            currentIndex={currentIndex}
+            goToNext={goToNext}
+            goToPrevious={goToPrevious}
+            setCurrentIndex={setCurrentIndex}
+          />
         </div>
       </div>
+      {/* Divider decorativo al final de la sección */}
+      <div className="mt-16 w-full h-16 relative">
+        <div className="absolute inset-0 bg-gradient-to-t from-transparent to-acento/10 pointer-events-none" />
+      </div>
+
+
+
+
     </section>
   );
 };
