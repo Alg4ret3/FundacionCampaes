@@ -5,6 +5,7 @@ export interface Activity {
   date: string;
   image: string;
   category: 'social' | 'ambiental' | 'educativo';
+  extraText: string;
 }
 
 export interface Program {

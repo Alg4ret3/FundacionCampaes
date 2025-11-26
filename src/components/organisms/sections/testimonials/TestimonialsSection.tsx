@@ -3,6 +3,7 @@ import { TestimonialCard } from "../../../molecules/testimonials/TestimonialCard
 import { testimonials } from "../../../../constants/DataTestimonials";
 import { TestimonialsTextBlock } from "../../../molecules/testimonials/TestimonialsTextBlock";
 import { motion } from "framer-motion";
+import { TypingQuote } from "../../../molecules/testimonials/TypingQuote";
 
 export const TestimonialsSection = () => {
   const { ref, isVisible } = useScrollAnimation();
@@ -68,6 +69,26 @@ export const TestimonialsSection = () => {
             </motion.div>
           ))}
         </div>
+
+        {/* 🌟 Final de sección */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
+          className="relative mt-28 flex flex-col items-center"
+        >
+          {/* Línea con degradado */}
+          <div className="h-1 w-44 bg-gradient-to-r from-primario via-acento to-secundario rounded-full mb-8"></div>
+
+          {/* Texto final */}
+          <TypingQuote
+            text="Sus palabras impulsan la evolución de todo lo que hacemos."
+            className="text-center text-oscuro text-2xl font-elegant max-w-3xl leading-relaxed mx-auto"
+            speed={35} // velocidad: ms por carácter (ajusta a tu gusto)
+            startDelay={7000} // espera antes de empezar (ms)
+            showCursor={true}
+          />
+        </motion.div>
       </div>
     </section>
   );

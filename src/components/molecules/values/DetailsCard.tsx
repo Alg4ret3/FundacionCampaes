@@ -17,20 +17,19 @@ interface Props {
 const backdropVariants = {
   hidden: { opacity: 0 },
   visible: { opacity: 1 },
-  exit: { opacity: 0, transition: { duration: 0.2 } }
+  exit: { opacity: 0, transition: { duration: 0.2 } },
 };
 
 const cardVariants = {
   hidden: { y: 50, opacity: 0, scale: 0.9 },
-  visible: { 
-    y: 0, 
-    opacity: 1, 
-    scale: 1, 
-    transition: { type: "spring", stiffness: 100, damping: 15 } 
+  visible: {
+    y: 0,
+    opacity: 1,
+    scale: 1,
+    transition: { type: "spring", stiffness: 100, damping: 15 },
   },
-  exit: { y: 20, opacity: 0, transition: { duration: 0.2 } }
+  exit: { y: 20, opacity: 0, transition: { duration: 0.2 } },
 };
-
 
 export const ValueDetailsCard = ({ value, onClose }: Props) => {
   return (
@@ -105,6 +104,3 @@ export const ValueDetailsCard = ({ value, onClose }: Props) => {
   );
 };
 
-// NOTA IMPORTANTE: Para que las animaciones 'exit' funcionen, debes envolver este componente
-// en el componente padre con <AnimatePresence mode="wait">.
-// (Esto se vio en tu componente ValuesSection original, por lo que debería funcionar.)

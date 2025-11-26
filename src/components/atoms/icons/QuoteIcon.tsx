@@ -1,4 +1,14 @@
 // atoms/icons/QuoteIcon.tsx
 import { Quote } from 'lucide-react';
 
-export const QuoteIcon = () => <Quote className="w-5 h-5 text-[#1ABC9C]" />;
+interface QuoteIconProps {
+  className?: string;
+}
+
+export const QuoteIcon = ({ className = "" }: QuoteIconProps) => {
+  return (
+    <Quote
+      className={`w-6 h-6 text-primario drop-shadow-sm ${className}`}
+    />
+  );
+};

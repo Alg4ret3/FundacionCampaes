@@ -14,7 +14,7 @@ export const ValuesSection = () => {
     if (!isVisible) return;
 
     const interval = setInterval(() => {
-      setActiveIndex(prev => (prev + 1) % values.length); // Ciclo infinito
+      setActiveIndex((prev) => (prev + 1) % values.length); // Ciclo infinito
     }, 1000);
 
     return () => clearInterval(interval);
@@ -32,7 +32,10 @@ export const ValuesSection = () => {
 
           {/* CIRCULOS + SEGMENTOS EN MOVIL */}
           {values.map((v, i) => (
-            <div key={v.id} className="relative flex flex-col items-center md:items-center">
+            <div
+              key={v.id}
+              className="relative flex flex-col items-center md:items-center"
+            >
               {/* CIRCULO */}
               <ValueCircle
                 icon={v.icon}
@@ -53,11 +56,10 @@ export const ValuesSection = () => {
       {selected && (
         <ValueDetailsCard value={selected} onClose={() => setSelected(null)} />
       )}
-{/* CIERRE DE SECCIÓN MODERNO */}
-<div className="mt-16 w-full h-16 relative">
-  <div className="absolute inset-0 bg-gradient-to-t from-transparent to-acento/10 pointer-events-none" />
-</div>
-
+      {/* CIERRE DE SECCIÓN MODERNO */}
+      <div className="mt-16 w-full h-16 relative">
+        <div className="absolute inset-0 bg-gradient-to-t from-transparent to-acento/10 pointer-events-none" />
+      </div>
     </section>
   );
 };

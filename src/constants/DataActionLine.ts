@@ -1,15 +1,11 @@
-
-import {  ActionLine, } from "../types";
-
-
-
+import { ActionLine } from "../types";
 
 export const actionLines: ActionLine[] = [
   {
     id: "1",
     title: "Desarrollo socioeconómico y cultural",
     description:
-      "Desarrollo de proyectos para la conservación y preservación del ambiente como también el desarrollo de proyectos para fomentar danza y teatro, la creatividad y espíritu emprendedor y la atención psicosocial, a todas la personas víctimas del conflicto armado en Colombia, con profesionales de la Psicología, Terapia ocupacional, Trabajadores sociales, y profesionales en las  diferentes áreas del conocimiento.",
+      "Desarrollo de proyectos para la conservación y preservación del ambiente como también el desarrollo de proyectos para fomentar danza y teatro, la creatividad y espíritu emprendedor y la atención Psicosocial, a todas la personas víctimas del conflicto armado en Colombia, con profesionales de la Psicología, Terapia ocupacional, Trabajadores sociales, y profesionales en las  diferentes áreas del conocimiento.",
     icon: "trending-up",
     subItems: [
       "Mingas Liderativas",
@@ -28,7 +24,7 @@ export const actionLines: ActionLine[] = [
       "Derechos Humanos",
       "Mingas Ambientales por la Paz",
       "Cabildos por la Paz",
-      "Juego por la Paz (Colombia)",
+      "Juego por la Paz",
     ],
   },
   {
@@ -55,9 +51,8 @@ export const actionLines: ActionLine[] = [
     subItems: [
       "Viveros forestales para una paz sostenible",
       "Mujeres emprendedoras construyendo futuro",
-      "Bordado tipico nariñense",
-      "Granjas Ambientales sosteinibles",
+      "Bordado típico nariñense",
+      "Granjas Ambientales sostenibles",
     ],
   },
 ];
-

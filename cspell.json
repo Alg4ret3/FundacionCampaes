@@ -1,0 +1,36 @@
+{
+  "version": "0.2",
+  "language": "es",
+  "languages": [
+    {
+      "languageId": "typescript",
+      "locale": "es"
+    },
+    {
+      "languageId": "typescriptreact",
+      "locale": "es"
+    },
+    {
+      "languageId": "javascript",
+      "locale": "es"
+    }
+  ],
+  "dictionaries": [
+    "spanish"
+  ],
+  "ignoreWords": [
+    "Cambaes",
+    "FundacionCampaes",
+    "Vite",
+    "Tailwind",
+    "React"
+  ],
+  "words": [
+    "estigmatización",
+    "intersectorial",
+    "Liderativas",
+    "nariñense",
+    "PRAES",
+    "Psicosocial"
+  ]
+}
