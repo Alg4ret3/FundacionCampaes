@@ -17,3 +17,9 @@ export const IconLink = ({ Icon, href, label, color, fondo }: IconLinkProps) => 
     <Icon className={`w-5 h-5 ${color || 'text-primario'}`} />
   </a>
 );
+
+/*
+Este componente IconLink recibe un ícono, un enlace y un texto accesible. 
+Permite personalizar el color del ícono y el fondo del botón circular. 
+Incluye una ligera animación al pasar el cursor para mejorar la interacción.
+*/

@@ -17,3 +17,9 @@ export const ActivityDateBadge = ({ date }: { date: string }) => (
     </span>
   </div>
 );
+
+/*
+Componente ActivityDateBadge que muestra una fecha destacada dentro de una burbuja de estilo moderno.
+Incluye un ícono de calendario y aplica efectos como fondo semitransparente, desenfoque, sombras y bordes suaves.
+El contenido se posiciona de manera absoluta para colocarse en la esquina superior derecha del contenedor padre.
+*/

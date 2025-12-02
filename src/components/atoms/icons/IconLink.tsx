@@ -19,13 +19,13 @@ export const IconLink: React.FC<IconLinkProps> = ({
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
 
-    // Hacemos scroll manual
+    // Scroll suave manual
     handleSmoothScroll(e, href);
 
-    // Esperamos un poco para que NO tiemble el menú móvil
+    // Evita que el menú móvil tiemble al cerrar
     setTimeout(() => {
       onClose();
-    }, 350); // este tiempo coincide con tu scroll suave
+    }, 350);
   };
 
   return (
@@ -38,3 +38,38 @@ export const IconLink: React.FC<IconLinkProps> = ({
     </button>
   );
 };
+
+/*
+  Componente: IconLink
+  ---------------------------------------------------------
+  Descripción:
+    Enlace estilizado en forma de botón, utilizado principalmente
+    dentro de menús móviles o listas de navegación con íconos.
+    Incluye scroll suave y cierre automático del menú.
+
+  Props:
+    - name: texto que se mostrará junto al ícono.
+    - href: ancla o sección del sitio a la que se desea hacer scroll.
+    - Icon: ícono de Lucide que se mostrará al inicio del botón.
+    - onClose: función que cierra el menú móvil después del clic.
+
+  Funcionamiento:
+    - handleClick previene la navegación por defecto.
+    - Usa handleSmoothScroll() para un desplazamiento suave a la sección.
+    - Aplica un pequeño delay antes de ejecutar onClose() para evitar 
+      un efecto de “temblor” en el menú móvil.
+
+  Estilos:
+    - bg-gray-50 con hover bg-primario/10 para retroalimentación visual.
+    - gap-3 para separar correctamente ícono y texto.
+    - text-left: asegura alineación perfecta en menús tipo lista.
+    - Icon con color primario para destacar el elemento interactivo.
+
+  Uso recomendado:
+    <IconLink
+      name="Características"
+      href="#features"
+      Icon={Star}
+      onClose={closeMenu}
+    />
+*/

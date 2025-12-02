@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 interface SecondaryButton {
   label?: string;
   onClick?: () => void;
-  index?: number; // para animación escalonada si quieres varios botones
-  url?: string; // enlace al grupo de WhatsApp
+  index?: number;
+  url?: string;
 }
 
 export const SecondaryButton = ({
@@ -25,7 +25,7 @@ export const SecondaryButton = ({
         stiffness: 120,
         damping: 20,
         duration: 0.5,
-        delay: index * 0.1, // animación escalonada
+        delay: index * 0.1,
       }}
       whileHover={{
         scale: 1.05,
@@ -42,14 +42,12 @@ export const SecondaryButton = ({
         text-secundario font-semibold overflow-hidden bg-white/5
       "
     >
-      {/* Glow animado alrededor del botón */}
       <motion.span
         className="absolute inset-0 rounded-full bg-secundario/20"
         animate={{ opacity: [0.15, 0.25, 0.15] }}
         transition={{ duration: 2, repeat: Infinity, repeatType: "loop" }}
       />
 
-      {/* Contenido del botón */}
       <span className="relative flex items-center space-x-2 z-10">
         <FaWhatsapp className="w-5 h-5" />
         <span>{label}</span>
@@ -57,3 +55,42 @@ export const SecondaryButton = ({
     </motion.a>
   );
 };
+
+/*
+  Componente: SecondaryButton
+  ---------------------------------------------------------
+  Descripción:
+    Botón secundario estilo "únete al grupo", ideal para enlaces
+    a WhatsApp u otros canales externos. Incluye animaciones con
+    Framer Motion y estilo moderno con un borde marcado.
+
+  Props:
+    - label: texto del botón (por defecto “Únete a nuestro grupo”).
+    - url: enlace externo (abre en nueva pestaña).
+    - index: permite animaciones escalonadas si se renderiza en lista.
+    - onClick: opcional (usualmente no se usa en <a>).
+
+  Animaciones:
+    - Entrada desde la izquierda con opacidad.
+    - Hover:
+        * scale 1.05
+        * shadow suave
+    - Tap:
+        * scale 0.95
+        * cambio de color de fondo
+        * color blanco
+    - Glow animado con un span absoluto sobre el fondo.
+
+  Estilos:
+    - rounded-full para estilo de “píldora”.
+    - border-secundario combina con el branding del proyecto.
+    - bg-white/5 para un fondo translúcido.
+    - Contenido centrado con flex + space-x-2.
+    - Icono de WhatsApp incluido por defecto.
+
+  Uso recomendado:
+    <SecondaryButton url="https://chat.whatsapp.com/123" label="Únete al grupo" />
+
+    // Para animación escalonada:
+    botones.map((b, i) => <SecondaryButton key={i} index={i} {...b} />);
+*/

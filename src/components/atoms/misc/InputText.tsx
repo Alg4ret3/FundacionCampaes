@@ -19,7 +19,7 @@ export const InputText = ({
       {label}
     </label>
 
-    {/* Input con bordes y foco en la paleta */}
+    {/* Input estilizado con foco destacado */}
     <input
       type={type}
       required
@@ -35,3 +35,10 @@ export const InputText = ({
     />
   </div>
 );
+
+/*
+Componente InputText diseñado para manejar entradas de texto controladas.
+Incluye un label con estilo consistente y un input con bordes redondeados y animación al recibir foco.
+El prop type permite reutilizarlo para diferentes tipos de campo, como email, number o password.
+Ideal para formularios donde se requiere coherencia visual y accesibilidad.
+*/

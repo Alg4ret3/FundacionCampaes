@@ -17,3 +17,10 @@ export const Dot = ({ delay = 0 }: BarProps) => (
     }}
   />
 );
+
+/*
+Componente Dot que muestra una barra animada utilizando Framer Motion.
+La animación incrementa la escala vertical y modifica la opacidad en un ciclo infinito.
+Admite un retraso opcional para coordinar varias barras y crear efectos rítmicos o de carga.
+Ideal para indicadores de actividad o microinteracciones visuales.
+*/

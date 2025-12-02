@@ -9,3 +9,9 @@ export const DividerBar = () => (
     "
   ></div>
 );
+
+/*
+Componente DividerBar que muestra una pequeña barra decorativa con un degradado entre los colores primario y secundario.
+Su tamaño se expande suavemente al interactuar con un elemento padre que tenga la clase group.
+Sirve como separador visual o detalle estético en encabezados, secciones o tarjetas.
+*/

@@ -23,10 +23,10 @@ export const sendEmail = async (data: {
       publicKey
     );
 
-    console.log("📨 Email enviado:", response);
+    console.log("Email enviado:", response);
     return { ok: true };
   } catch (err) {
-    console.error("❌ Error enviando correo:", err);
+    console.error("Error enviando correo:", err);
     return { ok: false };
   }
 };

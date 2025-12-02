@@ -14,3 +14,10 @@ export const Badge = ({ children, className = "" }: BadgeProps) => {
     </div>
   );
 };
+
+/*
+Componente Badge diseñado para mostrar etiquetas destacadas o información breve.
+Utiliza un estilo redondeado, tipografía marcada y un fondo suave basado en el color primario.
+Permite personalizar estilos adicionales mediante className y acepta cualquier contenido como children.
+Ideal para estados, categorías o indicadores dentro de una interfaz.
+*/

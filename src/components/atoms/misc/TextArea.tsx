@@ -14,12 +14,10 @@ export const TextArea = ({
   rows = 5,
 }: TextAreaProps) => (
   <div className="flex flex-col">
-    {/* Label con color primario */}
     <label className="block text-sm font-semibold text-primario mb-2">
       {label}
     </label>
 
-    {/* TextArea con bordes y foco según la paleta */}
     <textarea
       required
       value={value}
@@ -35,3 +33,13 @@ export const TextArea = ({
     />
   </div>
 );
+
+/*
+  Componente TextArea:
+  - Recibe una etiqueta, valor, controlador de cambios, placeholder y cantidad de filas.
+  - Renderiza un label con estilo primario para mantener consistencia visual.
+  - El textarea utiliza bordes con colores de la paleta definida.
+  - Incluye estilos de enfoque para resaltar el campo seleccionando.
+  - La propiedad resize-none evita que el usuario cambie el tamaño del área.
+  - rows permite definir la altura inicial del campo de texto.
+*/

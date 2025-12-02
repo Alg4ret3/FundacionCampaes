@@ -36,3 +36,13 @@ export const IconWrapper = ({ icon, className = "" }: IconWrapperProps) => {
     </motion.div>
   );
 };
+
+/*
+  Este componente IconWrapper envuelve un ícono y le aplica animaciones mediante Framer Motion.
+  Recibe un ícono y una clase opcional como propiedades. Define tres variantes de animación:
+  - float: movimiento continuo con oscilación vertical y ligera rotación para crear un efecto flotante.
+  - hover: agranda y rota levemente el ícono al pasar el cursor.
+  - tap: reduce el tamaño y rota ligeramente al hacer clic.
+  El contenedor utiliza estilos de Tailwind, incluyendo un fondo degradado, bordes redondeados y sombras.
+  El componente anima automáticamente con el estado "float" y reacciona a los eventos hover y tap.
+*/

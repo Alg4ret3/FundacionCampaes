@@ -37,3 +37,10 @@ export const Avatar = ({ src, alt, size = 48, className = "" }: AvatarProps) => 
     </div>
   );
 };
+
+/*
+Componente Avatar que muestra una imagen de perfil con soporte para personalización de tamaño y estilos.
+Incluye manejo de errores: si la imagen no carga se renderiza un ícono de usuario como respaldo.
+El contenedor está estilizado con sombra, borde tipo anillo, efecto hover de escala y una ligera animación.
+Ideal como átomo dentro de un sistema de diseño reutilizable.
+*/

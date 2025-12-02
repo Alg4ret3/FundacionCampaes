@@ -14,3 +14,10 @@ export const ContactItem = ({ Icon, children, href = '#' }: ContactItemProps) =>
     </span>
   </a>
 );
+
+/*
+Componente ContactItem que representa un elemento clicable para información de contacto.
+Recibe un ícono y contenido textual, adaptándose a enlaces externos mediante el prop href.
+Incluye un efecto hover que destaca el texto y mantiene la interfaz visualmente coherente.
+Ideal para listas de contacto en footers, sidebars o secciones informativas.
+*/
