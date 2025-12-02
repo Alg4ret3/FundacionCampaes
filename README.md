@@ -68,7 +68,7 @@ Asegúrate de tener [Node.js](https://nodejs.org/) y npm/yarn instalados en tu s
 
 ---
 
-## ▶Uso y Scripts
+## Uso y Scripts
 
 Para desarrollar y construir la aplicación, usa los siguientes comandos:
 
