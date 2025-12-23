@@ -1,8 +1,8 @@
 import { Gallery } from "../types";
 export const galleryImages: Gallery[] = [
-  "Image/2.jpg",
-  "Image/3.jpg",
-  "Image/4.jpg",
-  "Image/5.jpg",
-  "Image/1.jpg",
+  "Image/2.webp",
+  "Image/3.webp",
+  "Image/4.webp",
+  "Image/5.webp",
+  "Image/1.webp",
 ];

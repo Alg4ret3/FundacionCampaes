@@ -13,7 +13,7 @@ export const testimonials: Testimonials = [
     id: '2',
     name: 'Juan Ramírez',
     role: 'Emprendedor Verde',
-    image: '/Image/1.jpg', 
+    image: '/Image/1.webp', 
     content:
       'El apoyo en mi emprendimiento fue crucial. Ahora puedo mantener a mi familia mientras protejo el ambiente.',
     rating: 5,

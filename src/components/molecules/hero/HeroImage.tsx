@@ -9,7 +9,7 @@ export const HeroImage = ({ isVisible }) => (
   >
     <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-square">
       <img
-        src="Image/1.jpg"
+        src="Image/Presentacion.webp"
         alt="Community"
         className="w-full h-full object-cover"
       />

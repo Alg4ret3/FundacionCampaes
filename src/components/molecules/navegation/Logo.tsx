@@ -4,7 +4,7 @@ import React from "react";
 export const Logo: React.FC = () => (
  <div className="flex items-center gap-3">
   <img
-   src="/static/Logo.svg"
+   src="/static/Logo.webp"
    alt="Logo Caminos de Paz"
    className="w-14 h-14 object-contain"
   />

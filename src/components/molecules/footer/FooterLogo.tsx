@@ -3,7 +3,7 @@ import { Leaf } from 'lucide-react';
 export const FooterLogo = () => (
   <div className="flex items-center space-x-3 mb-6">
      <img
-   src="/static/Logo.svg"
+   src="/static/Logo.webp"
    alt="Logo Caminos de Paz"
    className="w-14 h-14 object-contain"
   />
