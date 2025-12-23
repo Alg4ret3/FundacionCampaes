@@ -30,7 +30,7 @@ export const Footer = () => {
 
           {/* Contacto */}
           <section aria-label="Contacto">
-            <h4 className="text-primario text-sm font-bold uppercase tracking-wider mb-6">
+            <h4 className="text-fondo text-sm font-bold uppercase tracking-wider mb-6">
               Contacto
             </h4>
             <address className="space-y-4 not-italic">
@@ -54,15 +54,15 @@ export const Footer = () => {
 
           {/* Enlaces internos */}
           <nav aria-label="Enlaces rápidos">
-            <h4 className="text-primario text-sm font-bold uppercase tracking-wider mb-6">
+            <h4 className="text-fondo text-sm font-bold uppercase tracking-wider mb-6">
               Enlaces
             </h4>
-            <FooterLinks className="text-claro/80 hover:text-primario transition-colors duration-300" />
+            <FooterLinks className="text-claro/80 hover:text-claro transition-colors duration-300" />
           </nav>
 
           {/* Redes sociales */}
           <section aria-label="Redes sociales">
-            <h4 className="text-primario text-sm font-bold uppercase tracking-wider mb-6">
+            <h4 className="text-fondo text-sm font-bold uppercase tracking-wider mb-6">
               Síguenos
             </h4>
             <SocialLinks className="flex gap-4" />
@@ -72,7 +72,7 @@ export const Footer = () => {
         {/* Footer Bottom */}
         <div className="border-t border-claro/20 pt-8">
           <div className="flex justify-center items-center">
-            <small className="text-claro/70 text-xs text-center">
+            <small className="text-claro text-xs text-center">
               © {new Date().getFullYear()} Fundación Caminos de Paz y Esperanza.
               Todos los derechos reservados.
             </small>

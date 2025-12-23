@@ -4,7 +4,7 @@ export const FooterLinks = () => (
       <li key={link}>
         <a
           href={`#${link.toLowerCase()}`}
-          className="text-white/80 hover:text-primario text-sm transition-all duration-300 inline-flex items-center group"
+          className="text-white/80 hover:text-claro/70 text-sm transition-all duration-300 inline-flex items-center group"
         >
           <span className="w-1 h-1 rounded-full bg-primario mr-2 group-hover:mr-3 transition-all"></span>
           {link}
