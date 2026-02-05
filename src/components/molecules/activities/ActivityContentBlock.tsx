@@ -1,33 +1,36 @@
 import { CategoryTag } from "../../atoms/layout/CategoryTag";
+import { CategoryID } from "../../../types";
+import { getCategoryStyles } from "../../../utils/CategoryUtils";
 
 export const ActivityContentBlock = ({
   category,
   title,
   description,
+  extraText,
 }: {
-  category: string;
+  category: CategoryID;
   title: string;
   description: string;
-}) => (
-  <div className="p-6">
-    <CategoryTag text={category} />
+  extraText?: string;
+}) => {
+  const styles = getCategoryStyles(category);
 
-    <h3
-      className="
-        text-xl 
-        font-bold 
-        text-primario 
-        mb-3 
-        transition-colors 
-        duration-300 
-        group-hover:text-secundario
-      "
-    >
-      {title}
-    </h3>
+  return (
+    <div className={`p-4 sm:p-5 md:p-6 transition-colors duration-500 ${styles.cardBg}`}>
+      <h3
+        className="
+          text-base sm:text-lg md:text-xl
+          font-bold 
+          mb-2 sm:mb-3
+        "
+        style={{ color: styles.primary }}
+      >
+        {title}
+      </h3>
 
-    <p className="text-text/80 leading-relaxed">
-      {description}
-    </p>
-  </div>
-);
+      <p className="text-sm sm:text-base text-text/80 leading-relaxed">
+        {description}
+      </p>
+    </div>
+  );
+};

@@ -2,7 +2,11 @@ import { Heading } from "../../atoms/typography/Heading";
 import { Paragraph } from "../../atoms/typography/Paragraph";
 import { useEffect, useState } from "react";
 
-export const HeroTextBlock = ({ isVisible }) => {
+interface HeroTextBlockProps {
+  isVisible: boolean;
+}
+
+export const HeroTextBlock = ({ isVisible }: HeroTextBlockProps) => {
   const [run, setRun] = useState(false);
   const [years, setYears] = useState(0);
 
@@ -37,11 +41,11 @@ export const HeroTextBlock = ({ isVisible }) => {
       {/* TÍTULO — ANIMACIÓN DESDE LA IZQUIERDA */}
       <Heading
         className={`
-          text-5xl md:text-6xl lg:text-7xl 
-          mb-6 font-extrabold leading-snug
+          text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl
+          mb-4 sm:mb-5 md:mb-6 font-bold leading-tight
           text-secundario
           transition-all duration-[1100ms] ease-[cubic-bezier(.16,.84,.44,1)]
-          ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"}
+          ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}
         `}
         style={{ transitionDelay: "0.05s" }}
       >
@@ -55,9 +59,9 @@ export const HeroTextBlock = ({ isVisible }) => {
       {/* PÁRRAFO */}
       <Paragraph
         className={`
-          text-lg md:text-xl text-texto/80 max-w-2xl
+          text-sm sm:text-base md:text-base lg:text-lg text-texto/70 max-w-2xl
           transition-all duration-[1000ms] ease-[cubic-bezier(.16,.84,.44,1)]
-          ${run ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"}
+          ${run ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}
         `}
         style={{ transitionDelay: "0.18s" }}
       >
@@ -67,7 +71,7 @@ export const HeroTextBlock = ({ isVisible }) => {
       </Paragraph>
 
       {/* TIMELINE + CONTADOR */}
-      <div className="mt-4 flex items-center gap-3">
+      <div className="mt-3 sm:mt-4 md:mt-6 flex items-center gap-2 sm:gap-3">
 
         {/* Línea animada */}
         <div

@@ -1,23 +1,30 @@
-export const CategoryTag = ({ text }: { text: string }) => (
-  <div
-    className="
-      inline-block
-      bg-primario/20
-      text-primario
-      border border-primario/40
-      px-3 
-      py-1 
-      rounded-full 
-      text-sm 
-      font-semibold 
-      mb-3 
-      capitalize
-      tracking-wide
-    "
-  >
-    {text}
-  </div>
-);
+import { CategoryID } from "../../../types";
+import { getCategoryStyles } from "../../../utils/CategoryUtils";
+
+export const CategoryTag = ({ category }: { category: CategoryID }) => {
+  const styles = getCategoryStyles(category);
+
+  return (
+    <div
+      className={`
+        inline-block
+        ${styles.bg}
+        ${styles.text}
+        border ${styles.border}
+        px-3 
+        py-1 
+        rounded-full 
+        text-sm 
+        font-semibold 
+        mb-3 
+        capitalize
+        tracking-wide
+      `}
+    >
+      {category}
+    </div>
+  );
+};
 
 /*
 Componente CategoryTag que muestra una etiqueta visual para categorías o tipos de contenido.

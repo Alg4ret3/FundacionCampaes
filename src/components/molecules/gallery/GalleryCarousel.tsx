@@ -18,9 +18,9 @@ export const GalleryCarousel = ({
   goToPrevious,
   setCurrentIndex,
 }: GalleryCarouselProps) => (
-  <div className="max-w-5xl mx-auto">
+  <div className="w-full max-w-5xl mx-auto px-2 sm:px-3 md:px-0">
     {/* Contenedor de imágenes */}
-    <div className="relative h-[400px] md:h-[500px] rounded-3xl overflow-hidden shadow-2xl">
+    <div className="relative h-64 sm:h-80 md:h-96 lg:h-[450px] xl:h-[500px] rounded-lg sm:rounded-2xl md:rounded-3xl overflow-hidden shadow-xl md:shadow-2xl">
       {images.map((image, index) => (
         <GalleryImage
           key={index}
@@ -30,20 +30,20 @@ export const GalleryCarousel = ({
         />
       ))}
 
-      <div className="absolute inset-0 bg-gradient-to-t from-secundario/50 to-transparent"></div>
+
 
       {/* Flechas de navegación */}
-      <GalleryNavButton onClick={goToPrevious} ariaLabel="Previous image" className="left-4">
-        <ChevronLeft className="w-6 h-6 text-white" />
+      <GalleryNavButton onClick={goToPrevious} ariaLabel="Previous image" className="left-2 sm:left-3 md:left-4">
+        <ChevronLeft className="w-4 sm:w-5 md:w-6 h-4 sm:h-5 md:h-6 text-white" />
       </GalleryNavButton>
 
-      <GalleryNavButton onClick={goToNext} ariaLabel="Next image" className="right-4">
-        <ChevronRight className="w-6 h-6 text-white" />
+      <GalleryNavButton onClick={goToNext} ariaLabel="Next image" className="right-2 sm:right-3 md:right-4">
+        <ChevronRight className="w-4 sm:w-5 md:w-6 h-4 sm:h-5 md:h-6 text-white" />
       </GalleryNavButton>
     </div>
 
     {/* Indicadores */}
-    <div className="flex justify-center mt-4 space-x-2">
+    <div className="flex justify-center mt-3 sm:mt-4 md:mt-5 space-x-1.5 sm:space-x-2">
       {images.map((_, index) => (
         <GalleryIndicator
           key={index}

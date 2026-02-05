@@ -16,6 +16,7 @@ interface ModalBaseProps {
   children: React.ReactNode;
   className?: string;
   maxW?: string;
+  themeColor?: string;
 }
 
 const backdrop = {
@@ -30,7 +31,7 @@ const card = {
     y: 0,
     opacity: 1,
     scale: 1,
-    transition: { type: "spring", stiffness: 90, damping: 14 },
+    transition: { type: "spring" as const, stiffness: 90, damping: 14 },
   },
   exit: { y: 20, opacity: 0, transition: { duration: 0.25 } },
 };
@@ -41,12 +42,13 @@ export const ModalBase = ({
   children,
   className = "",
   maxW = "max-w-3xl",
+  themeColor,
 }: ModalBaseProps) => {
   return (
     <AnimatePresence>
       {open && (
         <motion.div
-          className="fixed inset-0 z-[999] bg-black/60 backdrop-blur-md flex items-center justify-center p-4 sm:p-6"
+          className="fixed inset-0 z-[9999] bg-black/60 backdrop-blur-md flex items-center justify-center p-4 sm:p-6"
           onClick={onClose}
           variants={backdrop}
           initial="hidden"
@@ -57,11 +59,14 @@ export const ModalBase = ({
             className={`
               relative w-full ${maxW}
               bg-fondo rounded-3xl shadow-2xl shadow-black/30
-              border-t-4 border-primario 
+              border-t-[6px]
               max-h-[95vh]
               overflow-hidden
               ${className}
             `}
+            style={{ 
+              borderTopColor: themeColor || '#37B6BA' 
+            }}
             onClick={(e) => e.stopPropagation()}
             variants={card}
             initial="hidden"
@@ -77,12 +82,23 @@ export const ModalBase = ({
                 flex items-center justify-center
                 rounded-full
                 bg-white/90 backdrop-blur-sm
-                text-primario
                 shadow-lg shadow-black/20
-                hover:bg-primario/10 hover:text-secundario
                 transition-all duration-300
                 z-30
               "
+              style={{ 
+                color: themeColor || '#37B6BA',
+              }}
+              onMouseEnter={(e) => {
+                if (themeColor) {
+                  e.currentTarget.style.backgroundColor = `${themeColor}1a`; // 10% opacity
+                }
+              }}
+              onMouseLeave={(e) => {
+                if (themeColor) {
+                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
+                }
+              }}
             >
               <IoClose size={22} />
             </button>

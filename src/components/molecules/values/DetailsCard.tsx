@@ -43,7 +43,7 @@ export const ValueDetailsCard = ({ value, onClose }: Props) => {
     >
       <motion.div
         className="
-          relative max-w-lg w-full p-8 md:p-10 rounded-3xl bg-fondo
+          relative max-w-lg w-full p-6 sm:p-8 md:p-10 rounded-lg sm:rounded-xl md:rounded-3xl bg-fondo
           shadow-2xl shadow-black/30 border-t-4 border-primario 
         "
         onClick={(e) => e.stopPropagation()}
@@ -68,19 +68,19 @@ export const ValueDetailsCard = ({ value, onClose }: Props) => {
         {/* ICONO PRINCIPAL - MEJORADO */}
         <div
           className="
-            w-20 h-20 mx-auto mb-6 rounded-full 
+            w-16 sm:w-18 md:w-20 h-16 sm:h-18 md:h-20 mx-auto mb-6 rounded-full 
             bg-gradient-to-br from-primario to-secundario/80 
             flex items-center justify-center text-white
             shadow-xl shadow-primario/40 transform -translate-y-2
           "
         >
-          <DynamicIcon name={value.icon} className="w-10 h-10" />
+          <DynamicIcon name={value.icon} className="w-8 sm:w-9 md:w-10 h-8 sm:h-9 md:h-10" />
         </div>
 
         {/* TÍTULO - MEJORADO */}
         <Heading
           className="
-            text-center text-oscuro mb-3 text-3xl 
+            text-center text-oscuro mb-3 text-lg sm:text-2xl md:text-3xl 
             font-extrabold tracking-tight
           "
         >
@@ -88,13 +88,13 @@ export const ValueDetailsCard = ({ value, onClose }: Props) => {
         </Heading>
 
         {/* LÍNEA SEPARADORA SUTIL */}
-        <div className="w-16 h-1 bg-primario/50 mx-auto mb-6 rounded-full"></div>
+        <div className="w-12 sm:w-14 md:w-16 h-1 bg-primario/50 mx-auto mb-6 rounded-full"></div>
 
         {/* DESCRIPCIÓN - MEJORADO */}
         <Paragraph
           className="
             text-texto/90 text-center leading-relaxed 
-            text-base md:text-lg max-w-md mx-auto
+            text-sm sm:text-base md:text-lg max-w-md mx-auto
           "
         >
           {value.description}

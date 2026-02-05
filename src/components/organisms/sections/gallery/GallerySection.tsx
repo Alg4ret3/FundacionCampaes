@@ -3,6 +3,7 @@ import { galleryImages } from "../../../../constants/DataGalley";
 import { useScrollAnimation } from "../../../../hooks/useScrollAnimation";
 import { GalleryCarousel } from "../../../molecules/gallery/GalleryCarousel";
 import { GalleyTextBlock } from "../../../molecules/gallery/GalleryTextBlock";
+import { SectionDivider } from "../../../atoms/misc/SectionDivider";
 
 export const GallerySection = () => {
   const { ref, isVisible } = useScrollAnimation();
@@ -28,13 +29,14 @@ export const GallerySection = () => {
   return (
     <section
       ref={ref}
-      className="relative py-15 bg-gradient-to-b from-fondo/90 to-fondo-dark"
+      className="relative py-20 md:py-28 lg:py-36 bg-white"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionDivider variant="wave" flip={true} color="fill-[#F9FBFC]" className="top-0" />
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
         <GalleyTextBlock isVisible={isVisible} />
 
         <div
-          className={`relative max-w-5xl mx-auto transition-all duration-1000 ${
+          className={`relative w-full max-w-5xl mx-auto transition-all duration-1000 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
           style={{ transitionDelay: "0.2s" }}
@@ -48,14 +50,6 @@ export const GallerySection = () => {
           />
         </div>
       </div>
-      {/* Divider decorativo al final de la sección */}
-      <div className="mt-16 w-full h-16 relative">
-        <div className="absolute inset-0 bg-gradient-to-t from-transparent to-acento/10 pointer-events-none" />
-      </div>
-
-
-
-
     </section>
   );
 };

@@ -5,6 +5,7 @@ import { ActionTextBlock } from "../../../molecules/activities/ActivitiesTextBlo
 import { ActivityCard } from "../../../molecules/activities/ActivityCard";
 import { LoadMoreActivities } from "../../../molecules/activities/ActivitiesLoadMore";
 import { ActivityDetailsModal } from "../../../molecules/activities/ActivityDetailsModal";
+import { SectionDivider } from "../../../atoms/misc/SectionDivider";
 
 export const ActivitiesSection = () => {
   const { ref, isVisible } = useScrollAnimation();
@@ -23,18 +24,23 @@ export const ActivitiesSection = () => {
   const visibleActivities = showMore ? activities : activities.slice(0, 4);
 
   return (
-    <section id="actividades" ref={ref} className="py-20 bg-fondo">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="actividades" ref={ref} className="py-20 md:py-28 lg:py-36 bg-[#F9FBFC] relative overflow-hidden">
+      <SectionDivider variant="curve" color="fill-white" className="top-0" />
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
 
         {/* TÍTULO + DESCRIPCIÓN */}
         <ActionTextBlock isVisible={isVisible} />
 
-        {/* GRID DE ACTIVIDADES */}
+        {/* GRID DE ACTIVIDADES - Responsive 1 col mobile, 2 tablet, 3-4 desktop */}
         <div
           className="
-            grid grid-cols-1 md:grid-cols-2 
-            gap-10 
-            mb-16
+            grid 
+            grid-cols-1 
+            sm:grid-cols-2 
+            lg:grid-cols-3
+            xl:grid-cols-4
+            gap-4 sm:gap-6 md:gap-8 lg:gap-10
+            mb-12 sm:mb-14 md:mb-16 lg:mb-20
             transition-all duration-700
           "
         >
@@ -58,10 +64,7 @@ export const ActivitiesSection = () => {
         />
       </div>
 
-      {/* CIERRE VISUAL */}
-      <div className="mt-16 w-full h-16 relative">
-        <div className="absolute inset-0 bg-gradient-to-t from-transparent to-acento/10 pointer-events-none" />
-      </div>
+
 
       {/* MODAL DE DETALLES */}
       {selectedActivity && (

@@ -33,7 +33,7 @@ export const ImpactStatsSection = () => {
     });
 
     // 💡 Dependencia: Incluimos isDragging.current para reanudar si deja de arrastrar
-  }, [isVisible, controls, stats.length]);
+  }, [isVisible, controls]);
 
   // --- Manejo del Arrastre (Drag UX) ---
   const handleDragStart = () => {
@@ -52,20 +52,20 @@ export const ImpactStatsSection = () => {
     <section
       id="impact"
       ref={ref}
-      className="pt-20 pb-20 bg-gradient-to-r from-secundario via-oscuro to-oscuro text-fondo relative overflow-hidden"
+      className="pt-12 sm:pt-16 md:pt-20 lg:pt-24 pb-12 sm:pb-16 md:pb-20 lg:pb-24 bg-oscuro text-fondo relative overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 relative z-10">
         {/* Texto principal */}
-        <div className="mb-16 md:mb-20 text-center">
+        <div className="mb-10 sm:mb-14 md:mb-16 lg:mb-20 text-center">
           <ImpactTextBlock isVisible={isVisible} />
         </div>
 
-        {/* Carrusel horizontal con Drag */}
+        {/* Carrusel horizontal con Drag - Responsive */}
         <div className="overflow-hidden cursor-grab active:cursor-grabbing">
           {" "}
           {/* 💡 UX: Feedback visual */}
           <motion.div
-            className="flex gap-6 md:gap-8 w-max pb-4"
+            className="flex gap-4 sm:gap-5 md:gap-6 lg:gap-8 w-max pb-2 sm:pb-3 md:pb-4"
             animate={controls}
             // 💡 UX: Habilitar arrastre
             drag="x"
@@ -73,11 +73,11 @@ export const ImpactStatsSection = () => {
             onDragStart={handleDragStart}
             onDragEnd={handleDragEnd}
           >
-            {stats.concat(stats).map((stat, index) => (
+            {stats.concat(stats).map((stat: any, index: number) => (
               // 💡 UX: Usar una clave más robusta para evitar problemas de re-renderizado en la lista concatenada
               <div
                 key={`${stat.label}-${index}`}
-                className="min-w-[280px] sm:min-w-[300px] flex-shrink-0" // 💡 UI: Tarjetas ligeramente más anchas
+                className="min-w-[240px] sm:min-w-[260px] md:min-w-[280px] lg:min-w-[320px] flex-shrink-0" // 💡 UI: Tarjetas responsivas
               >
                 <ImpactStatCard
                   {...stat}
@@ -85,7 +85,7 @@ export const ImpactStatsSection = () => {
                   // Ajuste de delay basado en el index real (no en la lista concatenada)
                   delay={0.1 + (index % stats.length) * 0.1}
                   onClick={() => setActiveStat(index % stats.length)}
-                  className="rounded-xl sm:rounded-2xl p-6 md:p-8 shadow-xl bg-oscuro/50 
+                  className="rounded-lg sm:rounded-xl md:rounded-2xl p-4 sm:p-6 md:p-8 shadow-xl bg-oscuro/50 
                              hover:shadow-primario/40 hover:scale-[1.03] 
                              transition-all duration-300 cursor-pointer" // 💡 UI: Mejor estilo en hover
                 />

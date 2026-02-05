@@ -1,18 +1,22 @@
 import { useState } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import { CategoryID } from "../../../types";
+import { getCategoryStyles } from "../../../utils/CategoryUtils";
 
 interface Props {
   subItems?: string[];
+  category: CategoryID;
 }
 
-export const ActionLineFooter = ({ subItems = [] }: Props) => {
+export const ActionLineFooter = ({ subItems = [], category }: Props) => {
   const [open, setOpen] = useState(false);
+  const styles = getCategoryStyles(category);
 
   return (
     <div className="mt-6 pt-6 border-t border-gray-100">
       {/* Botón Explorar */}
       <div
-        className="flex items-center justify-between text-primario font-semibold text-sm cursor-pointer group-hover:translate-x-2 transition-transform duration-300"
+        className={`flex items-center justify-between font-semibold text-sm cursor-pointer group-hover:translate-x-2 transition-transform duration-300 ${styles.text}`}
         onClick={() => setOpen(!open)}
       >
         Programas Sociales
@@ -28,9 +32,9 @@ export const ActionLineFooter = ({ subItems = [] }: Props) => {
         {subItems.map((item, idx) => (
           <div
             key={idx}
-            className="bg-primario/10 text-secundario rounded-xl px-4 py-2 shadow-sm hover:shadow-md transition-all duration-300 flex items-center gap-2"
+            className={`${styles.bg} ${styles.text} rounded-xl px-4 py-2 shadow-sm hover:shadow-md transition-all duration-300 flex items-center gap-2`}
           >
-            <span className="w-2 h-2 rounded-full bg-primario flex-shrink-0"></span>
+            <span className={`w-2 h-2 rounded-full flex-shrink-0 opacity-60`} style={{ backgroundColor: styles.primary }}></span>
             <span className="font-medium">{item}</span>
           </div>
         ))}

@@ -1,5 +1,5 @@
 export const handleSmoothScroll = (
-  e: React.MouseEvent<HTMLAnchorElement>,
+  e: React.MouseEvent<any>,
   href: string,
 ) => {
   e.preventDefault();

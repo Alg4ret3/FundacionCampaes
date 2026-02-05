@@ -21,7 +21,7 @@ export const ActionTextBlock = ({ isVisible }: Props) => {
       {/* TÍTULO */}
       <Heading
         className={`
-          text-3xl md:text-4xl lg:text-5xl
+          text-2xl sm:text-3xl md:text-4xl lg:text-5xl
           font-extrabold text-center mb-10
           text-secundario
           transition-all duration-[1100ms] ease-[cubic-bezier(.16,.84,.44,1)]
@@ -40,7 +40,7 @@ export const ActionTextBlock = ({ isVisible }: Props) => {
       {/* PÁRRAFO MEJORADO Y CENTRADO */}
       <Paragraph
         className={`
-          text-lg md:text-xl text-texto/80 max-w-3xl mx-auto leading-relaxed
+          text-sm sm:text-base md:text-lg lg:text-xl text-texto/80 max-w-3xl mx-auto leading-relaxed
           transition-all duration-[1000ms] ease-[cubic-bezier(.16,.84,.44,1)]
           ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"}
         `}

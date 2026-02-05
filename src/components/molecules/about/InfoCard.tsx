@@ -45,7 +45,7 @@ export const InfoCard = ({
       initial="hidden"
       animate={isVisible ? "visible" : "hidden"}
       whileHover={{ scale: 1.05, y: -5 }}
-      className="bg-gradient-to-br from-fondo/95 to-fondo/80 rounded-3xl p-8
+      className="bg-gradient-to-br from-fondo/95 to-fondo/80 rounded-lg sm:rounded-2xl md:rounded-3xl p-6 sm:p-8 md:p-10
                  shadow-lg shadow-primario/20 transition-transform duration-300 text-center"
     >
       {/* Icono animado */}
@@ -54,7 +54,7 @@ export const InfoCard = ({
         animate="float"
         whileHover="hover"
         whileTap="tap"
-        className="mb-6 w-16 h-16 rounded-xl flex items-center justify-center
+        className="mb-4 sm:mb-5 md:mb-6 w-12 sm:w-14 md:w-16 h-12 sm:h-14 md:h-16 rounded-lg sm:rounded-xl flex items-center justify-center
                    bg-gradient-to-br from-primario to-acento text-white
                    shadow-md shadow-primario/40 mx-auto"
       >
@@ -62,12 +62,12 @@ export const InfoCard = ({
       </motion.div>
 
       {/* Título centrado */}
-      <Heading className="text-xl md:text-2xl font-bold text-primario mb-3 text-center">
+      <Heading className="text-lg sm:text-xl md:text-2xl font-bold text-primario mb-2 sm:mb-3 md:mb-4 text-center">
         {title}
       </Heading>
 
       {/* Descripción */}
-      <Paragraph className="text-texto/80 text-sm md:text-base leading-relaxed">
+      <Paragraph className="text-texto/80 text-xs sm:text-sm md:text-base leading-relaxed">
         {description}
       </Paragraph>
     </motion.div>

@@ -13,9 +13,19 @@ export const HamburgerButton: React.FC<HamburgerButtonProps> = ({
   <button
     onClick={onClick}
     aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
-    className="md:hidden p-2 rounded-lg text-primario hover:bg-gray-100 transition-all duration-200"
+    className={`lg:hidden p-2 sm:p-2.5 rounded-md transition-all duration-300 ease-out
+      ${isOpen 
+        ? 'bg-primario/10 text-primario' 
+        : 'text-primario/70 hover:text-primario hover:bg-primario/5'
+      }
+      focus:outline-none focus:ring-2 focus:ring-primario/30 focus:ring-offset-0
+    `}
   >
-    {isOpen ? <X size={26} /> : <Menu size={26} />}
+    {isOpen ? (
+      <X className="w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-300 rotate-90" />
+    ) : (
+      <Menu className="w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-300" />
+    )}
   </button>
 );
 

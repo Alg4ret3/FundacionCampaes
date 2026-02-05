@@ -16,6 +16,18 @@ export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
 
   theme: {
+    // ==========================================================================
+    // BREAKPOINTS PERSONALIZADOS - MOBILE FIRST
+    // ==========================================================================
+    screens: {
+      'xs': '320px',    // Extra small devices (muy pequeños)
+      'sm': '640px',    // Mobile landscape / Tablet pequeño (Breakpoint de Tailwind)
+      'md': '768px',    // Tablet portrait (Breakpoint de Tailwind)
+      'lg': '1024px',   // Desktop pequeño (Breakpoint de Tailwind)
+      'xl': '1280px',   // Desktop (Breakpoint de Tailwind)
+      '2xl': '1536px',  // Desktop grande
+    },
+
     extend: {
       // ==========================================================================
       // COLORES PERSONALIZADOS
@@ -34,8 +46,17 @@ export default {
       // FUENTES PERSONALIZADAS
       // ==========================================================================
       fontFamily: {
-        elegant: ['"Great Vibes"', 'cursive'],  
+        // elegant: ['"Great Vibes"', 'cursive'],  
         sanscustom: ['Montserrat', 'sans-serif'], // Para el texto secundario
+      },
+
+      // ==========================================================================
+      // ESPACIOS RESPONSIVOS
+      // ==========================================================================
+      spacing: {
+        'px-mobile': '1rem',    // 16px - móvil
+        'px-tablet': '2rem',    // 32px - tablet
+        'px-desktop': '3rem',   // 48px - desktop
       },
     },
   },

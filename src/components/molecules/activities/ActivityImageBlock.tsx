@@ -1,15 +1,18 @@
 import { ActivityDateBadge } from "../../atoms/layout/ActivityDateBadge";
+import { CategoryID } from "../../../types";
 
 export const ActivityImageBlock = ({
   image,
   title,
   date,
+  category,
 }: {
   image: string;
   title: string;
   date: string;
+  category: CategoryID;
 }) => (
-  <div className="relative h-64 overflow-hidden rounded-t-2xl">
+  <div className="relative h-48 sm:h-56 md:h-64 overflow-hidden rounded-t-lg sm:rounded-t-xl md:rounded-t-2xl">
     <img
       src={image}
       alt={title}
@@ -33,6 +36,6 @@ export const ActivityImageBlock = ({
     />
 
     {/* Badge de fecha */}
-    <ActivityDateBadge date={date} />
+    <ActivityDateBadge date={date} category={category} />
   </div>
 );

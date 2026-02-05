@@ -8,7 +8,7 @@ interface Props {
 
 export const GalleyTextBlock = ({ isVisible }: Props) => {
   return (
-    <div className="mb-20 text-center">
+    <div className="mb-16 text-center">
       <Badge
         className={`mb-6 ${
           isVisible ? "opacity-100 scale-100" : "opacity-0 scale-90"
@@ -21,8 +21,8 @@ export const GalleyTextBlock = ({ isVisible }: Props) => {
       {/* TÍTULO */}
       <Heading
         className={`
-          text-3xl md:text-4xl lg:text-5xl
-          font-extrabold text-center mb-10
+          text-2xl sm:text-3xl md:text-4xl lg:text-5xl
+          font-bold text-center mb-10
           text-secundario
           transition-all duration-[1100ms] ease-[cubic-bezier(.16,.84,.44,1)]
           ${
@@ -32,21 +32,21 @@ export const GalleyTextBlock = ({ isVisible }: Props) => {
         style={{ transitionDelay: "0.05s" }}
       >
         Memoria{" "}
-        <span className="bg-clip-text text-transparent bg-gradient-to-r from-primario to-acento drop-shadow-md">
+        <span className="text-primario border-b-2 border-primario/10 pb-1">
           Visual
         </span>
       </Heading>
 
-      {/* PÁRRAFO MEJORADO Y CENTRADO */}
+      {/* PÁRRAFO */}
       <Paragraph
         className={`
-          text-lg md:text-xl text-texto/80 max-w-3xl mx-auto leading-relaxed
+          text-sm sm:text-base md:text-lg text-texto/70 max-w-3xl mx-auto leading-relaxed
           transition-all duration-[1000ms] ease-[cubic-bezier(.16,.84,.44,1)]
-          ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"}
+          ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}
         `}
         style={{ transitionDelay: "0.18s" }}
       >
-        En esta sección compartimos los momentos más significativos de nuestras actividades, procesos comunitarios y proyectos sociales. Cada fotografía refleja el compromiso de la Fundación Caminos de Paz y Esperanza con la construcción de una sociedad más solidaria, inclusiva y sostenible. Este espacio es una memoria visual del trabajo conjunto entre comunidades, voluntarios y aliados.
+        En esta sección compartimos los momentos más significativos de nuestras actividades, procesos comunitarios y proyectos sociales. Cada fotografía refleja el compromiso de la Fundación Caminos de Paz y Esperanza con la construcción de una sociedad más solidaria, inclusiva y sostenible.
       </Paragraph>
     </div>
   );

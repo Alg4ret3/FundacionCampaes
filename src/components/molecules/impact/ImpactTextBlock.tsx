@@ -25,7 +25,7 @@ export const ImpactTextBlock = ({ isVisible }: Props) => {
 
       {/* TÍTULO */}
       <Heading
-        className={`text-3xl md:text-4xl lg:text-5xl font-extrabold text-center mb-6
+        className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-center mb-6
           transition-all duration-[1100ms] ease-[cubic-bezier(.16,.84,.44,1)]
           ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}
         `}
@@ -39,7 +39,7 @@ export const ImpactTextBlock = ({ isVisible }: Props) => {
 
       {/* PÁRRAFO */}
       <Paragraph
-        className={`text-base md:text-lg lg:text-xl text-white/80 max-w-3xl mx-auto leading-relaxed
+        className={`text-sm sm:text-base md:text-lg lg:text-xl text-white/80 max-w-3xl mx-auto leading-relaxed
           transition-all duration-[1000ms] ease-[cubic-bezier(.16,.84,.44,1)]
           ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"}
         `}

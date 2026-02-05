@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 interface TypingQuoteBrushProps {
   text: string;
@@ -6,6 +6,7 @@ interface TypingQuoteBrushProps {
   speed?: number;
   startDelay?: number;
   showBrush?: boolean;
+  showCursor?: boolean;
 }
 
 export const TypingQuote = ({
@@ -14,6 +15,7 @@ export const TypingQuote = ({
   speed = 45,
   startDelay = 300,
   showBrush = true,
+  showCursor = true,
 }: TypingQuoteBrushProps) => {
   const [displayed, setDisplayed] = useState("");
 
@@ -57,7 +59,7 @@ export const TypingQuote = ({
         </span>
       ))}
 
-      {showBrush && (
+      {(showBrush && showCursor) && (
         <span
           className="
             inline-block w-3 h-3 rounded-full ml-1

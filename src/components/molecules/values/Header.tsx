@@ -21,8 +21,8 @@ export const ValuesHeader = ({ isVisible }: Props) => {
       {/* TÍTULO */}
       <Heading
         className={`
-          text-3xl md:text-4xl lg:text-5xl
-          font-extrabold text-center mb-10
+          text-2xl sm:text-3xl md:text-4xl lg:text-5xl
+          font-bold text-center mb-10
           text-secundario
           transition-all duration-[1100ms] ease-[cubic-bezier(.16,.84,.44,1)]
           ${
@@ -34,7 +34,7 @@ export const ValuesHeader = ({ isVisible }: Props) => {
         style={{ transitionDelay: "0.05s" }}
       >
         Los valores que{" "}
-        <span className="bg-clip-text text-transparent bg-gradient-to-r from-primario to-acento drop-shadow-md">
+        <span className="text-primario border-b-2 border-primario/10 pb-1">
            nos guían
         </span>
       </Heading>
@@ -42,9 +42,9 @@ export const ValuesHeader = ({ isVisible }: Props) => {
       {/* PÁRRAFO MEJORADO Y CENTRADO */}
       <Paragraph
         className={`
-          text-lg md:text-xl text-texto/80 max-w-3xl mx-auto leading-relaxed
+          text-sm sm:text-base md:text-base lg:text-lg text-texto/70 max-w-3xl mx-auto leading-relaxed
           transition-all duration-[1000ms] ease-[cubic-bezier(.16,.84,.44,1)]
-          ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"}
+          ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}
         `}
         style={{ transitionDelay: "0.18s" }}
       >

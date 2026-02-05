@@ -4,6 +4,7 @@ import { testimonials } from "../../../../constants/DataTestimonials";
 import { TestimonialsTextBlock } from "../../../molecules/testimonials/TestimonialsTextBlock";
 import { motion } from "framer-motion";
 import { TypingQuote } from "../../../molecules/testimonials/TypingQuote";
+import { SectionDivider } from "../../../atoms/misc/SectionDivider";
 
 export const TestimonialsSection = () => {
   const { ref, isVisible } = useScrollAnimation();
@@ -11,59 +12,50 @@ export const TestimonialsSection = () => {
   return (
     <section
       ref={ref}
-      className="relative py-32 bg-gradient-to-br from-claro via-fondo to-fondo overflow-hidden"
+      className="relative py-20 md:py-28 lg:py-36 bg-white overflow-hidden"
     >
-      {/* Fondos abstractos sutiles */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute -top-40 -left-40 w-96 h-96 bg-primario/10 rounded-full blur-3xl animate-blob animation-delay-0"></div>
-        <div className="absolute -bottom-40 -right-20 w-80 h-80 bg-secundario/10 rounded-full blur-2xl animate-blob animation-delay-2000"></div>
-        <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-acento/5 rounded-full blur-3xl animate-blob animation-delay-4000"></div>
-      </div>
+      <SectionDivider variant="wave" color="fill-fondo" className="top-0 -translate-y-full" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 relative z-10">
         {/* Título y subtítulo */}
         <motion.div
-          className="mb-24 text-center"
+          className="mb-12 sm:mb-16 md:mb-20 lg:mb-24 text-center"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <TestimonialsTextBlock
-            titleClassName="text-5xl md:text-6xl font-elegant text-oscuro tracking-tight"
-            subtitleClassName="text-lg md:text-xl text-secundario mt-4 font-sanscustom"
+            titleClassName="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-oscuro tracking-tight"
+            subtitleClassName="text-sm sm:text-base md:text-lg text-secundario mt-3 sm:mt-4 md:mt-6 max-w-2xl mx-auto"
             isVisible={isVisible}
           />
         </motion.div>
 
-        {/* Grid de testimonios */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-          {testimonials.map((testimonial, index) => (
+        {/* Grid de testimonios - Vertical on mobile/tablet, 3 cols on desktop */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-10 lg:gap-12">
+          {testimonials.map((testimonial: any, index: number) => (
             <motion.div
               key={testimonial.id}
-              initial={{ opacity: 0, y: 30, scale: 0.95 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{
                 opacity: isVisible ? 1 : 0,
-                y: isVisible ? 0 : 30,
-                scale: isVisible ? 1 : 0.95,
+                y: isVisible ? 0 : 20,
               }}
               transition={{
-                delay: 0.3 + index * 0.15,
+                delay: 0.2 + index * 0.1,
                 duration: 0.6,
                 ease: "easeOut",
-              }}
-              whileHover={{
-                scale: 1.03,
-                rotate: 1,
-                transition: { duration: 0.3 },
               }}
             >
               <TestimonialCard
                 testimonial={testimonial}
                 isVisible={isVisible}
+                delay={0.2 + index * 0.1}
                 className={`
-                  rounded-3xl p-8 bg-fondo/90 backdrop-blur-md
-                  shadow-2xl hover:shadow-3xl
-                  transition-all duration-500
+                  rounded-lg sm:rounded-xl md:rounded-2xl p-6 sm:p-8 md:p-10 bg-white border border-claro/20
+                  shadow-sm hover:shadow-md
+                  transition-all duration-300
                 `}
               />
             </motion.div>
@@ -75,18 +67,18 @@ export const TestimonialsSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
-          className="relative mt-28 flex flex-col items-center"
+          className="relative mt-16 sm:mt-20 md:mt-24 lg:mt-28 flex flex-col items-center"
         >
-          {/* Línea con degradado */}
-          <div className="h-1 w-44 bg-gradient-to-r from-primario via-acento to-secundario rounded-full mb-8"></div>
+          {/* Línea sutil */}
+          <div className="h-px w-24 sm:w-32 md:w-40 bg-primario/30 mb-6 sm:mb-8"></div>
 
           {/* Texto final */}
           <TypingQuote
             text="Sus palabras impulsan la evolución de todo lo que hacemos."
-            className="text-center text-oscuro text-2xl font-elegant max-w-3xl leading-relaxed mx-auto"
-            speed={35} // velocidad: ms por carácter (ajusta a tu gusto)
-            startDelay={7000} // espera antes de empezar (ms)
-            showCursor={true}
+            className="text-center text-oscuro text-base sm:text-lg md:text-xl font-medium max-w-2xl leading-relaxed mx-auto px-4"
+            speed={35} 
+            startDelay={2000} 
+            showCursor={false}
           />
         </motion.div>
       </div>

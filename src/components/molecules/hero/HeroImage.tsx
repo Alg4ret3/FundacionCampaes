@@ -7,7 +7,7 @@ export const HeroImage = ({ isVisible }) => (
     }`}
     style={{ transitionDelay: "0.4s" }}
   >
-    <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-square">
+    <div className="relative rounded-lg sm:rounded-xl lg:rounded-2xl overflow-hidden shadow-2xl aspect-square">
       <img
         src="Image/Presentacion.webp"
         alt="Community"

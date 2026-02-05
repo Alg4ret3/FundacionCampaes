@@ -4,9 +4,14 @@ import { motion } from "framer-motion";
 interface IconWrapperProps {
   icon: React.ReactNode;
   className?: string;
+  variant?: "brand" | "none";
 }
 
-export const IconWrapper = ({ icon, className = "" }: IconWrapperProps) => {
+export const IconWrapper = ({ 
+  icon, 
+  className = "", 
+  variant = "brand" 
+}: IconWrapperProps) => {
   const floatVariants = {
     float: {
       y: [0, -6, 0],      // movimiento vertical sutil
@@ -14,19 +19,21 @@ export const IconWrapper = ({ icon, className = "" }: IconWrapperProps) => {
       transition: {
         duration: 4,
         repeat: Infinity,
-        repeatType: "loop",
-        ease: "easeInOut",
+        repeatType: "loop" as const,
+        ease: "easeInOut" as const,
       },
     },
     hover: { scale: 1.2, rotate: 5 },
     tap: { scale: 0.9, rotate: -5 },
   };
 
+  const variantStyles = variant === "brand" 
+    ? "bg-gradient-to-br from-primario to-acento shadow-primario/30 p-4" 
+    : "p-0 shadow-none";
+
   return (
     <motion.div
-      className={`flex items-center justify-center rounded-xl shadow-md shadow-primario/30
-                  bg-gradient-to-br from-primario to-acento text-white p-4
-                  transition-transform duration-300 ${className}`}
+      className={`flex items-center justify-center rounded-xl transition-transform duration-300 ${variantStyles} ${className}`}
       variants={floatVariants}
       animate="float"
       whileHover="hover"

@@ -22,8 +22,8 @@ export const ActionTextBlock = ({ isVisible }: Props) => {
       {/* TÍTULO */}
       <Heading
         className={`
-          text-3xl md:text-4xl lg:text-5xl
-          font-extrabold text-center mb-10
+          text-3xl md:text-4xl
+          font-bold text-center mb-10
           text-secundario
           transition-all duration-[1100ms] ease-[cubic-bezier(.16,.84,.44,1)]
           ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}
@@ -31,7 +31,7 @@ export const ActionTextBlock = ({ isVisible }: Props) => {
         style={{ transitionDelay: "0.05s" }}
       >
         Líneas estratégicas{" "}
-        <span className="bg-clip-text text-transparent bg-gradient-to-r from-primario to-acento drop-shadow-md">
+        <span className="text-primario border-b-2 border-primario/10 pb-1">
           de acción
         </span>
       </Heading>
@@ -39,13 +39,13 @@ export const ActionTextBlock = ({ isVisible }: Props) => {
       {/* PÁRRAFO MEJORADO Y CENTRADO */}
       <Paragraph
         className={`
-          text-lg md:text-xl text-texto/80 max-w-3xl mx-auto leading-relaxed
+          text-base md:text-lg text-texto/70 max-w-3xl mx-auto leading-relaxed
           transition-all duration-[1000ms] ease-[cubic-bezier(.16,.84,.44,1)]
-          ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"}
+          ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}
         `}
         style={{ transitionDelay: "0.18s" }}
       >
-        Nuestra labor se articula en torno a cuatro pilares estratégicos que garantizan la máxima eficiencia y sostenibilidad en la construcción de paz. Estos pilares no operan de forma aislada, sino que se integran de manera sistémica para generar sinergias y multiplicar los resultados en las comunidades.
+        Nuestra labor se articula en torno a cuatro pilares estratégicos que garantizan la máxima eficiencia y sostenibilidad en la construcción de paz.
       </Paragraph>
     </div>
   );

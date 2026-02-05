@@ -8,6 +8,7 @@ interface IconLinkProps {
   href: string;
   Icon: LucideIcon;
   onClose: () => void;
+  isActive?: boolean;
 }
 
 export const IconLink: React.FC<IconLinkProps> = ({
@@ -15,7 +16,9 @@ export const IconLink: React.FC<IconLinkProps> = ({
   href,
   Icon,
   onClose,
+  isActive = false,
 }) => {
+
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
 
@@ -31,10 +34,26 @@ export const IconLink: React.FC<IconLinkProps> = ({
   return (
     <button
       onClick={handleClick}
-      className="w-full flex items-center gap-3 px-4 py-3 rounded-xl bg-gray-50 hover:bg-primario/10 text-gray-800 font-medium transition-all duration-200 text-left"
+      className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-300 text-left border font-medium group relative
+        ${isActive 
+          ? 'bg-primario/10 border-primario/30 text-primario' 
+          : 'bg-white hover:bg-primario/5 text-primario/70 hover:text-primario border-primario/10 hover:border-primario/20'
+        }
+      `}
     >
-      <Icon size={20} className="text-primario" />
-      {name}
+      {/* Indicador izquierdo cuando está activo */}
+      {isActive && (
+        <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1.5 h-8 bg-gradient-to-b from-primario to-acento rounded-r-full shadow-lg shadow-primario/40" />
+      )}
+      
+      <Icon size={20} className={`transition-colors duration-300 ${
+        isActive ? 'text-primario' : 'text-primario/60 group-hover:text-primario'
+      }`} />
+      <span className={`group-hover:translate-x-0.5 transition-transform duration-300 ${
+        isActive ? 'font-semibold' : ''
+      }`}>
+        {name}
+      </span>
     </button>
   );
 };

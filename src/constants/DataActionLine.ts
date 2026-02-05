@@ -2,57 +2,73 @@ import { ActionLine } from "../types";
 
 export const actionLines: ActionLine[] = [
   {
-    id: "1",
-    title: "Desarrollo socioeconómico y cultural",
+    id: "educativa",
+    title: "Línea Educativa",
     description:
-      "Desarrollo de proyectos para la conservación y preservación del ambiente como también el desarrollo de proyectos para fomentar danza y teatro, la creatividad y espíritu emprendedor y la atención Psicosocial, a todas la personas víctimas del conflicto armado en Colombia, con profesionales de la Psicología, Terapia ocupacional, Trabajadores sociales, y profesionales en las  diferentes áreas del conocimiento.",
-    icon: "trending-up",
+      "Promovemos procesos de formación integral, educación técnica y capacitación en diversos niveles. Trabajamos en alianza con instituciones educativas para ofrecer diplomados y cursos que fortalezcan el conocimiento y las habilidades de nuestra población.",
+    icon: "book-open",
+    color: "#3B82F6",
     subItems: [
-      "Mingas Liderativas",
-      "Mingas Ambientales",
-      "Atención Psicosocial",
+      "Convenios con Politécnico Sur Andino",
+      "Educación para el Trabajo",
+      "Cursos y Diplomados",
+      "Inclusión Educativa"
+    ],
+  },
+  {
+    id: "cultural",
+    title: "Línea Cultural",
+    description:
+      "Fomentamos la expresión artística, el teatro y la danza como herramientas de transformación social. Preservamos las tradiciones nariñenses y promovemos el bordado típico y la identidad cultural en nuestras comunidades.",
+    icon: "palette",
+    color: "#F59E0B",
+    subItems: [
       "Danzas y Tradiciones",
+      "Bordado Típico Nariñense",
+      "Teatro y Creatividad",
+      "Gestión Cultural"
     ],
   },
   {
-    id: "2",
-    title: "Convivencia y paz",
+    id: "ambiental",
+    title: "Línea Ambiental",
     description:
-      "Con el desarrollo de programas como diplomados en Derechos Humanos, reconciliación y no estigmatización de las zonas donde hubo enfrentamientos entre grupos al margen de la ley y el Ejército Nacional de Colombia. Proyectos como Mingas Ambientales por la Paz, con la siembra de especies nativas en los páramos y bosques que fueron talados, con el fin de buscar sostenibilidad para las familias mediante la venta de carbón y también la creación de caminos que facilitaban el acceso y que hoy necesitan ser reforestados.",
-    icon: "handshake",
-    subItems: [
-      "Derechos Humanos",
-      "Mingas Ambientales por la Paz",
-      "Cabildos por la Paz",
-      "Juego por la Paz",
-    ],
-  },
-  {
-    id: "3",
-    title: "Ambiente sostenible y en paz",
-    description:
-      "Construcción social de PRAES Y PROCEDAS, con la conformación de equipos de trabajo que ayuden al mejoramiento y restauración de las zonas verdes, paramos, lagunas, humedales y mejorar todos los procesos ambientales, a través de la educación ambiental, con la realización de cursos y diplomados. Buscar el apoyo de líderes que ayuden a través del trabajo voluntario, en los diferentes procesos ambientales, como jóvenes del ambiente y la paz, guardianes del planeta y la paz. Proyectos de agricultura urbana sostenible.",
+      "Desarrollamos proyectos de conservación, reforestación y educación ambiental. Buscamos la sostenibilidad mediante el cuidado de páramos, lagunas y la implementación de agricultura urbana sostenible.",
     icon: "sprout",
+    color: "#10B981",
     subItems: [
-      "Espacios Verdes, Espacios de Paz",
-      "Derechos y Deberes Ambientales",
-      "Cultura del Agua, expresada a través del arte",
-      "Construcción Social de PRAES y Procedas",
-      "Guardianes del Planeta (Niños)",
-      "Gestores Ambientales (Jóvenes)",
+      "Mingas Ambientales",
+      "Agricultura Urbana Sostenible",
+      "Guardianes del Planeta",
+      "Conservación de Páramos"
     ],
   },
   {
-    id: "4",
-    title: "Emprendimiento sostenible",
+    id: "social",
+    title: "Línea Social",
     description:
-      "Promover y coordinar con otras instituciones gubernamentales y no gubernamentales a nivel municipal, departamental, nacional e internacional, procesos de educación y capacitación, en diferentes ámbitos como son: familiar, educativo, social, laboral, ambiental, cultural, deportivo, recreativo y productivo para la formación en los diferentes niveles de educación a la primera infancia, preescolar, básica, media, educación técnica, cursos, actualizaciones, diplomados en cualquier área del conocimiento, logrando su inclusión al sistema productivo sostenible, generando autonomía familiar, social y económica de la población anteriormente mencionada. Para esta línea de acción se viene trabajando con mujeres en el corregimiento de Santa Bárbara, el proyecto de bordado guatemalteco y poder vender estos cuadros, a fin de que las familias sean sostenibles.",
-    icon: "lightbulb",
+      "Brindamos atención psicosocial y promovemos la convivencia y paz. Trabajamos con víctimas del conflicto armado y poblaciones vulnerables para fortalecer el tejido social y la reconciliación.",
+    icon: "heart",
+    color: "#F43F5E",
     subItems: [
-      "Viveros forestales para una paz sostenible",
-      "Mujeres emprendedoras construyendo futuro",
-      "Bordado típico nariñense",
-      "Granjas Ambientales sostenibles",
+      "Atención Psicosocial Profesional",
+      "Derechos Humanos",
+      "Juego por la Paz",
+      "Población con Discapacidad"
+    ],
+  },
+  {
+    id: "productiva",
+    title: "Línea Productiva",
+    description:
+      "Impulsamos el emprendimiento sostenible y la autonomía económica de las familias. Apoyamos proyectos de mujeres emprendedoras y fomentamos la inclusión al sistema productivo.",
+    icon: "lightbulb",
+    color: "#8B5CF6",
+    subItems: [
+      "Mujeres Emprendedoras",
+      "Innovación Social",
+      "Granyas Sostenibles",
+      "Autonomía Económica"
     ],
   },
 ];

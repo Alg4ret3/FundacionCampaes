@@ -2,11 +2,17 @@ import { Badge } from "../../atoms/layout/Badge";
 import { Heading } from "../../atoms/typography/Heading";
 import { Paragraph } from "../../atoms/typography/Paragraph";
 
-interface Props {
+interface TestimonialsTextBlockProps {
   isVisible: boolean;
+  titleClassName?: string;
+  subtitleClassName?: string;
 }
 
-export const TestimonialsTextBlock = ({ isVisible }: Props) => {
+export const TestimonialsTextBlock = ({ 
+  isVisible, 
+  titleClassName = "", 
+  subtitleClassName = "" 
+}: TestimonialsTextBlockProps) => {
   return (
     <div className="mb-20 text-center">
       <Badge
@@ -21,9 +27,8 @@ export const TestimonialsTextBlock = ({ isVisible }: Props) => {
       {/* TÍTULO */}
       <Heading
         className={`
-          text-3xl md:text-4xl lg:text-5xl
-          font-extrabold text-center mb-10
-          text-secundario
+          ${titleClassName || "text-3xl md:text-4xl lg:text-5xl font-bold"}
+          text-center mb-10 text-secundario
           transition-all duration-[1100ms] ease-[cubic-bezier(.16,.84,.44,1)]
           ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
@@ -32,24 +37,23 @@ export const TestimonialsTextBlock = ({ isVisible }: Props) => {
         style={{ transitionDelay: "0.05s" }}
       >
         Voces de quienes{" "}
-        <span className="bg-clip-text text-transparent bg-gradient-to-r from-primario to-acento drop-shadow-md">
+        <span className="text-primario">
           ya dieron el paso
         </span>
       </Heading>
 
-      {/* PÁRRAFO MEJORADO Y CENTRADO */}
+      {/* PÁRRAFO */}
       <Paragraph
         className={`
-          text-lg md:text-xl text-texto/80 max-w-3xl mx-auto leading-relaxed
+          ${subtitleClassName || "text-base md:text-lg"}
+          text-texto/70 max-w-3xl mx-auto leading-relaxed
           transition-all duration-[1000ms] ease-[cubic-bezier(.16,.84,.44,1)]
-          ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"}
+          ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}
         `}
         style={{ transitionDelay: "0.18s" }}
       >
         Conoce las historias de quienes confiaron en nosotros y experimentaron
-        un cambio real. Sus experiencias reflejan nuestro compromiso, nuestra
-        pasión y la diferencia que podemos generar juntos.Nuestros valores
-        representan la esencia de nuestra identidad.
+        un cambio real. Sus experiencias reflejan nuestro compromiso y la pasión que ponemos en cada proyecto.
       </Paragraph>
     </div>
   );

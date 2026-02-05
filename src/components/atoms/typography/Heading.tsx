@@ -1,5 +1,11 @@
-export const Heading = ({ children, className = "" }) => (
-  <h1 className={`font-bold leading-tight ${className}`}>
+interface HeadingProps {
+  children: React.ReactNode;
+  className?: string;
+  style?: React.CSSProperties;
+}
+
+export const Heading = ({ children, className = "", style = {} }: HeadingProps) => (
+  <h1 className={`font-bold leading-tight ${className}`} style={style}>
     {children}
   </h1>
 );

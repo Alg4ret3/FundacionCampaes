@@ -1,22 +1,28 @@
 import { Calendar } from "lucide-react";
+import { CategoryID } from "../../../types";
+import { getCategoryStyles } from "../../../utils/CategoryUtils";
 
-export const ActivityDateBadge = ({ date }: { date: string }) => (
-  <div className="
-    absolute top-4 right-4 
-    bg-white/90 
-    backdrop-blur-md 
-    shadow-lg 
-    rounded-full 
-    px-4 py-2 
-    flex items-center gap-2 
-    border border-primario/20
-  ">
-    <Calendar className="w-4 h-4 text-primario" />
-    <span className="text-sm font-semibold text-primario tracking-wide">
-      {date}
-    </span>
-  </div>
-);
+export const ActivityDateBadge = ({ date, category }: { date: string, category: CategoryID }) => {
+  const styles = getCategoryStyles(category);
+
+  return (
+    <div className={`
+      absolute top-4 right-4 
+      ${styles.bgSoft}
+      backdrop-blur-md 
+      shadow-lg 
+      rounded-full 
+      px-4 py-2 
+      flex items-center gap-2 
+      border ${styles.border}
+    `}>
+      <Calendar className="w-4 h-4" style={{ color: styles.primary }} />
+      <span className={`text-sm font-semibold tracking-wide ${styles.textHeavy}`}>
+        {date}
+      </span>
+    </div>
+  );
+};
 
 /*
 Componente ActivityDateBadge que muestra una fecha destacada dentro de una burbuja de estilo moderno.

@@ -28,7 +28,7 @@ export const ValueCircle = ({ icon, label, active, onClick }: Props) => {
         {/* CÍRCULO PRINCIPAL */}
         <div
           className={`
-            w-24 h-24 md:w-28 md:h-28 rounded-full
+            w-20 sm:w-24 md:w-28 h-20 sm:h-24 md:h-28 rounded-full
             bg-gradient-to-br from-primario to-secundario
             flex items-center justify-center
             shadow-xl cursor-pointer
@@ -40,7 +40,7 @@ export const ValueCircle = ({ icon, label, active, onClick }: Props) => {
           <DynamicIcon
             name={icon as any}
             className={`
-              w-10 h-10 text-fondo transition-transform duration-500 
+              w-8 sm:w-9 md:w-10 h-8 sm:h-9 md:h-10 text-fondo transition-transform duration-500 
               ${active ? "scale-110 -translate-y-0.5" : "scale-100"}
               group-hover:-translate-y-1
             `}

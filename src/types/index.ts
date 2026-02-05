@@ -1,10 +1,12 @@
+export type CategoryID = 'educativa' | 'cultural' | 'ambiental' | 'social' | 'productiva';
+
 export interface Activity {
   id: string;
   title: string;
   description: string;
   date: string;
   image: string;
-  category: 'social' | 'ambiental' | 'educativo';
+  category: CategoryID;
   extraText: string;
 }
 
@@ -13,7 +15,7 @@ export interface Program {
   title: string;
   description: string;
   image: string;
-  category: 'social' | 'ambiental' | 'educativo';
+  category: CategoryID;
 }
 
 export interface TeamMember {
@@ -31,8 +33,10 @@ export interface Value {
 }
 
 export interface ActionLine {
-  id: string;
+  id: CategoryID;
   title: string;
   description: string;
   icon: string;
+  color: string;
+  subItems: string[];
 }
