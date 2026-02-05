@@ -29,7 +29,7 @@ export const ActivityDetailsModal = ({ activity, onClose }: Props) => {
           {activity.title}
         </h2>
 
-        <p className={`text-xs sm:text-sm md:text-base opacity-90 mb-4 font-medium`} style={{ color: styles.primary }}>
+        <p className={`text-xs sm:text-sm md:text-base ${styles.textHeavy} opacity-80 mb-4`}>
           {new Date(activity.date).toLocaleDateString("es-ES", {
             year: "numeric",
             month: "long",

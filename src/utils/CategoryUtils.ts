@@ -4,7 +4,7 @@ export const getCategoryStyles = (category: CategoryID) => {
   switch (category) {
     case 'educativa':
       return {
-        primary: '#3B82F6', // Blue 500 - more vibrant but professional
+        primary: '#2563EB',
         text: 'text-blue-600',
         textHeavy: 'text-blue-800',
         bg: 'bg-blue-50',
@@ -16,11 +16,11 @@ export const getCategoryStyles = (category: CategoryID) => {
         gradient: 'from-blue-500 to-blue-600',
         lightGradient: 'from-blue-500/20 to-blue-600/10',
         glow: 'shadow-blue-500/20',
-        shadowColor: '#3B82F6'
+        shadowColor: '#2563EB'
       };
     case 'cultural':
       return {
-        primary: '#F59E0B', // Amber 500
+        primary: '#D97706',
         text: 'text-amber-600',
         textHeavy: 'text-amber-800',
         bg: 'bg-amber-50',
@@ -32,11 +32,11 @@ export const getCategoryStyles = (category: CategoryID) => {
         gradient: 'from-amber-500 to-amber-600',
         lightGradient: 'from-amber-500/20 to-amber-600/10',
         glow: 'shadow-amber-500/20',
-        shadowColor: '#F59E0B'
+        shadowColor: '#D97706'
       };
     case 'ambiental':
       return {
-        primary: '#10B981', // Emerald 500
+        primary: '#059669',
         text: 'text-emerald-600',
         textHeavy: 'text-emerald-800',
         bg: 'bg-emerald-50',
@@ -48,11 +48,11 @@ export const getCategoryStyles = (category: CategoryID) => {
         gradient: 'from-emerald-500 to-emerald-600',
         lightGradient: 'from-emerald-500/20 to-emerald-600/10',
         glow: 'shadow-emerald-500/20',
-        shadowColor: '#10B981'
+        shadowColor: '#059669'
       };
     case 'social':
       return {
-        primary: '#F43F5E', // Rose 500
+        primary: '#E11D48',
         text: 'text-rose-600',
         textHeavy: 'text-rose-800',
         bg: 'bg-rose-50',
@@ -64,11 +64,11 @@ export const getCategoryStyles = (category: CategoryID) => {
         gradient: 'from-rose-500 to-rose-600',
         lightGradient: 'from-rose-500/20 to-rose-600/10',
         glow: 'shadow-rose-500/20',
-        shadowColor: '#F43F5E'
+        shadowColor: '#E11D48'
       };
     case 'productiva':
       return {
-        primary: '#8B5CF6', // Violet 500
+        primary: '#7C3AED',
         text: 'text-violet-600',
         textHeavy: 'text-violet-800',
         bg: 'bg-violet-50',
@@ -80,7 +80,7 @@ export const getCategoryStyles = (category: CategoryID) => {
         gradient: 'from-violet-500 to-violet-600',
         lightGradient: 'from-violet-500/20 to-violet-600/10',
         glow: 'shadow-violet-500/20',
-        shadowColor: '#8B5CF6'
+        shadowColor: '#7C3AED'
       };
     default:
       return {

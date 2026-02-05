@@ -13,7 +13,7 @@ export const ValueCircle = ({ icon, label, active, onClick }: Props) => {
       onClick={onClick}
       role="button"
       aria-pressed={active}
-      className="flex flex-col items-center gap-3 outline-none"
+      className="flex flex-col items-center gap-3 outline-none relative z-10"
     >
       {/* Contenedor circular con anillo animado */}
       <div className="relative">
@@ -38,7 +38,7 @@ export const ValueCircle = ({ icon, label, active, onClick }: Props) => {
           `}
         >
           <DynamicIcon
-            name={icon as any}
+            name={icon as "scale" | "handshake" | "users" | "sprout"}
             className={`
               w-8 sm:w-9 md:w-10 h-8 sm:h-9 md:h-10 text-fondo transition-transform duration-500 
               ${active ? "scale-110 -translate-y-0.5" : "scale-100"}

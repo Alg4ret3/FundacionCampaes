@@ -59,13 +59,13 @@ export const ModalBase = ({
             className={`
               relative w-full ${maxW}
               bg-fondo rounded-3xl shadow-2xl shadow-black/30
-              border-t-[6px]
+              border-t-4
               max-h-[95vh]
               overflow-hidden
               ${className}
             `}
             style={{ 
-              borderTopColor: themeColor || '#37B6BA' 
+              borderTopColor: themeColor || 'var(--color-primario, #37B6BA)' 
             }}
             onClick={(e) => e.stopPropagation()}
             variants={card}
