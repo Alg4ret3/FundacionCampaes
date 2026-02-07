@@ -5,37 +5,10 @@ import { Heart, Eye, Handshake, CalendarCheck } from "lucide-react";
 import { useScrollAnimation } from "../../../../hooks/useScrollAnimation";
 import { Heading } from "../../../atoms/typography/Heading";
 import { SectionDivider } from "../../../atoms/misc/SectionDivider";
+import { timelineData } from "../../../../constants/DataAboutTimeline";
+import { aboutInfoData } from "../../../../constants/DataAboutInfo";
 
-const timeline = [
-  {
-    year: "2017",
-    title: "Fundación de la Organización",
-    description:
-      "La FUNDACIÓN CAMINOS DE PAZ Y ESPERANZA fue registrada legalmente el 05 de abril de 2017 ante la Cámara de Comercio de Pasto, Nariño, como una entidad sin ánimo de lucro. Su objeto principal es cooperar en la labor social encaminada a la PROMOCIÓN HUMANA y contribuir al desarrollo social, económico y cultural de la región. Esto incluye la formulación de planes y proyectos de educación (Formal, Informal, para el trabajo y desarrollo humano), con un enfoque en la inclusión social y proyección ambiental. Desde sus inicios, la Fundación se ha dedicado a atender a poblaciones vulnerables, como víctimas del conflicto armado, personas con discapacidad, población en situación de desplazamiento, y grupos étnicos.",
-    image: "/Image/1.webp",
-  },
-  {
-    year: "2019",
-    title: "Expansión Estratégica",
-    description:
-      "Este período marcó una Expansión Estratégica significativa, ampliando nuestra presencia y el alcance de los programas a 10 nuevas comunidades en Nariño. Esta expansión fortaleció la red de trabajo y permitió aplicar las líneas de acción de la Fundación, como el Desarrollo Socio Económico y Cultural y la Convivencia y Paz , en zonas que requieren atención psicosocial, fomento del espíritu emprendedor, y proyectos de reconciliación y no estigmatización en áreas afectadas por el conflicto armado.",
-    image: "/Image/2.webp",
-  },
-  {
-    year: "2021",
-    title: "Consolidación Institucional y Alianzas Educativas",
-    description:
-      "La Fundación recibió un Reconocimiento Nacional por sus iniciativas en promoción de la paz y el bienestar social, consolidando su reputación. Además, consolidó su capacidad formativa a través de convenios con instituciones como el POLITÉCNICO SUR ANDINO. Gracias a esta alianza, la Fundación ofrece capacitaciones, seminarios, cursos y diplomados con personal altamente calificado en áreas clave como Convivencia Escolar, Inclusión Educativa, Neuro psicopedagogía, y la apropiación crítica de las TIC'S en procesos formativos y productivos.",
-    image: "/Image/3.webp",
-  },
-  {
-    year: "2025",
-    title: "Impacto Actual",
-    description:
-      "Actualmente, la Fundación mantiene un impacto activo con más de 1000 beneficiarios, enfocándose en sus cuatro líneas de acción principales: Desarrollo Socio Económico y Cultural, Convivencia y Paz, Ambiente Sostenible y en Paz, y Proyecto de Vida Emprendimiento Sostenible. Se están ejecutando proyectos clave, como el Bordado Guatemalteco en Santa Bárbara para la autonomía económica de las mujeres, y proyectos de Agricultura Urbana Sostenible. Este trabajo continuo y su compromiso con la inclusión social y la sostenibilidad buscan lograr la Visión de ser líderes en el desarrollo de proyectos sociales para el año 2027.",
-    image: "/Image/4.webp",
-  },
-];
+const icons = [Heart, Eye, Handshake];
 
 export const AboutSection = () => {
   const { ref, isVisible } = useScrollAnimation();
@@ -46,7 +19,12 @@ export const AboutSection = () => {
       ref={ref}
       className="py-20 md:py-28 lg:py-36 bg-gradient-to-br from-primario/5 via-fondo to-primario/10 relative overflow-hidden"
     >
-      <SectionDivider variant="curve" flip={true} color="fill-fondo" className="top-0" />
+      <SectionDivider
+        variant="curve"
+        flip={true}
+        color="fill-fondo"
+        className="top-0"
+      />
       {/* Fondos de glow */}
       <div className="absolute inset-0 pointer-events-none">
         {/* Luz ambiental superior */}
@@ -81,39 +59,24 @@ export const AboutSection = () => {
 
         {/* Tarjetas de Misión, Visión y Compromiso - Vertical on mobile/tablet, 3 cols on desktop */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-10 lg:gap-12 mb-12 sm:mb-14 md:mb-16 lg:mb-20">
-          <InfoCard
-            icon={<Heart className="w-7 h-7 text-fondo" />}
-            title="Misión"
-            description="Contribuir con el desarrollo social, económico, cultural, 
-ambiental sostenible, de nuestro territorio, con el 
-propósito de disminuir las brechas de desigualdad 
-promoviendo la inclusión social, a través de diferentes proyectos encaminados a  
-fortalecer el desarrollo humano, la cultura de la paz, la cultura ciudadana, el 
-desarrollo tecnológico, Educación formal e informal y construcción de proyectos de 
-vida sostenibles, teniendo en cuenta su contexto de vida. "
-            delay={0.1}
-            isVisible={isVisible}
-          />
-          <InfoCard
-            icon={<Eye className="w-7 h-7 text-fondo" />}
-            title="Visión"
-            description="En el año 2027, seremos líderes en el desarrollo de 
-proyectos sociales, los cuales contribuirán al bienestar y 
-desarrollo del territorio, con innovación social, cultura 
-ciudadana, tecnología, propiciando la verdadera inclusión 
-social y generando sostenibilidad en los diferentes proyectos. "
-            delay={0.2}
-            isVisible={isVisible}
-          />
-          <InfoCard
-            icon={<Handshake className="w-7 h-7 text-fondo" />}
-            title="Compromiso"
-            description={`Nos comprometemos a trabajar con ética, transparencia y responsabilidad social, colocando a las comunidades en el centro de nuestras acciones. 
-  Esto incluye fomentar la inclusión social, promover la cultura de paz y ciudadanía, impulsar la educación formal e informal, 
-  y garantizar la sostenibilidad de los proyectos en concordancia con su contexto de vida. `}
-            delay={0.3}
-            isVisible={isVisible}
-          />
+          {aboutInfoData.map((info, index) => (
+            <InfoCard
+              key={index}
+              icon={
+                index === 0 ? (
+                  <Heart className="w-7 h-7 text-fondo" />
+                ) : index === 1 ? (
+                  <Eye className="w-7 h-7 text-fondo" />
+                ) : (
+                  <Handshake className="w-7 h-7 text-fondo" />
+                )
+              }
+              title={info.title}
+              description={info.description}
+              delay={info.delay}
+              isVisible={isVisible}
+            />
+          ))}
         </div>
       </div>
 
@@ -138,7 +101,7 @@ social y generando sostenibilidad en los diferentes proyectos. "
 
         {/* The Timeline itself - Full width but with reasonable max for ultra-wide screens */}
         <div className="relative w-full max-w-[1700px] mx-auto overflow-hidden">
-          <HorizontalTimeline items={timeline} />
+          <HorizontalTimeline items={timelineData} />
         </div>
       </div>
     </section>
