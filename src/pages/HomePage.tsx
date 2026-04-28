@@ -1,16 +1,19 @@
+import { Suspense, lazy } from 'react';
 import { Navigation } from '../components/organisms/layout/Navigation';
 import { HeroSection } from '../components/organisms/sections/hero/HeroSection';
-import { ImpactStatsSection } from '../components/organisms/sections/impact/ImpactStatsSection';
-import { ValuesSection } from '../components/organisms/sections/values/ValuesSection';
 import { AboutSection } from '../components/organisms/sections/about/AboutSection';
-import { ActionLinesSection } from '../components/organisms/sections/actions/ActionLinesSection';
-import { ActivitiesSection } from '../components/organisms/sections/activities/ActivitiesSection';
-import { TestimonialsSection } from '../components/organisms/sections/testimonials/TestimonialsSection';
-import { GallerySection } from '../components/organisms/sections/gallery/GallerySection';
-import { ContactSection } from '../components/organisms/sections/contact/ContactSection';
-import { Footer } from '../components/organisms/layout/Footer';
-//import { ProgramsSection } from '../components/ProgramsSection';
 
+// Carga perezosa de secciones por debajo del fold
+const ValuesSection = lazy(() => import('../components/organisms/sections/values/ValuesSection').then(m => ({ default: m.ValuesSection })));
+const ActionLinesSection = lazy(() => import('../components/organisms/sections/actions/ActionLinesSection').then(m => ({ default: m.ActionLinesSection })));
+const ImpactStatsSection = lazy(() => import('../components/organisms/sections/impact/ImpactStatsSection').then(m => ({ default: m.ImpactStatsSection })));
+const TestimonialsSection = lazy(() => import('../components/organisms/sections/testimonials/TestimonialsSection').then(m => ({ default: m.TestimonialsSection })));
+const ActivitiesSection = lazy(() => import('../components/organisms/sections/activities/ActivitiesSection').then(m => ({ default: m.ActivitiesSection })));
+const GallerySection = lazy(() => import('../components/organisms/sections/gallery/GallerySection').then(m => ({ default: m.GallerySection })));
+const ContactSection = lazy(() => import('../components/organisms/sections/contact/ContactSection').then(m => ({ default: m.ContactSection })));
+const Footer = lazy(() => import('../components/organisms/layout/Footer').then(m => ({ default: m.Footer })));
+
+import { Skeleton } from '../components/atoms/feedback/Skeleton';
 
 function App() {
   return (
@@ -18,16 +21,23 @@ function App() {
       <Navigation />
       <HeroSection />
       <AboutSection />
-      <ValuesSection />
-      <ActionLinesSection />
-      <ImpactStatsSection />
-      <TestimonialsSection />
-      <ActivitiesSection />
-      <GallerySection />
-      <ContactSection />
-      <Footer />
+      
+      <Suspense fallback={
+        <div className="space-y-20 py-20 px-4 max-w-7xl mx-auto">
+          <Skeleton className="h-64" />
+          <Skeleton className="h-96" />
+        </div>
+      }>
+        <ValuesSection />
+        <ActionLinesSection />
+        <ImpactStatsSection />
+        <TestimonialsSection />
+        <ActivitiesSection />
+        <GallerySection />
+        <ContactSection />
+        <Footer />
+      </Suspense>
     </div>
-    
   );
 }
 

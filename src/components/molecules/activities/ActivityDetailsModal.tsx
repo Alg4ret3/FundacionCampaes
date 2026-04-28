@@ -2,6 +2,8 @@ import { ModalBase } from "../../atoms/layout/ModalBase";
 import { getCategoryStyles } from "../../../utils/CategoryUtils";
 import { Activity } from "../../../types";
 
+import { getCloudinaryUrl } from "../../../utils/cloudinary";
+
 interface Props {
   activity: Activity | null;
   onClose: () => void;
@@ -16,7 +18,7 @@ export const ActivityDetailsModal = ({ activity, onClose }: Props) => {
       <div className="pt-8 sm:pt-12 pb-8 px-4 sm:px-6">
         {activity.image && (
           <img
-            src={activity.image}
+            src={getCloudinaryUrl(activity.image, { width: 1000, crop: "fill" })}
             className="w-full h-52 sm:h-64 md:h-72 rounded-2xl object-cover mb-6 shadow-lg transition-all duration-300"
           />
         )}

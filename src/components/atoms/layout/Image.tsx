@@ -1,3 +1,5 @@
+import { getCloudinaryUrl } from "../../../utils/cloudinary";
+
 interface GalleryImageProps {
   src: string;
   alt: string;
@@ -10,7 +12,13 @@ export const GalleryImage = ({ src, alt, isVisible }: GalleryImageProps) => (
       isVisible ? "opacity-100" : "opacity-0"
     }`}
   >
-    <img src={src} alt={alt} className="w-full h-full object-cover" />
+    <img 
+      src={getCloudinaryUrl(src)} 
+      alt={alt} 
+      className="w-full h-full object-cover" 
+      loading="lazy"
+      decoding="async"
+    />
   </div>
 );
 

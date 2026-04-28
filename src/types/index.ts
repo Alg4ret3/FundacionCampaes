@@ -40,3 +40,5 @@ export interface ActionLine {
   color: string;
   subItems: string[];
 }
+
+export type Gallery = string;

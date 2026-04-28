@@ -1,5 +1,6 @@
 import { ActivityDateBadge } from "../../atoms/layout/ActivityDateBadge";
 import { CategoryID } from "../../../types";
+import { getCloudinaryUrl } from "../../../utils/cloudinary";
 
 export const ActivityImageBlock = ({
   image,
@@ -14,7 +15,7 @@ export const ActivityImageBlock = ({
 }) => (
   <div className="relative h-48 sm:h-56 md:h-64 overflow-hidden rounded-t-lg sm:rounded-t-xl md:rounded-t-2xl">
     <img
-      src={image}
+      src={getCloudinaryUrl(image, { width: 600, crop: "fill" })}
       alt={title}
       className="
         w-full h-full object-cover 

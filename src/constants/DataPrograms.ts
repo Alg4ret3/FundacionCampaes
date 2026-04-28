@@ -5,7 +5,7 @@ export const programs: Program[] = [
     title: "Escuela de Paz",
     description:
       "Formación en resolución de conflictos y construcción de paz para jóvenes y adultos",
-    image: "",
+    image: "tmcgweoxw0jholq8x4i6.webp",
     category: "social",
   },
   {
@@ -13,7 +13,7 @@ export const programs: Program[] = [
     title: "Reforestación Comunitaria",
     description:
       "Recuperación de bosques nativos con participación activa de las comunidades",
-    image: "",
+    image: "cff5ebid3d4jm5hfgasy.webp",
     category: "ambiental",
   },
   {
@@ -21,15 +21,15 @@ export const programs: Program[] = [
     title: "Emprendimiento Verde",
     description:
       "Apoyo a negocios sostenibles que generen impacto social y ambiental positivo",
-    image: "",
-    category: "educativo",
+    image: "pswhvd6uoywibthzrt0z.webp",
+    category: "educativa",
   },
   {
     id: "4",
     title: "Huertos Urbanos",
     description:
       "Creación de espacios de cultivo comunitario para la seguridad alimentaria",
-    image: "",
+    image: "j7omh3gn9x1z1lfiri7g.webp",
     category: "ambiental",
   },
   {
@@ -37,7 +37,7 @@ export const programs: Program[] = [
     title: "Liderazgo Comunitario",
     description:
       "Formación de líderes comprometidos con el desarrollo territorial",
-    image: "",
+    image: "xzraziemsw5ai1nsausi.webp",
     category: "social",
   },
   {
@@ -45,7 +45,7 @@ export const programs: Program[] = [
     title: "Educación Ambiental",
     description:
       "Sensibilización sobre el cuidado del medio ambiente en escuelas y comunidades",
-    image: "",
-    category: "educativo",
+    image: "sfyv6jyj8xm9shklieei.webp",
+    category: "educativa",
   },
 ];

@@ -4,6 +4,7 @@ import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 import { Heading } from "../../atoms/typography/Heading";
 import { Paragraph } from "../../atoms/typography/Paragraph";
 import { ModalBase } from "../../atoms/layout/ModalBase";
+import { getCloudinaryUrl } from "../../../utils/cloudinary";
 
 interface Item {
   year: string;
@@ -146,7 +147,7 @@ export const HorizontalTimeline = ({ items }: { items: Item[] }) => {
                   </div>
 
                   {it.image && (
-                    <img src={it.image} alt={it.title} className="w-full h-40 object-cover rounded-md mt-4 border border-primario/10" />
+                    <img src={getCloudinaryUrl(it.image, { width: 500, crop: "fill" })} alt={it.title} className="w-full h-40 object-cover rounded-md mt-4 border border-primario/10" />
                   )}
                 </div>
               </button>
@@ -217,15 +218,13 @@ export const HorizontalTimeline = ({ items }: { items: Item[] }) => {
       <ModalBase open={open} onClose={() => setOpen(false)} maxW="max-w-5xl">
         {selected && (
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-4 sm:gap-6 lg:gap-8">
-            <div className="flex items-center justify-center order-2 lg:order-1">
               {selected.image && (
                 <img
-                  src={selected.image}
+                  src={getCloudinaryUrl(selected.image, { width: 1000, crop: "fill" })}
                   alt={selected.title}
                   className="w-full h-auto max-h-64 sm:max-h-80 lg:max-h-[500px] object-cover rounded-2xl border-2 border-primario/20 shadow-lg"
                 />
               )}
-            </div>
 
             <div className="flex flex-col justify-start order-1 lg:order-2">
               <div className="text-xs sm:text-sm lg:text-base text-primario font-semibold tracking-wide uppercase">{selected.year}</div>

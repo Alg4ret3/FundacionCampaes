@@ -4,6 +4,7 @@ interface TextAreaProps {
   onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
   placeholder?: string;
   rows?: number;
+  id?: string;
 }
 
 export const TextArea = ({
@@ -12,27 +13,35 @@ export const TextArea = ({
   onChange,
   placeholder,
   rows = 5,
-}: TextAreaProps) => (
-  <div className="flex flex-col">
-    <label className="block text-sm font-semibold text-primario mb-2">
-      {label}
-    </label>
+  id,
+}: TextAreaProps) => {
+  const textAreaId = id || label.toLowerCase().replace(/\s+/g, "-");
+  return (
+    <div className="flex flex-col">
+      <label 
+        htmlFor={textAreaId}
+        className="block text-sm font-semibold text-primario mb-2"
+      >
+        {label}
+      </label>
 
-    <textarea
-      required
-      value={value}
-      onChange={onChange}
-      placeholder={placeholder}
-      rows={rows}
-      className="
-        w-full px-4 py-3 rounded-xl border-2 border-claro
-        bg-fondo text-texto
-        focus:border-primario focus:ring-primario focus:ring-1
-        transition-colors duration-300 resize-none
-      "
-    />
-  </div>
-);
+      <textarea
+        id={textAreaId}
+        required
+        value={value}
+        onChange={onChange}
+        placeholder={placeholder}
+        rows={rows}
+        className="
+          w-full px-4 py-3 rounded-xl border-2 border-claro
+          bg-fondo text-texto
+          focus:border-primario focus:ring-primario focus:ring-1
+          transition-colors duration-300 resize-none
+        "
+      />
+    </div>
+  );
+};
 
 /*
   Componente TextArea:

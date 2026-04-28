@@ -13,6 +13,9 @@ import {
   LucideIcon,
 } from "lucide-react";
 
+import { FaFacebookF, FaInstagram, FaWhatsapp } from "react-icons/fa";
+import { SiGmail } from "react-icons/si";
+
 // Importación de Átomos y Moléculas 
 import { Logo } from "../../molecules/navegation/Logo";
 import { NavLink } from "../../atoms/navigation/NavLink";
@@ -101,6 +104,24 @@ export const Navigation: React.FC = () => {
                 {navLinks.map((link) => (
                   <IconLink key={link.name} {...link} isActive={activeId === link.href} onClose={closeMenu} />
                 ))}
+              </div>
+
+              <div className="mt-auto border-t p-6">
+                <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">Síguenos</p>
+                <div className="flex items-center space-x-5">
+                  <a href="https://www.facebook.com/share/1ADNfwFbQK/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="p-2 bg-gray-50 rounded-xl text-primario hover:bg-primario hover:text-white transition-all duration-300 shadow-sm" aria-label="Facebook">
+                    <FaFacebookF size={20} />
+                  </a>
+                  <a href="https://www.instagram.com/caminosdepazyesperanza?igsh=MXU1cmFnYmh2bGJtcw%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" className="p-2 bg-gray-50 rounded-xl text-primario hover:bg-primario hover:text-white transition-all duration-300 shadow-sm" aria-label="Instagram">
+                    <FaInstagram size={20} />
+                  </a>
+                  <a href="https://wa.me/573185094789" target="_blank" rel="noopener noreferrer" className="p-2 bg-gray-50 rounded-xl text-primario hover:bg-primario hover:text-white transition-all duration-300 shadow-sm" aria-label="WhatsApp">
+                    <FaWhatsapp size={20} />
+                  </a>
+                  <a href="mailto:funpazyesperanza@gmail.com" className="p-2 bg-gray-50 rounded-xl text-primario hover:bg-primario hover:text-white transition-all duration-300 shadow-sm" aria-label="Gmail">
+                    <SiGmail size={20} />
+                  </a>
+                </div>
               </div>
             </motion.aside>
           </>

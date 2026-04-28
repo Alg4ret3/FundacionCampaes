@@ -83,18 +83,22 @@ export const ContactSection = () => {
 
             {/* MAPA */}
             {/* MAPA */}
-            <div className="rounded-lg sm:rounded-xl md:rounded-2xl overflow-hidden shadow-xl h-56 sm:h-64 md:h-72 ring-1 ring-gray-200">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.9386880537836!2d-77.2731101!3d1.2031495999999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e2ed497a4220647%3A0x6cefd8e585749d3f!2sCl%2018%20%2312-08%2C%20Pasto%2C%20Nari%C3%B1o!5e0!3m2!1ses-419!2sco!4v1764262560361!5m2!1ses-419!2sco"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Ubicación"
-                className="w-full h-full"
-              />
+            <div className="rounded-lg sm:rounded-xl md:rounded-2xl overflow-hidden shadow-xl h-56 sm:h-64 md:h-72 ring-1 ring-gray-200 bg-gray-100 flex items-center justify-center">
+              {isVisible ? (
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.9386880537836!2d-77.2731101!3d1.2031495999999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e2ed497a4220647%3A0x6cefd8e585749d3f!2sCl%2018%20%2312-08%2C%20Pasto%2C%20Nari%C3%B1o!5e0!3m2!1ses-419!2sco!4v1764262560361!5m2!1ses-419!2sco"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Ubicación"
+                  className="w-full h-full"
+                />
+              ) : (
+                <div className="text-gray-400 animate-pulse">Cargando mapa...</div>
+              )}
             </div>
           </div>
         </div>

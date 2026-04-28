@@ -4,7 +4,7 @@ import React from "react";
 export const Logo: React.FC = () => (
  <div className="flex items-center gap-2 sm:gap-3">
   <img
-   src="/static/Logo.webp"
+   src="https://res.cloudinary.com/dqky6oqrd/image/upload/f_auto,q_auto/v1777328156/dxnccsmmkyeuzksbz7ua.png"
    alt="Logo Caminos de Paz"
    className="w-10 sm:w-12 md:w-14 h-10 sm:h-12 md:h-14 object-contain"
   />
