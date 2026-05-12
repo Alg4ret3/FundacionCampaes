@@ -1,99 +1,170 @@
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
+import { motion, AnimatePresence } from "framer-motion";
+import { Send, CheckCircle, XCircle, AlertCircle } from "lucide-react";
 import { useState } from "react";
-import { InputText } from "../../atoms/misc/InputText";
-import { TextArea } from "../../atoms/misc/TextArea";
-import { Send, CheckCircle, XCircle } from "lucide-react";
 import { sendEmail } from "../../../services/EmailServices";
 
+// Schema definition with Zod for strict validation
+const contactSchema = z.object({
+  name: z.string().min(3, "El nombre debe tener al menos 3 caracteres"),
+  email: z.string().email("Ingresa un correo electrónico válido"),
+  message: z.string().min(10, "Cuéntanos un poco más (mínimo 10 caracteres)"),
+});
+
+type ContactFormData = z.infer<typeof contactSchema>;
+
 export const ContactForm = () => {
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [loading, setLoading] = useState(false);
   const [sent, setSent] = useState(false);
-  const [error, setError] = useState("");
+  const [serverError, setServerError] = useState("");
 
-  const onSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<ContactFormData>({
+    resolver: zodResolver(contactSchema),
+  });
+
+  const onSubmit = async (data: ContactFormData) => {
     setLoading(true);
     setSent(false);
-    setError("");
+    setServerError("");
 
     try {
-      const res = await sendEmail(formData);
+      const res = await sendEmail(data);
       if (res.ok) {
         setSent(true);
-        setFormData({ name: "", email: "", message: "" });
+        reset();
       } else {
-        setError("Hubo un error enviando el mensaje.");
+        setServerError("Hubo un problema al enviar el mensaje. Intenta de nuevo.");
       }
     } catch {
-      setError("Error de conexión con EmailJS.");
+      setServerError("Error de conexión. Verifica tu internet.");
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   return (
-    <form
-      onSubmit={onSubmit}
-      className="space-y-5 bg-fondo p-6 rounded-2xl shadow-lg max-w-lg mx-auto"
-    >
-      <InputText
-        label="Nombre completo"
-        value={formData.name}
-        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-        placeholder="Tu nombre"
-        required
-        className="bg-fondo border border-claro focus:border-primario focus:ring-primario rounded-lg"
-      />
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-12 w-full max-w-xl mx-auto">
+      <div className="space-y-14">
+        
+        {/* Name Input */}
+        <div className="relative group">
+          <input
+            {...register("name")}
+            type="text"
+            autoComplete="name"
+            className={`w-full bg-transparent border-b py-4 outline-none transition-all duration-500 text-lg font-light
+              ${errors.name ? 'border-red-400' : 'border-gray-200 focus:border-primario'}
+            `}
+            placeholder="Nombre Completo"
+          />
+          <AnimatePresence>
+            {errors.name && (
+              <motion.p 
+                initial={{ opacity: 0, y: -5 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -5 }}
+                className="absolute pt-2 left-0 text-[9px] text-red-500 font-bold uppercase tracking-[0.2em] flex items-center gap-1.5"
+              >
+                <AlertCircle className="w-3 h-3" /> {errors.name.message}
+              </motion.p>
+            )}
+          </AnimatePresence>
+        </div>
 
-      <InputText
-        label="Correo electrónico"
-        type="email"
-        value={formData.email}
-        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-        placeholder="tu@email.com"
-        required
-        className="bg-fondo border border-claro focus:border-primario focus:ring-primario rounded-lg"
-      />
+        {/* Email Input */}
+        <div className="relative group">
+          <input
+            {...register("email")}
+            type="email"
+            autoComplete="email"
+            className={`w-full bg-transparent border-b py-4 outline-none transition-all duration-500 text-lg font-light
+              ${errors.email ? 'border-red-400' : 'border-gray-200 focus:border-primario'}
+            `}
+            placeholder="Correo Electrónico"
+          />
+          <AnimatePresence>
+            {errors.email && (
+              <motion.p 
+                initial={{ opacity: 0, y: -5 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -5 }}
+                className="absolute pt-2 left-0 text-[9px] text-red-500 font-bold uppercase tracking-[0.2em] flex items-center gap-1.5"
+              >
+                <AlertCircle className="w-3 h-3" /> {errors.email.message}
+              </motion.p>
+            )}
+          </AnimatePresence>
+        </div>
 
-      <TextArea
-        label="Mensaje"
-        value={formData.message}
-        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-        placeholder="Cuéntanos cómo podemos ayudarte..."
-        required
-        className="bg-fondo border border-claro focus:border-primario focus:ring-primario rounded-lg"
-      />
+        {/* Message Input */}
+        <div className="relative group">
+          <textarea
+            {...register("message")}
+            rows={4}
+            className={`w-full bg-transparent border-b py-4 outline-none transition-all duration-500 text-lg font-light resize-none
+              ${errors.message ? 'border-red-400' : 'border-gray-200 focus:border-primario'}
+            `}
+            placeholder="Tu Mensaje"
+          />
+          <AnimatePresence>
+            {errors.message && (
+              <motion.p 
+                initial={{ opacity: 0, y: -5 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -5 }}
+                className="absolute pt-2 left-0 text-[9px] text-red-500 font-bold uppercase tracking-[0.2em] flex items-center gap-1.5"
+              >
+                <AlertCircle className="w-3 h-3" /> {errors.message.message}
+              </motion.p>
+            )}
+          </AnimatePresence>
+        </div>
+      </div>
 
-      {/* Mensajes de estado */}
-      {sent && (
-        <p className="flex items-center text-acento font-medium">
-          <CheckCircle className="w-5 h-5 mr-2" /> ¡Mensaje enviado correctamente!
-        </p>
-      )}
-      {error && (
-        <p className="flex items-center text-red-600 font-medium">
-          <XCircle className="w-5 h-5 mr-2" /> {error}
-        </p>
-      )}
+      {/* Global Status Messages */}
+      <div className="min-h-[30px] pt-4">
+        <AnimatePresence mode="wait">
+          {sent && (
+            <motion.p 
+              key="success"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="flex items-center text-primario font-bold text-[10px] uppercase tracking-[0.3em]"
+            >
+              <CheckCircle className="w-4 h-4 mr-3" /> ¡Mensaje enviado con éxito!
+            </motion.p>
+          )}
+          {serverError && (
+            <motion.p 
+              key="error"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="flex items-center text-red-500 font-bold text-[10px] uppercase tracking-[0.3em]"
+            >
+              <XCircle className="w-4 h-4 mr-3" /> {serverError}
+            </motion.p>
+          )}
+        </AnimatePresence>
+      </div>
 
-      {/* Botón */}
+      {/* Submit Button */}
       <button
         type="submit"
         disabled={loading}
-        className={`w-full py-4 rounded-xl font-semibold flex items-center justify-center space-x-2
-          transition-all duration-300 shadow-md
-          ${loading
-            ? "bg-claro cursor-not-allowed text-texto"
-            : "bg-primario hover:bg-secundario text-fondo hover:scale-105 hover:shadow-xl"
-          }`}
+        className="group flex items-center gap-8 disabled:opacity-50 transition-all pt-4"
       >
-        {loading ? (
-          <span className="animate-pulse">Enviando...</span>
-        ) : (
-          <>
-            <span>Enviar mensaje</span>
-            <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </>
-        )}
+        <div className="h-px w-20 bg-gray-100 group-hover:bg-primario group-hover:w-32 transition-all duration-700" />
+        <span className="text-primario text-[10px] font-black uppercase tracking-[0.5em] group-hover:tracking-[0.6em] transition-all">
+          {loading ? "Procesando..." : "Enviar Mensaje"}
+        </span>
+        {!loading && <Send className="w-4 h-4 text-primario group-hover:translate-x-2 transition-transform" />}
       </button>
     </form>
   );

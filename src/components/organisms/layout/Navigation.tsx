@@ -1,27 +1,26 @@
 // components/organisms/layout/Navigation.tsx
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Home,
   Leaf,
   Users,
-  Activity,
   Phone,
-  X,
   LucideIcon,
+  ChevronRight,
 } from "lucide-react";
 
 import { FaFacebookF, FaInstagram, FaWhatsapp } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
 
-// Importación de Átomos y Moléculas 
+// Importación de Átomos y Moléculas
 import { Logo } from "../../molecules/navegation/Logo";
 import { NavLink } from "../../atoms/navigation/NavLink";
 import { HamburgerButton } from "../../atoms/buttons/HamburgerButton";
 import { IconLink } from "../../atoms/icons/IconLink";
-import { useScrollSpy } from "../../../hooks/useScrollSpy";
 
 // Definición de tipos para los enlaces
 interface NavItem {
@@ -31,99 +30,161 @@ interface NavItem {
 }
 
 const navLinks: NavItem[] = [
-  { name: "Inicio", href: "#inicio", Icon: Home },
-  { name: "Sobre Nosotros", href: "#nosotros", Icon: Users },
-  { name: "Líneas de Acción", href: "#lineas", Icon: Leaf },
-  { name: "Actividades", href: "#actividades", Icon: Activity },
-  { name: "Contacto", href: "#contacto", Icon: Phone },
+  { name: "Inicio", href: "/", Icon: Home },
+  { name: "Sobre Nosotros", href: "/about", Icon: Users },
+  { name: "Líneas de Acción", href: "/action-activities", Icon: Leaf },
+  { name: "Contacto", href: "/contact", Icon: Phone },
+];
+
+const socialLinks = [
+  { Icon: FaFacebookF, href: "#", label: "Facebook" },
+  { Icon: FaInstagram, href: "#", label: "Instagram" },
+  { Icon: FaWhatsapp, href: "#", label: "WhatsApp" },
+  { Icon: SiGmail, href: "#", label: "Gmail" },
 ];
 
 export const Navigation: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const activeId = useScrollSpy(navLinks.map(link => link.href));
+  const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
+  const activeId = location.pathname;
 
   const toggleMenu = () => setIsOpen(!isOpen);
   const closeMenu = () => setIsOpen(false);
 
+  // Detectar scroll para cambiar el estilo del nav
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Cerrar menú al cambiar de ruta
+  useEffect(() => {
+    closeMenu();
+  }, [location.pathname]);
+
   return (
-    // Se usa 'box-border' para prevenir el desbordamiento horizontal.
-    <header className="fixed top-0 left-0 w-full z-50 bg-white border-b border-claro/20 box-border">
-      <nav className="w-full max-w-7xl mx-auto flex justify-between items-center px-4 sm:px-6 md:px-8 lg:px-12 h-16 sm:h-18 md:h-20">
+    <header
+      className="fixed top-0 left-0 w-full z-50 bg-white/95 backdrop-blur-xl shadow-[0_8px_40px_rgba(0,0,0,0.05)] transition-all duration-500"
+    >
+      <nav className="w-full max-w-7xl mx-auto flex justify-between items-center px-5 sm:px-6 md:px-8 lg:px-12 h-[68px] sm:h-[72px] md:h-[80px]">
         {/* Molécula LOGO */}
         <Logo />
 
-        {/* Átomos LINKS DESKTOP - Oculto en mobile y tablet */}
-        <div className="hidden lg:flex items-center space-x-6 xl:space-x-10">
+        {/* Átomos LINKS DESKTOP */}
+        <div className="hidden lg:flex items-center space-x-1 xl:space-x-2">
           {navLinks.map((link) => (
             <NavLink key={link.name} {...link} isActive={activeId === link.href} />
           ))}
         </div>
 
-        {/* ✅ BOTÓN HAMBURGUESA: Visible en mobile y tablet (< lg) */}
+        {/* CTA Desktop */}
+        <div className="hidden lg:flex items-center gap-3">
+          <motion.a
+            href="/contact"
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
+            className="relative inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-white bg-primario rounded-full overflow-hidden shadow-md shadow-primario/20 hover:shadow-lg hover:shadow-primario/30 transition-shadow duration-300"
+          >
+            <span className="relative z-10">Únete</span>
+          </motion.a>
+        </div>
+
+        {/* BOTÓN HAMBURGUESA */}
         <div className="lg:hidden">
           <HamburgerButton isOpen={isOpen} onClick={toggleMenu} />
         </div>
       </nav>
 
-      {/* SIDEBAR MÓVIL Y TABLET */}
+      {/* MENÚ MOBILE - FULL SCREEN OVERLAY */}
       <AnimatePresence>
         {isOpen && (
           <>
-            {/* FONDO OSCURECIDO: z-40 (para que el sidebar z-50 quede encima) */}
+            {/* Backdrop */}
             <motion.div
-              className="fixed inset-0 bg-black/30 backdrop-blur-sm z-40"
+              className="fixed inset-0 top-[68px] sm:top-[72px] bg-black/20 backdrop-blur-sm z-40 lg:hidden"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
+              transition={{ duration: 0.25 }}
               onClick={closeMenu}
             />
-            {/* SIDEBAR: z-50 - Responsive width */}
-            <motion.aside
-              className="fixed top-0 right-0 h-full w-64 sm:w-72 md:w-80 bg-white z-50 shadow-2xl flex flex-col"
-              initial={{ x: "100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "100%" }}
-              transition={{ type: "spring", stiffness: 100, damping: 20 }}
+
+            {/* Panel */}
+            <motion.div
+              className="absolute top-full left-0 w-full bg-white z-50 shadow-2xl lg:hidden overflow-hidden"
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.35, ease: [0.16, 0.84, 0.44, 1] }}
             >
-              {/* HEADER SIDEBAR */}
-              <div className="flex items-center justify-between px-4 sm:px-5 py-3 sm:py-4 border-b">
-                <h2 className="text-base sm:text-lg font-semibold text-primario">
-                  Navegación
-                </h2>
-                <button
-                  onClick={closeMenu}
-                  className="p-2 text-primario hover:text-primario-900 transition-colors"
-                  aria-label="Cerrar menú lateral"
-                >
-                  <X size={24} />
-                </button>
-              </div>
-
-              {/* Átomos LINKS MÓVIL */}
-              <div className="flex flex-col px-4 sm:px-5 py-4 sm:py-6 space-y-2 sm:space-y-3">
-                {navLinks.map((link) => (
-                  <IconLink key={link.name} {...link} isActive={activeId === link.href} onClose={closeMenu} />
-                ))}
-              </div>
-
-              <div className="mt-auto border-t p-6">
-                <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">Síguenos</p>
-                <div className="flex items-center space-x-5">
-                  <a href="https://www.facebook.com/share/1ADNfwFbQK/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="p-2 bg-gray-50 rounded-xl text-primario hover:bg-primario hover:text-white transition-all duration-300 shadow-sm" aria-label="Facebook">
-                    <FaFacebookF size={20} />
-                  </a>
-                  <a href="https://www.instagram.com/caminosdepazyesperanza?igsh=MXU1cmFnYmh2bGJtcw%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" className="p-2 bg-gray-50 rounded-xl text-primario hover:bg-primario hover:text-white transition-all duration-300 shadow-sm" aria-label="Instagram">
-                    <FaInstagram size={20} />
-                  </a>
-                  <a href="https://wa.me/573185094789" target="_blank" rel="noopener noreferrer" className="p-2 bg-gray-50 rounded-xl text-primario hover:bg-primario hover:text-white transition-all duration-300 shadow-sm" aria-label="WhatsApp">
-                    <FaWhatsapp size={20} />
-                  </a>
-                  <a href="mailto:funpazyesperanza@gmail.com" className="p-2 bg-gray-50 rounded-xl text-primario hover:bg-primario hover:text-white transition-all duration-300 shadow-sm" aria-label="Gmail">
-                    <SiGmail size={20} />
-                  </a>
+              {/* NAVEGACIÓN LINKS */}
+              <div className="px-5 pt-6 pb-2">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-gray-400 mb-4 px-2">
+                  Menú
+                </p>
+                <div className="flex flex-col gap-1">
+                  {navLinks.map((link, index) => (
+                    <motion.div
+                      key={link.name}
+                      initial={{ opacity: 0, x: -16 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.07, duration: 0.3 }}
+                    >
+                      <IconLink
+                        {...link}
+                        isActive={activeId === link.href}
+                        onClose={closeMenu}
+                      />
+                    </motion.div>
+                  ))}
                 </div>
               </div>
-            </motion.aside>
+
+              {/* CTA MÓVIL */}
+              <motion.div
+                className="px-5 pt-4 pb-6"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.28, duration: 0.3 }}
+              >
+                <a
+                  href="/contact"
+                  onClick={closeMenu}
+                  className="flex items-center justify-center gap-2 w-full py-3.5 bg-primario text-white font-semibold text-sm rounded-2xl shadow-md shadow-primario/25 hover:shadow-lg hover:shadow-primario/35 transition-all duration-300 active:scale-[0.98]"
+                >
+                  Contáctanos
+                  <ChevronRight className="w-4 h-4" />
+                </a>
+              </motion.div>
+
+              {/* FOOTER DEL MENÚ (REDES SOCIALES) */}
+              <motion.div
+                className="px-5 py-6 border-t border-gray-100"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.35, duration: 0.3 }}
+              >
+                <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-gray-400 mb-4 text-center">
+                  Síguenos
+                </p>
+                <div className="flex justify-center items-center gap-3">
+                  {socialLinks.map(({ Icon, href, label }) => (
+                    <motion.a
+                      key={label}
+                      href={href}
+                      aria-label={label}
+                      whileHover={{ scale: 1.12, y: -2 }}
+                      whileTap={{ scale: 0.9 }}
+                      className="w-10 h-10 flex items-center justify-center rounded-xl bg-gray-50 text-gray-500 hover:bg-primario hover:text-white transition-all duration-300 shadow-sm"
+                    >
+                      <Icon className="w-4 h-4" />
+                    </motion.a>
+                  ))}
+                </div>
+              </motion.div>
+            </motion.div>
           </>
         )}
       </AnimatePresence>

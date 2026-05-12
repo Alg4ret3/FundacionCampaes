@@ -1,100 +1,58 @@
-import { Heading } from "../../atoms/typography/Heading";
-import { Paragraph } from "../../atoms/typography/Paragraph";
-import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 interface HeroTextBlockProps {
   isVisible: boolean;
 }
 
 export const HeroTextBlock = ({ isVisible }: HeroTextBlockProps) => {
-  const [run, setRun] = useState(false);
-  const [years, setYears] = useState(0);
-
-  useEffect(() => {
-    if (isVisible) {
-      setTimeout(() => setRun(true), 100);
-
-      // Contador animado de 0 → 8
-      let start = 0;
-      const end = 8;
-      const duration = 1000; 
-      const frameRate = 30;
-
-      const increment = end / (duration / frameRate);
-
-      const interval = setInterval(() => {
-        start += increment;
-        if (start >= end) {
-          start = end;
-          clearInterval(interval);
-        }
-        setYears(Math.floor(start));
-      }, frameRate);
-
-      return () => clearInterval(interval);
-    }
-  }, [isVisible]);
-
   return (
-    <div className="flex flex-col">
-
-      {/* TÍTULO — ANIMACIÓN DESDE LA IZQUIERDA */}
-      <Heading
-        className={`
-          text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl
-          mb-4 sm:mb-5 md:mb-6 font-bold leading-tight
-          text-secundario
-          transition-all duration-[1100ms] ease-[cubic-bezier(.16,.84,.44,1)]
-          ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}
-        `}
-        style={{ transitionDelay: "0.05s" }}
+    <div className="flex flex-col items-start text-left">
+      
+      {/* ── Minimalist Eyebrow ── */}
+      <motion.div
+        initial={{ opacity: 0, x: -20 }}
+        animate={isVisible ? { opacity: 1, x: 0 } : {}}
+        transition={{ duration: 0.8, delay: 0.2 }}
+        className="flex items-center gap-4 mb-8"
       >
-        Construyendo
-        <span className="block bg-clip-text text-transparent bg-gradient-to-r from-primario to-secundario">
-          paz sostenible
+        <span className="w-10 h-px bg-primario" />
+        <span className="text-primario text-xs font-black uppercase tracking-[0.5em]">
+          Fundación Campaes
         </span>
-        desde nuestro territorio
-      </Heading>
+      </motion.div>
 
-      {/* PÁRRAFO */}
-      <Paragraph
-        className={`
-          text-sm sm:text-base md:text-base lg:text-lg text-texto/70 max-w-2xl
-          transition-all duration-[1000ms] ease-[cubic-bezier(.16,.84,.44,1)]
-          ${run ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}
-        `}
-        style={{ transitionDelay: "0.18s" }}
+      {/* ── Main Heading: Bold & Clean ── */}
+      <motion.h1
+        initial={{ opacity: 0, y: 30 }}
+        animate={isVisible ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 1, delay: 0.4 }}
+        className="text-7xl font-black text-white leading-[0.9] tracking-tighter mb-8 uppercase"
       >
-        Durante más de 8 años, hemos trabajado incansablemente en la construcción
-        de paz sostenible, el desarrollo socioeconómico y la protección del
-        ambiente en nuestros territorios.
-      </Paragraph>
-
-      {/* TIMELINE + CONTADOR */}
-      <div className="mt-3 sm:mt-4 md:mt-6 flex items-center gap-2 sm:gap-3">
-
-        {/* Línea animada */}
-        <div
-          className={`
-            h-[4px] rounded-full bg-primario/80 origin-left
-            transition-all duration-[1200ms] ease-[cubic-bezier(.16,.84,.44,1)]
-            ${run ? "opacity-100 scale-x-100 w-28" : "opacity-0 scale-x-0 w-0"}
-          `}
-          style={{ transitionDelay: "0.32s" }}
-        />
-
-        {/* Contador numérico */}
-        <span
-          className={`
-            text-primario font-bold text-xl tracking-wide
-            transition-all duration-[900ms]
-            ${run ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"}
-          `}
-          style={{ transitionDelay: "0.55s" }}
-        >
-          {years} años
+        Construyendo <br />
+        <span className="text-white/80">
+           Paz Sostenible
         </span>
-      </div>
+      </motion.h1>
+
+      {/* ── Descriptive Text ── */}
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={isVisible ? { opacity: 1 } : {}}
+        transition={{ duration: 1, delay: 0.6 }}
+        className="text-white/90 text-lg lg:text-lg font-light max-w-xl leading-relaxed mb-4"
+      >
+        Impulsamos el desarrollo socioeconómico y la protección del ambiente en nuestros territorios a través de la esperanza y la acción colectiva.
+      </motion.p>
+      
+      {/* ── Subtle Tagline ── */}
+      <motion.span
+        initial={{ opacity: 0 }}
+        animate={isVisible ? { opacity: 0.6 } : {}}
+        transition={{ duration: 1, delay: 0.8 }}
+        className="text-white text-xs font-bold uppercase tracking-[0.4em]"
+      >
+        Desde 2018 al servicio del territorio
+      </motion.span>
     </div>
   );
 };

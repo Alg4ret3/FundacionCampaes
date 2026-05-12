@@ -1,5 +1,4 @@
 import React from "react";
-import { Menu, X } from "lucide-react";
 
 interface HamburgerButtonProps {
   isOpen: boolean;
@@ -13,44 +12,45 @@ export const HamburgerButton: React.FC<HamburgerButtonProps> = ({
   <button
     onClick={onClick}
     aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
-    className={`lg:hidden p-2 sm:p-2.5 rounded-md transition-all duration-300 ease-out
-      ${isOpen 
-        ? 'bg-primario/10 text-primario' 
-        : 'text-primario/70 hover:text-primario hover:bg-primario/5'
-      }
-      focus:outline-none focus:ring-2 focus:ring-primario/30 focus:ring-offset-0
-    `}
+    className="lg:hidden relative w-10 h-10 flex items-center justify-center text-primario transition-colors duration-300 focus:outline-none"
   >
-    {isOpen ? (
-      <X className="w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-300 rotate-90" />
-    ) : (
-      <Menu className="w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-300" />
-    )}
+    <div className="relative w-6 h-4 flex flex-col justify-between overflow-hidden">
+      {/* Top line */}
+      <span
+        className={`w-full h-[1.5px] bg-current rounded-full transition-all duration-300 origin-center ${
+          isOpen ? 'rotate-45 translate-y-[7px]' : ''
+        }`}
+      />
+      {/* Middle line */}
+      <span
+        className={`w-full h-[1.5px] bg-current rounded-full transition-all duration-300 origin-center ${
+          isOpen ? 'translate-x-8 opacity-0' : ''
+        }`}
+      />
+      {/* Bottom line */}
+      <span
+        className={`w-full h-[1.5px] bg-current rounded-full transition-all duration-300 origin-center ${
+          isOpen ? '-rotate-45 -translate-y-[7px]' : ''
+        }`}
+      />
+    </div>
   </button>
 );
 
 /*
   Componente: HamburgerButton
   ---------------------------------------------------------
-  Este componente representa un botón de menú hamburguesa,
-  utilizado principalmente en versiones móviles.
+  Botón hamburguesa animado que se transforma en X.
 
   Props:
-    - isOpen: booleano que indica si el menú está abierto.
-    - onClick: función que activa la apertura/cierre del menú.
+    - isOpen: indica si el menú está abierto (activa la animación a X).
+    - onClick: función para abrir/cerrar el menú.
 
-  Funcionamiento:
-    - Si isOpen es true, muestra el ícono <X /> para cerrar.
-    - Si isOpen es false, muestra el ícono <Menu /> para abrir.
-    - Cambia el aria-label dinámicamente para accesibilidad.
+  Animación:
+    - Las líneas se transforman suavemente en X al abrir.
+    - Transición de 300ms para un efecto fluido.
 
   Estilos:
-    - md:hidden: solo visible en pantallas pequeñas.
-    - p-2 y rounded-lg: espaciado y bordes redondeados.
-    - text-primario: color configurado en Tailwind.
-    - hover:bg-gray-100: efecto hover sutil.
-    - transition-all duration-200: transición suave.
-
-  Uso recomendado:
-    <HamburgerButton isOpen={isOpen} onClick={toggleMenu} />
+    - Diseño minimalista con spans animados.
+    - Colores de la paleta primaria.
 */

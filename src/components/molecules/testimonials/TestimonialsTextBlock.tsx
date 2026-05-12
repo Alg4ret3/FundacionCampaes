@@ -1,59 +1,35 @@
-import { Badge } from "../../atoms/layout/Badge";
 import { Heading } from "../../atoms/typography/Heading";
 import { Paragraph } from "../../atoms/typography/Paragraph";
+import { motion } from "framer-motion";
 
-interface TestimonialsTextBlockProps {
-  isVisible: boolean;
-  titleClassName?: string;
-  subtitleClassName?: string;
-}
-
-export const TestimonialsTextBlock = ({ 
-  isVisible, 
-  titleClassName = "", 
-  subtitleClassName = "" 
-}: TestimonialsTextBlockProps) => {
+export const TestimonialsTextBlock = () => {
   return (
-    <div className="mb-20 text-center">
-      <Badge
-        className={`mb-6 ${
-          isVisible ? "opacity-100 scale-100" : "opacity-0 scale-90"
-        }`}
+    <div className="text-center max-w-2xl mx-auto">
+      {/* Small minimalist label */}
+      <motion.span 
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        className="text-[10px] font-black uppercase tracking-[0.5em] text-gray-300 block mb-6"
       >
-        <span className="w-2 h-2 rounded-full bg-primario"></span>
-        <span>Historias de impacto</span>
-      </Badge>
+        Historias Reales
+      </motion.span>
 
-      {/* TÍTULO */}
-      <Heading
-        className={`
-          ${titleClassName || "text-3xl md:text-4xl lg:text-5xl font-bold"}
-          text-center mb-10 text-secundario
-          transition-all duration-[1100ms] ease-[cubic-bezier(.16,.84,.44,1)]
-          ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-          }
-        `}
-        style={{ transitionDelay: "0.05s" }}
-      >
+      {/* Clean Heading */}
+      <Heading className="text-4xl md:text-5xl font-black text-gray-900 leading-tight mb-8">
         Voces de quienes{" "}
-        <span className="text-primario">
+        <span className="relative inline-block">
           ya dieron el paso
+          <motion.span 
+            initial={{ width: 0 }}
+            whileInView={{ width: "100%" }}
+            className="absolute -bottom-1 left-0 h-[2px] bg-primario/40"
+          />
         </span>
       </Heading>
 
-      {/* PÁRRAFO */}
-      <Paragraph
-        className={`
-          ${subtitleClassName || "text-base md:text-lg"}
-          text-texto/70 max-w-3xl mx-auto leading-relaxed
-          transition-all duration-[1000ms] ease-[cubic-bezier(.16,.84,.44,1)]
-          ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}
-        `}
-        style={{ transitionDelay: "0.18s" }}
-      >
-        Conoce las historias de quienes confiaron en nosotros y experimentaron
-        un cambio real. Sus experiencias reflejan nuestro compromiso y la pasión que ponemos en cada proyecto.
+      {/* Subtle Paragraph */}
+      <Paragraph className="text-gray-400 text-base md:text-lg font-light leading-relaxed">
+        Experiencias que reflejan nuestro compromiso y la pasión que ponemos en cada proyecto.
       </Paragraph>
     </div>
   );

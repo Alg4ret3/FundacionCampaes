@@ -6,13 +6,7 @@ import { MapPin, Phone, Mail } from "lucide-react";
 
 export const Footer = () => {
   return (
-    <footer className="bg-oscuro text-fondo relative overflow-hidden">
-      {/* Fondo decorativo con blur sutil */}
-      <div className="absolute inset-0">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 sm:w-80 md:w-96 h-64 sm:h-80 md:h-96 bg-primario/20 rounded-full blur-2xl sm:blur-3xl"></div>
-        <div className="absolute bottom-0 right-0 w-60 sm:w-72 md:w-80 h-60 sm:h-72 md:h-80 bg-acento/20 rounded-full blur-2xl sm:blur-3xl"></div>
-      </div>
-
+    <footer className="bg-texto text-fondo relative overflow-hidden border-t border-claro/10">
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 py-12 sm:py-16 md:py-20 lg:py-24 relative z-10">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 md:gap-12 lg:gap-16 mb-12 sm:mb-14 md:mb-16 lg:mb-20">
           {/* Logo y descripción */}

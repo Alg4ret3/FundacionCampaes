@@ -1,26 +1,30 @@
-
+import { lazy, Suspense } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import ScrollToTop from './components/atoms/misc/ScrollToTop';
 import HomePage from './pages/HomePage';
+import { WhatsAppButton } from './components/atoms/buttons/WhatsAppButton';
+
+const AboutPage = lazy(() => import('./pages/AboutPage'));
+const ActionActivitiesPage = lazy(() => import('./pages/ActionActivitiesPage'));
+const ContactPage = lazy(() => import('./pages/ContactPage'));
 
 function App() {
-  // En aplicaciones más grandes, aquí irían los Routers (ej. React Router)
-  // Pero por ahora, simplemente montamos la página principal.
   return (
-    <div className="AppRoot">
-      <HomePage />
-    </div>
+    <Router>
+      <ScrollToTop />
+      <div className="AppRoot">
+        <Suspense fallback={<div className="min-h-screen bg-white" />}>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/action-activities" element={<ActionActivitiesPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+          </Routes>
+        </Suspense>
+        <WhatsAppButton />
+      </div>
+    </Router>
   );
 }
 
 export default App;
-
-/*
-  Archivo principal de la aplicación (`App.tsx`).
-
-  Este archivo importa la página principal `HomePage` y la renderiza dentro 
-  de un contenedor raíz (`div` con clase `AppRoot`).
-
-  Estructura:
-    <div className="AppRoot">
-      <HomePage />  // Página principal que contiene toda la estructura y secciones
-    </div>
-*/

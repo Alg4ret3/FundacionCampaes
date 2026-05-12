@@ -1,52 +1,51 @@
-import { Badge } from "../../atoms/layout/Badge";
-import { Heading } from "../../atoms/typography/Heading";
-import { Paragraph } from "../../atoms/typography/Paragraph";
 import { motion } from "framer-motion";
 
-interface Props {
-  isVisible: boolean;
-}
-
-export const ImpactTextBlock = ({ isVisible }: Props) => {
+export const ImpactTextBlock = () => {
   return (
-    <div className="mb-12 text-center px-4 sm:px-6 lg:px-8">
-      {/* Badge animado */}
+    <div className="text-center max-w-5xl mx-auto">
       <motion.div
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={isVisible ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
-        transition={{ duration: 0.5 }}
-        className="mb-6 inline-block"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="flex items-center justify-center gap-3 mb-6"
       >
-        <Badge className="flex items-center gap-2 px-4 py-1.5 rounded-full bg-primario/20 text-white/90 font-semibold shadow-sm">
-          <span className="w-3 h-3 rounded-full bg-primario animate-pulse"></span>
-          <span>Estadísticas de Éxito</span>
-        </Badge>
+        <span className="h-[1px] w-8 bg-primario" />
+        <span className="text-primario text-xs font-black uppercase tracking-[0.4em] bg-surface px-4 py-1.5 rounded-full border border-divider">
+          Conoce nuestras actividades
+        </span>
+        <span className="h-[1px] w-8 bg-primario" />
       </motion.div>
 
-      {/* TÍTULO */}
-      <Heading
-        className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-center mb-6
-          transition-all duration-[1100ms] ease-[cubic-bezier(.16,.84,.44,1)]
-          ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}
-        `}
-        style={{ transitionDelay: "0.05s" }}
+      <motion.h2
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        className="text-4xl lg:text-4xl font-black text-texto leading-[1.1] mb-8 uppercase tracking-tighter"
       >
-        Nuestro impacto{" "}
-        <span className="bg-clip-text text-transparent bg-gradient-to-r from-primario to-acento drop-shadow-md">
-          en números
+        Cifras, realidades y voces <br className="hidden md:block" />
+        <span className="relative inline-block text-primario">
+          que transforman el territorio
+          <motion.span 
+            initial={{ width: 0 }}
+            whileInView={{ width: "100%" }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.8 }}
+            className="absolute -bottom-2 left-0 h-1.5 bg-primario/10 rounded-full"
+          />
         </span>
-      </Heading>
+      </motion.h2>
 
-      {/* PÁRRAFO */}
-      <Paragraph
-        className={`text-sm sm:text-base md:text-lg lg:text-xl text-white/80 max-w-3xl mx-auto leading-relaxed
-          transition-all duration-[1000ms] ease-[cubic-bezier(.16,.84,.44,1)]
-          ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"}
-        `}
-        style={{ transitionDelay: "0.18s" }}
+      <motion.p
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, delay: 0.4 }}
+        className="text-gray-500 text-lg lg:text-lg leading-relaxed font-light max-w-4xl mx-auto"
       >
-        Resultados tangibles que demuestran nuestro compromiso con la paz sostenible, evidenciando el impacto positivo de cada iniciativa y proyecto que emprendemos. Transformamos vidas y fortalecemos comunidades de manera significativa y duradera.
-      </Paragraph>
+        Cada número, rostro y palabra representa una semilla de paz que germina en nuestras comunidades, consolidando un camino de esperanza y desarrollo sostenible.
+      </motion.p>
     </div>
   );
 };

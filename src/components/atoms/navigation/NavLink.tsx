@@ -1,5 +1,5 @@
 import React from "react";
-import { handleSmoothScroll } from "../../../utils/SmoothScroll";
+import { Link } from "react-router-dom";
 
 interface NavLinkProps {
   name: string;
@@ -8,39 +8,28 @@ interface NavLinkProps {
 }
 
 export const NavLink: React.FC<NavLinkProps> = ({ name, href, isActive = false }) => {
-
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-    handleSmoothScroll(e, href);
-  };
-
   return (
-    <a
-      href={href}
-      onClick={handleClick}
-      className={`relative text-sm md:text-base transition-all duration-300 pb-3 group ${
-        isActive 
-          ? "text-primario font-bold" 
-          : "text-gray-600 hover:text-primario font-medium"
+    <Link
+      to={href}
+      className={`relative px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 group ${
+        isActive
+          ? "text-primario bg-primario/8"
+          : "text-gray-600 hover:text-primario hover:bg-primario/5"
       }`}
     >
       {name}
-      {/* Indicador impactante */}
+      {/* Indicador activo */}
       <span
-        className={`absolute left-0 bottom-0 h-1 w-0 bg-primario transition-all duration-400 ease-out rounded-full ${
-          isActive ? "w-full shadow-lg shadow-primario/50" : "group-hover:w-full opacity-40"
+        className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] rounded-full bg-primario transition-all duration-300 ${
+          isActive ? "w-4" : "w-0 group-hover:w-4"
         }`}
       />
-    </a>
+    </Link>
   );
 };
 
 /*
-  Componente NavLink:
-  - Recibe el nombre visible del enlace y su destino (href) hacia una sección del sitio.
-  - Detecta si la sección vinculada está actualmente visible en el viewport usando un listener de scroll.
-  - Cuando la sección está en el centro de la pantalla, el enlace se marca como activo.
-  - Al hacer click, activa un scroll suave hacia la sección usando handleSmoothScroll.
-  - Se aplica un estilo dinámico: texto en primario si está activo, gris si no.
-  - Incluye una animación de subrayado que aparece al estar activo o al pasar el cursor.
-  - Útil para barras de navegación con navegación por secciones en landing pages.
+  NavLink mejorado:
+  - Pill background en hover / estado activo
+  - Indicador puntual centrado en lugar de subrayado full-width
 */

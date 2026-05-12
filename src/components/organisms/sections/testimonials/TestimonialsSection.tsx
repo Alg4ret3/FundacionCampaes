@@ -1,86 +1,77 @@
-import { useScrollAnimation } from "../../../../hooks/useScrollAnimation";
-import { TestimonialCard } from "../../../molecules/testimonials/TestimonialCard";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { testimonials } from "../../../../constants/DataTestimonials";
-import { TestimonialsTextBlock } from "../../../molecules/testimonials/TestimonialsTextBlock";
-import { motion } from "framer-motion";
-import { TypingQuote } from "../../../molecules/testimonials/TypingQuote";
-import { SectionDivider } from "../../../atoms/misc/SectionDivider";
+import { TestimonialCard } from "../../../molecules/testimonials/TestimonialCard";
 
 export const TestimonialsSection = () => {
-  const { ref, isVisible } = useScrollAnimation();
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const nextTestimonial = () => {
+    setActiveIndex((prev) => (prev + 1) % testimonials.length);
+  };
+
+  useEffect(() => {
+    const timer = setInterval(nextTestimonial, 10000);
+    return () => clearInterval(timer);
+  }, []);
 
   return (
-    <section
-      ref={ref}
-      className="relative py-20 md:py-28 lg:py-36 bg-white overflow-hidden"
-    >
-      <SectionDivider variant="wave" color="fill-fondo" className="top-0 -translate-y-full" />
+    <section id="testimonials" className="relative bg-white pt-24 md:pt-40 pb-32 md:pb-48 overflow-hidden">
+      
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6">
+        
+        {/* Subtle Section Label */}
+        <div className="mb-20 text-center">
+          <motion.div 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-4"
+          >
+            <span className="w-8 h-px bg-gray-100" />
+            <span className="text-gray-300 text-[10px] font-black uppercase tracking-[0.6em]">
+              Testimonios
+            </span>
+            <span className="w-8 h-px bg-gray-100" />
+          </motion.div>
+        </div>
 
+        {/* ── Ultra Minimalist Showcase ── */}
+        <div className="relative h-[500px] md:h-[450px]">
+          <AnimatePresence mode="wait">
+            <TestimonialCard 
+              key={testimonials[activeIndex].id}
+              testimonial={testimonials[activeIndex]}
+              isActive={true}
+            />
+          </AnimatePresence>
+        </div>
 
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 relative z-10">
-        {/* Título y subtítulo */}
-        <motion.div
-          className="mb-12 sm:mb-16 md:mb-20 lg:mb-24 text-center"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-        >
-          <TestimonialsTextBlock
-            titleClassName="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-oscuro tracking-tight"
-            subtitleClassName="text-sm sm:text-base md:text-lg text-secundario mt-3 sm:mt-4 md:mt-6 max-w-2xl mx-auto"
-            isVisible={isVisible}
-          />
-        </motion.div>
-
-        {/* Grid de testimonios - Vertical on mobile/tablet, 3 cols on desktop */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-10 lg:gap-12">
-          {testimonials.map((testimonial: any, index: number) => (
-            <motion.div
-              key={testimonial.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{
-                opacity: isVisible ? 1 : 0,
-                y: isVisible ? 0 : 20,
-              }}
-              transition={{
-                delay: 0.2 + index * 0.1,
-                duration: 0.6,
-                ease: "easeOut",
-              }}
+        {/* ── Minimalist Navigation Dots ── */}
+        <div className="flex justify-center items-center gap-6 mt-16">
+          {testimonials.map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => setActiveIndex(idx)}
+              className="group relative p-2"
+              aria-label={`Go to testimonial ${idx + 1}`}
             >
-              <TestimonialCard
-                testimonial={testimonial}
-                isVisible={isVisible}
-                delay={0.2 + index * 0.1}
-                className={`
-                  rounded-lg sm:rounded-xl md:rounded-2xl p-6 sm:p-8 md:p-10 bg-white border border-claro/20
-                  shadow-sm hover:shadow-md
-                  transition-all duration-300
-                `}
-              />
-            </motion.div>
+              <div className={`transition-all duration-500 rounded-full ${
+                activeIndex === idx 
+                ? "w-2.5 h-2.5 bg-primario" 
+                : "w-2 h-2 bg-gray-100 group-hover:bg-gray-200"
+              }`} />
+              
+              {activeIndex === idx && (
+                <motion.div 
+                  layoutId="activeRing"
+                  className="absolute inset-0 border border-primario/20 rounded-full scale-150"
+                />
+              )}
+            </button>
           ))}
         </div>
 
-        {/* 🌟 Final de sección */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
-          transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
-          className="relative mt-16 sm:mt-20 md:mt-24 lg:mt-28 flex flex-col items-center"
-        >
-          {/* Línea sutil */}
-          <div className="h-px w-24 sm:w-32 md:w-40 bg-primario/30 mb-6 sm:mb-8"></div>
-
-          {/* Texto final */}
-          <TypingQuote
-            text="Sus palabras impulsan la evolución de todo lo que hacemos."
-            className="text-center text-oscuro text-base sm:text-lg md:text-xl font-medium max-w-2xl leading-relaxed mx-auto px-4"
-            speed={35} 
-            startDelay={2000} 
-            showCursor={false}
-          />
-        </motion.div>
       </div>
     </section>
   );

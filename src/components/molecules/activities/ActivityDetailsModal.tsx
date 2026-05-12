@@ -1,8 +1,6 @@
-import { ModalBase } from "../../atoms/layout/ModalBase";
-import { getCategoryStyles } from "../../../utils/CategoryUtils";
+import { motion, AnimatePresence } from "framer-motion";
+import { X } from "lucide-react";
 import { Activity } from "../../../types";
-
-import { getCloudinaryUrl } from "../../../utils/cloudinary";
 
 interface Props {
   activity: Activity | null;
@@ -10,43 +8,96 @@ interface Props {
 }
 
 export const ActivityDetailsModal = ({ activity, onClose }: Props) => {
-  if (!activity) return null;
-  const styles = getCategoryStyles(activity.category);
-
   return (
-    <ModalBase open={!!activity} onClose={onClose} themeColor={styles.primary}>
-      <div className="pt-8 sm:pt-12 pb-8 px-4 sm:px-6">
-        {activity.image && (
-          <img
-            src={getCloudinaryUrl(activity.image, { width: 1000, crop: "fill" })}
-            className="w-full h-52 sm:h-64 md:h-72 rounded-2xl object-cover mb-6 shadow-lg transition-all duration-300"
-          />
-        )}
+    <AnimatePresence>
+      {activity && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="activity-modal-title"
+          className="fixed inset-0 bg-white z-[200] overflow-y-auto"
+        >
+          {/* Close Button: Absolute and minimal */}
+          <div className="fixed top-8 right-8 z-50">
+             <button 
+              onClick={onClose}
+              aria-label="Cerrar detalle de actividad"
+              className="w-12 h-12 flex items-center justify-center text-gray-400 hover:text-primario transition-colors focus:ring-2 focus:ring-primario rounded-full outline-none"
+             >
+               <X className="w-8 h-8" />
+             </button>
+          </div>
 
-        <span className={`px-4 py-1 ${styles.bg} ${styles.text} rounded-full text-xs font-semibold mb-4 inline-block uppercase tracking-wide border ${styles.border}`}>
-          {activity.category}
-        </span>
+          <div className="min-h-screen flex flex-col lg:flex-row">
+            
+            {/* Left: Immense Image */}
+            <div className="lg:flex-1 h-[50vh] lg:h-screen sticky top-0 overflow-hidden">
+               <motion.img 
+                initial={{ scale: 1.1 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 1.5 }}
+                src={activity.image} 
+                alt={`Imagen representativa de ${activity.title}`}
+                loading="lazy"
+                className="w-full h-full object-cover"
+               />
+               <div className="absolute inset-0 bg-black/5" />
+            </div>
 
-        <h2 className={`text-xl sm:text-2xl md:text-3xl font-extrabold mb-4`} style={{ color: styles.primary }}>
-          {activity.title}
-        </h2>
+            {/* Right: Narrative Content */}
+            <div className="lg:flex-1 bg-white px-8 md:px-20 py-20 md:py-32 flex flex-col justify-center">
+               <div className="max-w-xl mx-auto space-y-12">
+                  
+                  {/* Category & Date */}
+                  <div className="flex items-center justify-between">
+                    <span className="text-primario text-[10px] font-black uppercase tracking-[0.6em]">
+                      {activity.category}
+                    </span>
+                    <span className="text-gray-300 text-sm font-light">
+                      {new Date(activity.date).toLocaleDateString("es-ES", {
+                        year: "numeric",
+                        month: "long",
+                      })}
+                    </span>
+                  </div>
 
-        <p className={`text-xs sm:text-sm md:text-base ${styles.textHeavy} opacity-80 mb-4`}>
-          {new Date(activity.date).toLocaleDateString("es-ES", {
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-          })}
-        </p>
+                  {/* Title */}
+                  <h2 id="activity-modal-title" className="text-5xl md:text-7xl font-black text-gray-900 uppercase tracking-tighter leading-[0.85]">
+                    {activity.title}
+                  </h2>
 
-        <div className={`w-16 sm:w-18 md:w-20 h-1 rounded-full mb-6`} style={{ backgroundColor: styles.primary }}></div>
+                  {/* Divider */}
+                  <div className="w-16 h-1 bg-primario" aria-hidden="true" />
 
-        {activity.extraText && (
-          <p className="text-xs sm:text-sm md:text-base text-texto/80 leading-relaxed mt-4 whitespace-pre-line">
-            {activity.extraText}
-          </p>
-        )}
-      </div>
-    </ModalBase>
+                  {/* Description */}
+                  <div className="space-y-8">
+                    <p className="text-gray-600 text-xl md:text-2xl font-light leading-relaxed">
+                      {activity.description}
+                    </p>
+                    
+                    {activity.extraText && (
+                      <div className="pt-10 border-t border-gray-50">
+                        <p className="text-gray-500 text-lg font-light leading-relaxed whitespace-pre-line">
+                          {activity.extraText}
+                        </p>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Footer Decoration */}
+                  <div className="pt-20">
+                     <span className="text-[10px] font-black text-primario/40 uppercase tracking-[0.5em]">
+                       Fundación Campaes — Territorio de Paz
+                     </span>
+                  </div>
+               </div>
+            </div>
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 };

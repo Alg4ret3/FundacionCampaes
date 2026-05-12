@@ -2,70 +2,80 @@
  * ==========================================================================
  * TAILWIND CONFIGURATION - tailwind.config.js
  * ==========================================================================
- *
- * @type {import('tailwindcss').Config}
- *
- * Este archivo configura TailwindCSS para el proyecto, incluyendo:
- * - Contenido que Tailwind debe escanear para generar clases
- * - Extensiones de temas: colores personalizados y fuentes
- * - Plugins adicionales para scroll moderno
  */
 
 export default {
-  // Archivos que Tailwind debe escanear para generar clases
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
 
   theme: {
-    // ==========================================================================
-    // BREAKPOINTS PERSONALIZADOS - MOBILE FIRST
-    // ==========================================================================
+    // 🌍 Configuración Global (Sobrescribe los valores por defecto de Tailwind)
     screens: {
-      'xs': '320px',    // Extra small devices (muy pequeños)
-      'sm': '640px',    // Mobile landscape / Tablet pequeño (Breakpoint de Tailwind)
-      'md': '768px',    // Tablet portrait (Breakpoint de Tailwind)
-      'lg': '1024px',   // Desktop pequeño (Breakpoint de Tailwind)
-      'xl': '1280px',   // Desktop (Breakpoint de Tailwind)
-      '2xl': '1536px',  // Desktop grande
+      'xs': '320px',
+      'sm': '640px',
+      'md': '768px',
+      'lg': '1024px',
+      'xl': '1280px',
+      '2xl': '1536px',
+    },
+
+    // 🎨 Colores de Marca y Superficies Consolidados
+    colors: {
+      transparent: 'transparent',
+      current: 'currentColor',
+      white: '#FFFFFF',
+      black: '#000000',
+      primario: '#37B6BA',
+      acento: '#46CDD1',
+      secundario: '#318D8F',
+      oscuro: '#1A656B',
+      texto: '#1A1A1A',
+      surface: '#F9FAFB',
+      divider: '#E5E7EB',
+      gray: {
+        500: '#6B7280', // Único gris de texto permitido para narrativa
+        300: '#D1D5DB', // Para detalles muy sutiles
+      },
+      red: {
+        500: '#EF4444', // Para errores
+        400: '#F87171',
+      },
+      green: {
+        400: '#4ADE80', // Para WhatsApp
+        500: '#22C55E',
+      }
+    },
+
+    // ✍️ Escala Tipográfica Estricta (Sin solapamientos)
+    fontSize: {
+      'xs': ['10px', '1.5'],
+      'sm': ['14px', '1.6'],
+      'lg': ['18px', '1.6'],
+      '2xl': ['24px', '1.2'],
+      '4xl': ['40px', '1.1'],
+      '7xl': ['72px', '1.0'],
+    },
+
+    // ⚖️ Pesos de Fuente Radicales
+    fontWeight: {
+      light: '300',
+      bold: '700',
+      black: '900',
     },
 
     extend: {
-      // ==========================================================================
-      // COLORES PERSONALIZADOS
-      // ==========================================================================
-      colors: {
-        primario: '#37B6BA',   // Cian principal
-        claro: '#D4DADE',      // Cian muy claro
-        acento: '#46CDD1',     // Cian brillante para detalles
-        secundario: '#318D8F', // Cian oscuro medio
-        oscuro: '#1A656B',     // Cian oscuro profundo
-        texto: '#1A1A1A',      // Gris oscuro para texto
-        fondo: '#FFFFFF',      // Blanco limpio
-      },
-
-      // ==========================================================================
-      // FUENTES PERSONALIZADAS
-      // ==========================================================================
       fontFamily: {
-        // elegant: ['"Great Vibes"', 'cursive'],  
-        sanscustom: ['Montserrat', 'sans-serif'], // Para el texto secundario
+        sans: ['Inter', 'sans-serif'],
       },
-
-      // ==========================================================================
-      // ESPACIOS RESPONSIVOS
-      // ==========================================================================
       spacing: {
-        'px-mobile': '1rem',    // 16px - móvil
-        'px-tablet': '2rem',    // 32px - tablet
-        'px-desktop': '3rem',   // 48px - desktop
+        'px-mobile': '1rem',
+        'px-tablet': '2rem',
+        'px-desktop': '3rem',
       },
     },
   },
 
-  // ==========================================================================
-  // PLUGINS
-  // ==========================================================================
   plugins: [
-    require('tailwind-scrollbar'),        // Scroll moderno con personalización de thumb/track
-    require('tailwind-scrollbar-hide'),   // Opcional: para ocultar scroll en ciertos contenedores
+    require('tailwind-scrollbar'),
+    require('tailwind-scrollbar-hide'),
   ],
 };
