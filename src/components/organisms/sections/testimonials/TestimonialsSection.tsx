@@ -37,7 +37,7 @@ export const TestimonialsSection = () => {
         </div>
 
         {/* ── Ultra Minimalist Showcase ── */}
-        <div className="relative h-[500px] md:h-[450px]">
+        <div className="relative min-h-[500px] md:min-h-[450px] flex items-center justify-center">
           <AnimatePresence mode="wait">
             <TestimonialCard 
               key={testimonials[activeIndex].id}
@@ -46,6 +46,7 @@ export const TestimonialsSection = () => {
             />
           </AnimatePresence>
         </div>
+
 
         {/* ── Minimalist Navigation Dots ── */}
         <div className="flex justify-center items-center gap-6 mt-16">

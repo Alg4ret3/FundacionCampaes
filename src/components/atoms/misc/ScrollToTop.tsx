@@ -5,8 +5,14 @@ const ScrollToTop = () => {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    // Forzamos el scroll instantáneo al inicio (ignora el smooth scroll del CSS)
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'instant' as ScrollBehavior
+    });
   }, [pathname]);
+
 
   return null;
 };

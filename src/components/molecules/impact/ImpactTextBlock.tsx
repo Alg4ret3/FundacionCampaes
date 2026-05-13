@@ -12,7 +12,7 @@ export const ImpactTextBlock = () => {
       >
         <span className="h-[1px] w-8 bg-primario" />
         <span className="text-primario text-xs font-black uppercase tracking-[0.4em] bg-surface px-4 py-1.5 rounded-full border border-divider">
-          Conoce nuestras actividades
+          Conoce nuestro impacto
         </span>
         <span className="h-[1px] w-8 bg-primario" />
       </motion.div>
@@ -24,7 +24,7 @@ export const ImpactTextBlock = () => {
         transition={{ duration: 0.6, delay: 0.2 }}
         className="text-4xl lg:text-4xl font-black text-texto leading-[1.1] mb-8 uppercase tracking-tighter"
       >
-        Cifras, realidades y voces <br className="hidden md:block" />
+        Cifras y voces <br className="hidden md:block" />
         <span className="relative inline-block text-primario">
           que transforman el territorio
           <motion.span 

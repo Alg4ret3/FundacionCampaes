@@ -53,9 +53,10 @@ export const ImpactStatCard = ({
         </div>
 
         <div className="relative mb-6 w-full overflow-visible">
-          <div className="text-7xl font-black tracking-tighter text-texto leading-none group-hover:text-primario transition-colors duration-700 whitespace-nowrap" style={{ fontVariantNumeric: "tabular-nums" }}>
+          <div className="text-5xl md:text-7xl font-black tracking-tighter text-texto leading-none group-hover:text-primario transition-colors duration-700 sm:whitespace-nowrap" style={{ fontVariantNumeric: "tabular-nums" }}>
             <AnimatedNumber value={value} />
           </div>
+
           {/* Subtle line that expands on hover */}
           <motion.div 
             initial={{ width: 0 }}

@@ -24,8 +24,9 @@ export const TestimonialCard = ({ testimonial, isActive }: TestimonialCardProps)
       }}
       exit={{ opacity: 0, y: -10 }}
       transition={{ duration: 0.8, ease: [0.2, 0, 0.2, 1] }}
-      className={`absolute inset-0 flex items-center justify-center pointer-events-none ${isActive ? 'pointer-events-auto' : ''}`}
+      className={`relative w-full flex items-center justify-center ${isActive ? '' : 'hidden'}`}
     >
+
       <div className="w-full max-w-4xl flex flex-col items-center text-center px-6">
         
         {/* Large Portrait Image - Ultra Minimalist Circle */}

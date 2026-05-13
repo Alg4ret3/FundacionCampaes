@@ -13,7 +13,7 @@ export const Footer = () => {
 
       <div className="w-full max-w-7xl mx-auto px-6 md:px-12 py-20 md:py-24 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-8">
-          
+
           {/* Columna de Marca y Misión */}
           <section className="lg:col-span-5 flex flex-col" aria-label="Sobre la Fundación">
             <FooterLogo />
@@ -72,11 +72,11 @@ export const Footer = () => {
               Compromiso con el cambio social
             </small>
           </div>
-          
+
           <div className="flex gap-10 items-center">
             <div className="flex items-center gap-2 text-gray-500">
-               <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
-               <span className="text-[10px] uppercase tracking-widest">Sede Activa</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
+              <span className="text-[10px] uppercase tracking-widest">Sede Activa</span>
             </div>
           </div>
         </div>

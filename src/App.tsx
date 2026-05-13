@@ -11,8 +11,9 @@ const ContactPage = lazy(() => import('./pages/ContactPage'));
 function App() {
   return (
     <Router>
-      {/* <ScrollToTop /> - Desactivado por solicitud del usuario */}
+      <ScrollToTop />
       <div className="AppRoot">
+
 
         <Suspense fallback={<div className="min-h-screen bg-white" />}>
           <Routes>

@@ -50,8 +50,8 @@ export const ContactForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-12 w-full max-w-xl mx-auto">
-      <div className="space-y-14">
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-10 md:space-y-12 w-full max-w-xl mx-auto">
+      <div className="space-y-10 md:space-y-14">
         
         {/* Name Input */}
         <div className="relative group">
@@ -59,11 +59,12 @@ export const ContactForm = () => {
             {...register("name")}
             type="text"
             autoComplete="name"
-            className={`w-full bg-transparent border-b py-4 outline-none transition-all duration-500 text-lg font-light
+            className={`w-full bg-transparent border-b py-3 md:py-4 outline-none transition-all duration-500 text-base md:text-lg font-light
               ${errors.name ? 'border-red-400' : 'border-gray-200 focus:border-primario'}
             `}
             placeholder="Nombre Completo"
           />
+
           <AnimatePresence>
             {errors.name && (
               <motion.p 
@@ -84,7 +85,7 @@ export const ContactForm = () => {
             {...register("email")}
             type="email"
             autoComplete="email"
-            className={`w-full bg-transparent border-b py-4 outline-none transition-all duration-500 text-lg font-light
+            className={`w-full bg-transparent border-b py-3 md:py-4 outline-none transition-all duration-500 text-base md:text-lg font-light
               ${errors.email ? 'border-red-400' : 'border-gray-200 focus:border-primario'}
             `}
             placeholder="Correo Electrónico"
@@ -108,7 +109,7 @@ export const ContactForm = () => {
           <textarea
             {...register("message")}
             rows={4}
-            className={`w-full bg-transparent border-b py-4 outline-none transition-all duration-500 text-lg font-light resize-none
+            className={`w-full bg-transparent border-b py-3 md:py-4 outline-none transition-all duration-500 text-base md:text-lg font-light resize-none
               ${errors.message ? 'border-red-400' : 'border-gray-200 focus:border-primario'}
             `}
             placeholder="Tu Mensaje"
@@ -158,9 +159,9 @@ export const ContactForm = () => {
       <button
         type="submit"
         disabled={loading}
-        className="group flex items-center gap-8 disabled:opacity-50 transition-all pt-4"
+        className="group flex items-center gap-4 md:gap-8 disabled:opacity-50 transition-all pt-4"
       >
-        <div className="h-px w-20 bg-gray-100 group-hover:bg-primario group-hover:w-32 transition-all duration-700" />
+        <div className="h-px w-10 md:w-20 bg-gray-100 group-hover:bg-primario group-hover:w-32 transition-all duration-700" />
         <span className="text-primario text-[10px] font-black uppercase tracking-[0.5em] group-hover:tracking-[0.6em] transition-all">
           {loading ? "Procesando..." : "Enviar Mensaje"}
         </span>
