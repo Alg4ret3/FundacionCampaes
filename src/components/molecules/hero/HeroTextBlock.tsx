@@ -26,7 +26,7 @@ export const HeroTextBlock = ({ isVisible }: HeroTextBlockProps) => {
         initial={{ opacity: 0, y: 30 }}
         animate={isVisible ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 1, delay: 0.4 }}
-        className="text-7xl font-black text-white leading-[0.9] tracking-tighter mb-8 uppercase"
+        className="text-4xl sm:text-6xl lg:text-7xl font-black text-white leading-[0.9] tracking-tighter mb-8 uppercase"
       >
         Construyendo <br />
         <span className="text-white/80">
@@ -34,13 +34,15 @@ export const HeroTextBlock = ({ isVisible }: HeroTextBlockProps) => {
         </span>
       </motion.h1>
 
+
       {/* ── Descriptive Text ── */}
       <motion.p
         initial={{ opacity: 0 }}
         animate={isVisible ? { opacity: 1 } : {}}
         transition={{ duration: 1, delay: 0.6 }}
-        className="text-white/90 text-lg lg:text-lg font-light max-w-xl leading-relaxed mb-4"
+        className="text-white/90 text-base sm:text-lg font-light max-w-xl leading-relaxed mb-4"
       >
+
         Impulsamos el desarrollo socioeconómico y la protección del ambiente en nuestros territorios a través de la esperanza y la acción colectiva.
       </motion.p>
       

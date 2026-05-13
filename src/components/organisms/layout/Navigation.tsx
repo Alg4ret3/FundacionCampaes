@@ -37,11 +37,28 @@ const navLinks: NavItem[] = [
 ];
 
 const socialLinks = [
-  { Icon: FaFacebookF, href: "#", label: "Facebook" },
-  { Icon: FaInstagram, href: "#", label: "Instagram" },
-  { Icon: FaWhatsapp, href: "#", label: "WhatsApp" },
-  { Icon: SiGmail, href: "#", label: "Gmail" },
+  {
+    Icon: FaFacebookF,
+    href: "https://www.facebook.com/share/1ADNfwFbQK/?mibextid=wwXIfr",
+    label: "Facebook",
+  },
+  {
+    Icon: FaInstagram,
+    href: "https://www.instagram.com/caminosdepazyesperanza?igsh=MXU1cmFnYmh2bGJtcw%3D%3D&utm_source=qr",
+    label: "Instagram",
+  },
+  {
+    Icon: FaWhatsapp,
+    href: "https://wa.me/573185094789",
+    label: "WhatsApp",
+  },
+  {
+    Icon: SiGmail,
+    href: "mailto:funpazyesperanza@gmail.com",
+    label: "Gmail",
+  },
 ];
+
 
 export const Navigation: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -82,7 +99,9 @@ export const Navigation: React.FC = () => {
         {/* CTA Desktop */}
         <div className="hidden lg:flex items-center gap-3">
           <motion.a
-            href="/contact"
+            href="https://wa.me/573185094789"
+            target="_blank"
+            rel="noopener noreferrer"
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
             className="relative inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-white bg-primario rounded-full overflow-hidden shadow-md shadow-primario/20 hover:shadow-lg hover:shadow-primario/30 transition-shadow duration-300"
@@ -150,7 +169,9 @@ export const Navigation: React.FC = () => {
                 transition={{ delay: 0.28, duration: 0.3 }}
               >
                 <a
-                  href="/contact"
+                  href="https://wa.me/573185094789"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   onClick={closeMenu}
                   className="flex items-center justify-center gap-2 w-full py-3.5 bg-primario text-white font-semibold text-sm rounded-2xl shadow-md shadow-primario/25 hover:shadow-lg hover:shadow-primario/35 transition-all duration-300 active:scale-[0.98]"
                 >
@@ -158,6 +179,8 @@ export const Navigation: React.FC = () => {
                   <ChevronRight className="w-4 h-4" />
                 </a>
               </motion.div>
+
+
 
               {/* FOOTER DEL MENÚ (REDES SOCIALES) */}
               <motion.div
@@ -174,6 +197,8 @@ export const Navigation: React.FC = () => {
                     <motion.a
                       key={label}
                       href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       aria-label={label}
                       whileHover={{ scale: 1.12, y: -2 }}
                       whileTap={{ scale: 0.9 }}
@@ -181,6 +206,7 @@ export const Navigation: React.FC = () => {
                     >
                       <Icon className="w-4 h-4" />
                     </motion.a>
+
                   ))}
                 </div>
               </motion.div>
