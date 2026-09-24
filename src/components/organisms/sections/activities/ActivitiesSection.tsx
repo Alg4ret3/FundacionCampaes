@@ -1,16 +1,17 @@
 import { motion } from "framer-motion";
 import { useState, useMemo, useCallback } from "react";
-import { activities } from "../../../../constants/DataActivities";
+import { useContent } from "../../../../context/ContentContext";
 import { ActivityDetailsModal } from "../../../molecules/activities/ActivityDetailsModal";
 import { Activity } from "../../../../types";
 
 export const ActivitiesSection = () => {
+  const { activities } = useContent();
   const [showMore, setShowMore] = useState(false);
   const [selectedActivity, setSelectedActivity] = useState<Activity | null>(null);
 
   const visibleActivities = useMemo(() => {
     return showMore ? activities : activities.slice(0, 6);
-  }, [showMore]);
+  }, [showMore, activities]);
 
   const handleCloseModal = useCallback(() => {
     setSelectedActivity(null);
