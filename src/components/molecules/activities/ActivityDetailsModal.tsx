@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 import { Activity } from "../../../types";
@@ -9,12 +9,19 @@ interface Props {
 }
 
 export const ActivityDetailsModal = ({ activity, onClose }: Props) => {
-  // Bloquear el scroll del cuerpo cuando el modal está abierto
+  const modalRef = useRef<HTMLDivElement>(null);
+  const previousFocusRef = useRef<HTMLElement | null>(null);
+
+  // Bloquear el scroll del cuerpo cuando el modal está abierto y gestionar el foco
   useEffect(() => {
     if (activity) {
       document.body.style.overflow = "hidden";
+      previousFocusRef.current = document.activeElement as HTMLElement;
+      // Focus modal on next tick to ensure it's mounted
+      setTimeout(() => modalRef.current?.focus(), 10);
     } else {
       document.body.style.overflow = "unset";
+      previousFocusRef.current?.focus();
     }
     return () => {
       document.body.style.overflow = "unset";
@@ -31,23 +38,28 @@ export const ActivityDetailsModal = ({ activity, onClose }: Props) => {
           role="dialog"
           aria-modal="true"
           aria-labelledby="activity-modal-title"
-          className="fixed inset-0 bg-white z-[200] overflow-y-auto scrollbar-hide"
+          ref={modalRef}
+          tabIndex={-1}
+          onKeyDown={(e) => {
+            if (e.key === 'Escape') onClose();
+          }}
+          className="fixed inset-0 bg-white z-[200] overflow-y-auto scrollbar-hide outline-none overscroll-y-contain"
         >
-          {/* Close Button: Absolute and minimal */}
-          <div className="fixed top-4 right-4 md:top-8 md:right-8 z-50">
+          {/* Close Button: Touch optimized & Safe-Area friendly */}
+          <div className="fixed top-[max(1rem,env(safe-area-inset-top))] right-[max(1rem,env(safe-area-inset-right))] md:top-8 md:right-8 z-50">
             <button
               onClick={onClose}
               aria-label="Cerrar detalle de actividad"
-              className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center bg-black/10 backdrop-blur-md md:bg-transparent text-gray-900 md:text-gray-400 hover:text-primario transition-colors focus:ring-2 focus:ring-primario rounded-full outline-none"
+              className="w-11 h-11 md:w-12 md:h-12 flex items-center justify-center bg-black/40 backdrop-blur-md md:bg-gray-100/80 text-white md:text-gray-700 hover:text-primario hover:bg-gray-200/80 active:scale-95 transition-all duration-200 rounded-full outline-none shadow-md"
             >
-              <X className="w-6 h-6 md:w-8 md:h-8" />
+              <X className="w-6 h-6 md:w-7 md:h-7" />
             </button>
           </div>
 
-          <div className="min-h-screen flex flex-col lg:flex-row">
+          <div className="min-h-screen min-h-[100dvh] flex flex-col lg:flex-row">
 
             {/* Left: Immense Image */}
-            <div className="lg:flex-1 h-[45vh] lg:h-screen lg:sticky lg:top-0 overflow-hidden bg-white">
+            <div className="lg:flex-1 h-[40vh] sm:h-[45vh] lg:h-[100dvh] lg:sticky lg:top-0 overflow-hidden bg-gray-900">
                <motion.img 
                 initial={{ scale: 1.1 }}
                 animate={{ scale: 1 }}

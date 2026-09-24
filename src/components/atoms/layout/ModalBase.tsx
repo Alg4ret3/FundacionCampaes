@@ -1,7 +1,7 @@
 // atoms/layout/ModalBase.tsx
 import { motion, AnimatePresence } from "framer-motion";
 import { IoClose } from "react-icons/io5";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 
 /**
  * @fileoverview ModalBase - Átomo para la estructura base de un modal con animaciones.
@@ -44,6 +44,23 @@ export const ModalBase = ({
   maxW = "max-w-3xl",
   themeColor,
 }: ModalBaseProps) => {
+  const modalRef = useRef<HTMLDivElement>(null);
+  const previousFocusRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+      previousFocusRef.current = document.activeElement as HTMLElement;
+      setTimeout(() => modalRef.current?.focus(), 10);
+    } else {
+      document.body.style.overflow = "unset";
+      previousFocusRef.current?.focus();
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [open]);
+
   return (
     <AnimatePresence>
       {open && (
@@ -56,6 +73,13 @@ export const ModalBase = ({
           exit="exit"
         >
           <motion.div
+            ref={modalRef}
+            tabIndex={-1}
+            role="dialog"
+            aria-modal="true"
+            onKeyDown={(e) => {
+              if (e.key === 'Escape') onClose();
+            }}
             className={`
               relative w-full ${maxW}
               bg-fondo rounded-3xl shadow-2xl shadow-black/30

@@ -62,8 +62,8 @@ export const TypingQuote = ({
       {(showBrush && showCursor) && (
         <span
           className="
-            inline-block w-3 h-3 rounded-full ml-1
-            bg-primario/60 blur-[2px]
+            inline-block w-1.5 h-[1em] ml-1 align-middle
+            bg-primario
             animate-[brushGlow_0.9s_ease-in-out_infinite]
           "
         />
@@ -75,7 +75,6 @@ export const TypingQuote = ({
           0% {
             opacity: 0;
             transform: translateX(-4px) scale(0.98) rotate(-1deg);
-            filter: blur(2px);
           }
           60% {
             opacity: 0.9;
@@ -83,7 +82,6 @@ export const TypingQuote = ({
           100% {
             opacity: 1;
             transform: translateX(0) scale(1) rotate(0deg);
-            filter: blur(0px);
           }
         }
 

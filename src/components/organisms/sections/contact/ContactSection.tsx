@@ -9,19 +9,8 @@ export const ContactSection = () => {
 
         {/* ── Refined Typographic Header ── */}
         <div className="max-w-3xl mb-24 md:mb-32">
-          <motion.div
-            initial={{ opacity: 0, x: -10 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="flex items-center gap-3 mb-6"
-          >
-            <span className="w-8 h-px bg-primario" />
-            <span className="text-primario text-xs font-black uppercase tracking-[0.4em]">
-              Canales de Atención
-            </span>
-          </motion.div>
-          <h1 className="text-4xl lg:text-7xl font-black text-texto tracking-tighter leading-tight uppercase">
-            Hablemos del <br /> <span className="text-primario">Futuro.</span>
+          <h1 className="font-display text-5xl lg:text-7xl font-bold text-display tracking-tight leading-tight">
+            Hablemos del Futuro.
           </h1>
           <p className="mt-8 text-gray-500 text-lg lg:text-lg font-light leading-relaxed max-w-2xl">
             Estamos aquí para escucharte y construir juntos nuevos caminos de paz. Encuentra todas las formas de conectar con nuestra labor.
@@ -30,31 +19,31 @@ export const ContactSection = () => {
 
         {/* ── Contact Info Grid ── */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-32">
-          <div className="space-y-4">
-            <div className="flex items-center gap-4">
-              <MapPin className="text-primario w-5 h-5 opacity-40" />
-              <span className="text-xs font-black uppercase tracking-[0.4em] text-gray-300">Sede Principal</span>
+          <div className="space-y-3">
+            <div className="flex items-center gap-3">
+              <MapPin className="text-primario w-4 h-4 opacity-50" />
+              <span className="text-xs text-gray-400">Sede principal</span>
             </div>
-            <p className="text-xl md:text-2xl font-black text-texto tracking-tighter leading-tight uppercase">
+            <p className="text-xl md:text-2xl font-black text-texto tracking-tighter leading-tight">
               Calle 18 #12-08, <br />
               Barrio Fátima, Pasto.
             </p>
           </div>
 
-          <div className="space-y-4">
-            <div className="flex items-center gap-4">
-              <Phone className="text-primario w-5 h-5 opacity-40" />
-              <span className="text-xs font-black uppercase tracking-[0.4em] text-gray-300">Línea Directa</span>
+          <div className="space-y-3">
+            <div className="flex items-center gap-3">
+              <Phone className="text-primario w-4 h-4 opacity-50" />
+              <span className="text-xs text-gray-400">Línea directa</span>
             </div>
-            <p className="text-xl md:text-2xl font-black text-texto tracking-tighter leading-tight uppercase">
+            <p className="text-xl md:text-2xl font-black text-texto tracking-tighter leading-tight">
               +57 318 509 4789
             </p>
           </div>
 
-          <div className="space-y-4">
-            <div className="flex items-center gap-4">
-              <Mail className="text-primario w-5 h-5 opacity-40" />
-              <span className="text-xs font-black uppercase tracking-[0.4em] text-gray-300">Correo Electrónico</span>
+          <div className="space-y-3">
+            <div className="flex items-center gap-3">
+              <Mail className="text-primario w-4 h-4 opacity-50" />
+              <span className="text-xs text-gray-400">Correo</span>
             </div>
             <p className="text-xl md:text-2xl font-black text-texto tracking-tighter leading-tight lowercase break-all">
               funpazyesperanza@gmail.com
@@ -64,11 +53,11 @@ export const ContactSection = () => {
         </div>
 
         {/* ── Form Section: Floating Island ── */}
-        <div className="max-w-4xl mx-auto mb-20 md:mb-32 bg-surface p-6 sm:p-10 md:p-20 rounded-[2rem] md:rounded-[3rem] border border-divider">
+        <div className="max-w-4xl mx-auto mb-20 md:mb-32 bg-surface p-6 sm:p-10 md:p-20 rounded-sm border border-divider">
           <div className="max-w-xl mx-auto">
             <div className="text-center mb-10 md:mb-16">
-              <h2 className="text-2xl lg:text-4xl font-black text-texto uppercase tracking-tighter mb-4">
-                Envíanos un <span className="text-primario">Mensaje</span>
+              <h2 className="font-display text-3xl lg:text-5xl font-bold text-display tracking-tight mb-4">
+                Envíanos un mensaje
               </h2>
               <p className="text-gray-500 text-[11px] md:text-sm font-light">
                 Completa el formulario y nos pondremos en contacto contigo pronto.
@@ -81,11 +70,10 @@ export const ContactSection = () => {
 
         {/* ── Social Footer ── */}
         <div className="flex flex-col items-center gap-8 mb-24">
-          <span className="text-xs font-black uppercase tracking-[0.5em] text-gray-300">Conecta en Redes</span>
           <div className="flex items-center gap-12">
-            <a href="#" className="text-gray-500 hover:text-primario transition-colors" aria-label="Instagram"><Instagram className="w-6 h-6" /></a>
-            <a href="#" className="text-gray-500 hover:text-primario transition-colors" aria-label="Facebook"><Facebook className="w-6 h-6" /></a>
-            <a href="#" className="text-gray-500 hover:text-primario transition-colors" aria-label="Youtube"><Youtube className="w-6 h-6" /></a>
+            <a href="#" className="text-gray-400 hover:text-primario transition-colors" aria-label="Instagram"><Instagram className="w-6 h-6" /></a>
+            <a href="#" className="text-gray-400 hover:text-primario transition-colors" aria-label="Facebook"><Facebook className="w-6 h-6" /></a>
+            <a href="#" className="text-gray-400 hover:text-primario transition-colors" aria-label="Youtube"><Youtube className="w-6 h-6" /></a>
           </div>
         </div>
 

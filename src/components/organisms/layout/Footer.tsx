@@ -8,10 +8,8 @@ export const Footer = () => {
   return (
     <footer className="bg-surface text-texto relative overflow-hidden border-t border-divider">
 
-      {/* Decoración sutil */}
-      <div className="absolute top-0 right-0 w-64 h-64 bg-primario/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
 
-      <div className="w-full max-w-7xl mx-auto px-6 md:px-12 py-20 md:py-24 relative z-10">
+      <div className="w-full max-w-7xl mx-auto px-6 md:px-12 py-20 md:py-24">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-8">
 
           {/* Columna de Marca y Misión */}
@@ -21,7 +19,7 @@ export const Footer = () => {
               Transformando realidades desde 2017 a través de proyectos que fortalecen el tejido social y promueven la equidad en nuestra región.
             </p>
             <div className="mt-12">
-              <p className="text-[10px] uppercase tracking-[0.3em] text-gray-400 font-bold mb-6">Síguenos en redes</p>
+              <p className="text-xs text-gray-400 font-medium mb-6">Síguenos</p>
               <SocialLinks />
             </div>
           </section>
@@ -31,7 +29,7 @@ export const Footer = () => {
 
           {/* Columna de Enlaces Rápidos */}
           <nav className="lg:col-span-2" aria-label="Navegación del sitio">
-            <h4 className="text-texto text-[10px] uppercase tracking-[0.3em] font-bold mb-10">
+            <h4 className="text-texto text-xs font-semibold mb-10">
               Explorar
             </h4>
             <FooterLinks />
@@ -39,8 +37,8 @@ export const Footer = () => {
 
           {/* Columna de Contacto */}
           <section className="lg:col-span-4" aria-label="Información de contacto">
-            <h4 className="text-texto text-[10px] uppercase tracking-[0.3em] font-bold mb-10">
-              Contacto Directo
+            <h4 className="text-texto text-xs font-semibold mb-10">
+              Contacto
             </h4>
             <address className="space-y-8 not-italic">
               <ContactItem

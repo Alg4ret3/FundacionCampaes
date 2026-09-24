@@ -1,7 +1,7 @@
 // components/organisms/layout/Navigation.tsx
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -66,8 +66,8 @@ export const Navigation: React.FC = () => {
   const location = useLocation();
   const activeId = location.pathname;
 
-  const toggleMenu = () => setIsOpen(!isOpen);
-  const closeMenu = () => setIsOpen(false);
+  const toggleMenu = useCallback(() => setIsOpen((prev) => !prev), []);
+  const closeMenu = useCallback(() => setIsOpen(false), []);
 
   // Detectar scroll para cambiar el estilo del nav
   useEffect(() => {
@@ -83,7 +83,7 @@ export const Navigation: React.FC = () => {
 
   return (
     <header
-      className="fixed top-0 left-0 w-full z-50 bg-white/95 backdrop-blur-xl shadow-[0_8px_40px_rgba(0,0,0,0.05)] transition-all duration-500"
+      className="fixed top-0 left-0 w-full z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100 transition-all duration-500"
     >
       <nav className="w-full max-w-7xl mx-auto flex justify-between items-center px-5 sm:px-6 md:px-8 lg:px-12 h-[68px] sm:h-[72px] md:h-[80px]">
         {/* Molécula LOGO */}
@@ -106,7 +106,7 @@ export const Navigation: React.FC = () => {
             whileTap={{ scale: 0.97 }}
             className="relative inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-white bg-primario rounded-full overflow-hidden shadow-md shadow-primario/20 hover:shadow-lg hover:shadow-primario/30 transition-shadow duration-300"
           >
-            <span className="relative z-10">Únete</span>
+            <span className="relative z-10">Apoyar la causa</span>
           </motion.a>
         </div>
 
@@ -132,7 +132,7 @@ export const Navigation: React.FC = () => {
 
             {/* Panel */}
             <motion.div
-              className="absolute top-full left-0 w-full bg-white z-50 shadow-2xl lg:hidden overflow-hidden"
+              className="absolute top-full left-0 w-full bg-white z-50 shadow-2xl lg:hidden overflow-y-auto max-h-[calc(100dvh-68px)] overscroll-y-contain pb-safe"
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: "auto", opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}

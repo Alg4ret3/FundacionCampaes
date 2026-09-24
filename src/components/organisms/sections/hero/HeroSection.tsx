@@ -10,7 +10,7 @@ export const HeroSection = () => {
     <section
       id="inicio"
       ref={ref}
-      className="relative min-h-screen flex items-center justify-start overflow-hidden pt-20"
+      className="relative min-h-screen min-h-[100dvh] flex items-center justify-start overflow-hidden pt-20"
     >
       {/* ── Background Image Layer ── */}
       <div className="absolute inset-0 z-0 overflow-hidden bg-[#2d342d]">

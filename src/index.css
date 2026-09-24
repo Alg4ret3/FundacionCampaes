@@ -40,10 +40,32 @@ body {
 }
 
 /* ==========================================================================
-   SMOOTH SCROLL PARA ENLACES INTERNOS
+   SMOOTH SCROLL Y ERGONOMÍA TÁCTIL (MOBILE-FIRST)
    ========================================================================== */
 html {
   scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* Soporte para Safe Area Insets (iOS Notch & Gesture Bar) */
+:root {
+  --sat: env(safe-area-inset-top, 0px);
+  --sab: env(safe-area-inset-bottom, 0px);
+  --sal: env(safe-area-inset-left, 0px);
+  --sar: env(safe-area-inset-right, 0px);
+}
+
+.pb-safe {
+  padding-bottom: max(1.25rem, env(safe-area-inset-bottom, 0px));
+}
+
+.pt-safe {
+  padding-top: max(1rem, env(safe-area-inset-top, 0px));
+}
+
+.bottom-safe {
+  bottom: max(1.5rem, calc(1.5rem + env(safe-area-inset-bottom, 0px)));
 }
 
 /* ==========================================================================

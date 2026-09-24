@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 export const FloatingStatsCard = () => (
   <motion.div
-    className="absolute -bottom-3 sm:-bottom-4 md:-bottom-6 -right-3 sm:-right-4 md:-right-6 bg-white/90 rounded-lg sm:rounded-xl md:rounded-2xl shadow-2xl p-3 sm:p-4 md:p-6 backdrop-blur-xl max-w-xs sm:max-w-sm"
+    className="absolute -bottom-3 sm:-bottom-4 md:-bottom-6 -right-3 sm:-right-4 md:-right-6 bg-white/90 rounded-sm shadow-md p-3 sm:p-4 md:p-6 backdrop-blur-md max-w-xs sm:max-w-sm"
     initial={{ y: 0 }}
     animate={{ y: [0, -5, 0] }} // solo flota arriba y abajo
     transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}

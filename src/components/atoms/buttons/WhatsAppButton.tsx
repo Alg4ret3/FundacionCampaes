@@ -5,7 +5,7 @@ export const WhatsAppButton = () => (
     href="https://wa.me/573185094789?text=Hola,%20me%20gustar%C3%ADa%20obtener%20m%C3%A1s%20informaci%C3%B3n%20sobre%20la%20Fundaci%C3%B3n%20Caminos%20de%20Paz%20y%20Esperanza."
     target="_blank"
     rel="noopener noreferrer"
-    className="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-green-300"
+    className="fixed bottom-safe right-6 z-50 bg-green-500 hover:bg-green-600 active:scale-95 text-white p-3.5 sm:p-4 rounded-full shadow-lg shadow-green-500/25 transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-green-300 touch-manipulation select-none"
     aria-label="Contactar por WhatsApp"
   >
     <svg
